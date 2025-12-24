@@ -1,11 +1,5 @@
 import Foundation
 
-/// Frecuencia de repetición de un hábito.
-public enum Frecuencia: String, Codable, CaseIterable, Equatable {
-	case diario
-	case semanal
-}
-
 /// Modelo que representa un hábito. Diseñado para usarse como modelo de base de datos
 /// (Codable para serialización, Identifiable para listas y UUID como llave primaria).
 public struct Habit: Identifiable, Codable, Equatable, Hashable {
