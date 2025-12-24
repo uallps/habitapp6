@@ -1,24 +1,39 @@
 import Foundation
-import SwiftData
 
-@Model 
-class Habit: Identifiable {
-  let id: UUID
-  var name: String
-  var frequency: Frequency
-  var reminderFrenquency: Frequency?
-  var reminderHour: DateComponents?
-
-  init(name: String, frequency: Frequency, reminderFrenquency: Frequency? = nil, reminderHour: DateComponents? = nil) {
-    self.id = UUID()
-    self.name = name
-    self.frequency = frequency
-    self.reminderFrenquency = reminderFrenquency
-    self.reminderHour = reminderHour
-  }
-
+/// Frecuencia de repetición de un hábito.
+public enum Frecuencia: String, Codable, CaseIterable, Equatable {
+	case diario
+	case semanal
 }
 
-enum Frequency: String {
-  case daily, weekly, monthly
+/// Modelo que representa un hábito. Diseñado para usarse como modelo de base de datos
+/// (Codable para serialización, Identifiable para listas y UUID como llave primaria).
+public struct Habit: Identifiable, Codable, Equatable, Hashable {
+	public let id: UUID
+	public var nombre: String
+	public var frecuencia: Frecuencia
+	public var fechaCreacion: Date
+	public var activo: Bool
+
+	/// Inicializador completo con valores por defecto razonables.
+	public init(
+		id: UUID = UUID(),
+		nombre: String,
+		frecuencia: Frecuencia = .diario,
+		fechaCreacion: Date = Date(),
+		activo: Bool = true
+	) {
+		self.id = id
+		self.nombre = nombre
+		self.frecuencia = frecuencia
+		self.fechaCreacion = fechaCreacion
+		self.activo = activo
+	}
 }
+
+// MARK: - Samples / Helpers
+public extension Habit {
+	/// Ejemplo de uso rápido para previews y tests
+	static let sample = Habit(nombre: "Ejemplo", frecuencia: .diario)
+}
+
