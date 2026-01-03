@@ -1,53 +1,58 @@
 import SwiftUI
 
-struct HabitListView: View {
-    @StateObject var viewModel = HabitListViewModel()
+struct HabitsListView: View {
+    @ObservedObject var dataStore: HabitDataStore
+    @StateObject private var viewModel: HabitsViewModel
+    @State private var showingCreateView = false
+    
+    init(dataStore: HabitDataStore) {
+        self.dataStore = dataStore
+        _viewModel = StateObject(wrappedValue: HabitsViewModel(dataStore: dataStore))
+    }
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(viewModel.habits) { habit in
-                        VStack(alignment: .leading) {
-                            HStack {
-                                NavigationLink(destination: HabitDetailView(viewModel: viewModel, habit: habit)) {
-                                    Text(habit.nombre)
-                                        .font(.headline)
-                                    Spacer()
-                                    Text(habit.frecuencia.rawValue.capitalized)
-                                        .foregroundColor(.gray)
-                                    Image(systemName: habit.activo ? "checkmark.circle.fill" : "circle")
-                                        .foregroundColor(habit.activo ? .green : .gray)
-                                }
+            List {
+                ForEach(dataStore.habits) { habit in
+                    NavigationLink(destination: HabitDetailView(dataStore: dataStore, habit: habit)) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(habit.nombre)
+                                    .font(.headline)
+                                Text(habit.frecuencia.rawValue.capitalized)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
                             }
-                            // Botón para ir a las instancias
-                            NavigationLink(destination: HabitInstanceListView(viewModel: HabitInstanceViewModel(habits: [habit]), habits: [habit])) {
-                                Text("Ver instancias")
-                                    .font(.subheadline)
-                                    .foregroundColor(.blue)
-                            }
-                        }
-                        .padding(.vertical, 4)
-                    }
-                    .onDelete { offsets in
-                        Task { @MainActor in
-                            viewModel.removeHabit(at: offsets)
+                            Spacer()
+                            Toggle("", isOn: Binding(
+                                get: { habit.activo },
+                                set: { _ in viewModel.toggleHabitActive(habit) }
+                            ))
+                            .labelsHidden()
                         }
                     }
                 }
-                
-                NavigationLink("Crear Hábito", destination: HabitCreateView(viewModel: viewModel))
-                    .padding()
+                .onDelete(perform: deleteHabits)
             }
-            .navigationTitle("Hábitos")
+            .navigationTitle("Mis Hábitos")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        showingCreateView = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingCreateView) {
+                CreateHabitView(dataStore: dataStore)
+            }
         }
     }
-}
-
-
-
-struct HabitListView_Previews: PreviewProvider {
-    static var previews: some View {
-        HabitListView()
+    
+    func deleteHabits(at offsets: IndexSet) {
+        for index in offsets {
+            viewModel.deleteHabit(dataStore.habits[index])
+        }
     }
 }

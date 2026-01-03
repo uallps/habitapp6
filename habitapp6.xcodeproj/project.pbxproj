@@ -18,15 +18,20 @@
 		F510C1472F0899F800C5074E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1462F0899F800C5074E /* AppConfig.swift */; };
 		F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14B2F089C1300C5074E /* Frecuencia.swift */; };
 		F510C14E2F089C9900C5074E /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14D2F089C9900C5074E /* Habit.swift */; };
-		F510C1502F089EAB00C5074E /* HabitCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14F2F089EAB00C5074E /* HabitCreateView.swift */; };
 		F510C1522F089F9900C5074E /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1512F089F9900C5074E /* HabitDetailView.swift */; };
 		F510C1542F089FB900C5074E /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1532F089FB900C5074E /* HabitListView.swift */; };
 		F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1552F08A06600C5074E /* StorageProvider.swift */; };
 		F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1572F08A10600C5074E /* JSONStorageProvider.swift */; };
-		F510C15A2F08A23600C5074E /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1592F08A23600C5074E /* HabitListViewModel.swift */; };
 		F510C15C2F08A66E00C5074E /* HabitInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15B2F08A66E00C5074E /* HabitInstance.swift */; };
-		F510C15E2F08A72C00C5074E /* HabitInstanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15D2F08A72C00C5074E /* HabitInstanceViewModel.swift */; };
-		F510C1602F08A7CB00C5074E /* HabitInstanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15F2F08A7CB00C5074E /* HabitInstanceView.swift */; };
+		F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
+		F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
+		F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
+		F582377C2F09672200F6DB8B /* CreateHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */; };
+		F582377E2F09675400F6DB8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377D2F09675400F6DB8B /* ContentView.swift */; };
+		F58237802F09678B00F6DB8B /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377F2F09678B00F6DB8B /* TodayView.swift */; };
+		F58237822F0967D600F6DB8B /* CreateHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237812F0967D600F6DB8B /* CreateHabitView.swift */; };
+		F58237842F0968C000F6DB8B /* CoreDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */; };
+		F58237862F0969F100F6DB8B /* HabitDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237852F0969F100F6DB8B /* HabitDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,15 +66,20 @@
 		F510C1462F0899F800C5074E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		F510C14B2F089C1300C5074E /* Frecuencia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frecuencia.swift; sourceTree = "<group>"; };
 		F510C14D2F089C9900C5074E /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
-		F510C14F2F089EAB00C5074E /* HabitCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateView.swift; sourceTree = "<group>"; };
 		F510C1512F089F9900C5074E /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		F510C1532F089FB900C5074E /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
 		F510C1552F08A06600C5074E /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		F510C1572F08A10600C5074E /* JSONStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStorageProvider.swift; sourceTree = "<group>"; };
-		F510C1592F08A23600C5074E /* HabitListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewModel.swift; sourceTree = "<group>"; };
 		F510C15B2F08A66E00C5074E /* HabitInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInstance.swift; sourceTree = "<group>"; };
-		F510C15D2F08A72C00C5074E /* HabitInstanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInstanceViewModel.swift; sourceTree = "<group>"; };
-		F510C15F2F08A7CB00C5074E /* HabitInstanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInstanceView.swift; sourceTree = "<group>"; };
+		F58237752F09668500F6DB8B /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
+		F58237772F0966BC00F6DB8B /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
+		F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitViewModel.swift; sourceTree = "<group>"; };
+		F582377D2F09675400F6DB8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F582377F2F09678B00F6DB8B /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		F58237812F0967D600F6DB8B /* CreateHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitView.swift; sourceTree = "<group>"; };
+		F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageProvider.swift; sourceTree = "<group>"; };
+		F58237852F0969F100F6DB8B /* HabitDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,10 +200,11 @@
 		F510C1442F08991C00C5074E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F510C14F2F089EAB00C5074E /* HabitCreateView.swift */,
 				F510C1512F089F9900C5074E /* HabitDetailView.swift */,
 				F510C1532F089FB900C5074E /* HabitListView.swift */,
-				F510C15F2F08A7CB00C5074E /* HabitInstanceView.swift */,
+				F582377D2F09675400F6DB8B /* ContentView.swift */,
+				F582377F2F09678B00F6DB8B /* TodayView.swift */,
+				F58237812F0967D600F6DB8B /* CreateHabitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,8 +212,10 @@
 		F510C1452F08992600C5074E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F510C1592F08A23600C5074E /* HabitListViewModel.swift */,
-				F510C15D2F08A72C00C5074E /* HabitInstanceViewModel.swift */,
+				F58237752F09668500F6DB8B /* HabitsViewModel.swift */,
+				F58237772F0966BC00F6DB8B /* TodayViewModel.swift */,
+				F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */,
+				F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -219,6 +232,8 @@
 			children = (
 				F510C1552F08A06600C5074E /* StorageProvider.swift */,
 				F510C1572F08A10600C5074E /* JSONStorageProvider.swift */,
+				F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */,
+				F58237852F0969F100F6DB8B /* HabitDataStore.swift */,
 			);
 			path = Infraestructure;
 			sourceTree = "<group>";
@@ -363,17 +378,22 @@
 			files = (
 				F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */,
 				F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */,
+				F58237862F0969F100F6DB8B /* HabitDataStore.swift in Sources */,
 				F510C1542F089FB900C5074E /* HabitListView.swift in Sources */,
-				F510C15A2F08A23600C5074E /* HabitListViewModel.swift in Sources */,
-				F510C1502F089EAB00C5074E /* HabitCreateView.swift in Sources */,
+				F58237802F09678B00F6DB8B /* TodayView.swift in Sources */,
 				F510C1472F0899F800C5074E /* AppConfig.swift in Sources */,
 				F510C1522F089F9900C5074E /* HabitDetailView.swift in Sources */,
 				F510C14E2F089C9900C5074E /* Habit.swift in Sources */,
-				F510C1602F08A7CB00C5074E /* HabitInstanceView.swift in Sources */,
-				F510C15E2F08A72C00C5074E /* HabitInstanceViewModel.swift in Sources */,
+				F582377E2F09675400F6DB8B /* ContentView.swift in Sources */,
+				F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */,
+				F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */,
 				F510C15C2F08A66E00C5074E /* HabitInstance.swift in Sources */,
 				F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */,
 				F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */,
+				F582377C2F09672200F6DB8B /* CreateHabitViewModel.swift in Sources */,
+				F58237822F0967D600F6DB8B /* CreateHabitView.swift in Sources */,
+				F58237842F0968C000F6DB8B /* CoreDataStorageProvider.swift in Sources */,
+				F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */,
 				F510C1112F08953300C5074E /* habitapp6App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

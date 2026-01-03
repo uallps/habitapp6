@@ -1,10 +1,10 @@
 import SwiftUI
 
 @main
-struct habitapp6App: App {
+struct HabitTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            HabitListView()
+            ContentView()
         }
     }
 }
