@@ -8,15 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		F510C1112F08953300C5074E /* habitapp6App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1102F08953300C5074E /* habitapp6App.swift */; };
-		F510C1132F08953300C5074E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1122F08953300C5074E /* ContentView.swift */; };
 		F510C1152F08953600C5074E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1142F08953600C5074E /* Assets.xcassets */; };
 		F510C1182F08953600C5074E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1172F08953600C5074E /* Preview Assets.xcassets */; };
-		F510C11A2F08953600C5074E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1192F08953600C5074E /* Persistence.swift */; };
 		F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F510C11B2F08953600C5074E /* habitapp6.xcdatamodeld */; };
 		F510C1272F08953700C5074E /* habitapp6Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1262F08953700C5074E /* habitapp6Tests.swift */; };
 		F510C1312F08953700C5074E /* habitapp6UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1302F08953700C5074E /* habitapp6UITests.swift */; };
 		F510C1332F08953700C5074E /* habitapp6UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1322F08953700C5074E /* habitapp6UITestsLaunchTests.swift */; };
 		F510C1402F08969800C5074E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F510C13F2F08969800C5074E /* .gitignore */; };
+		F510C1472F0899F800C5074E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1462F0899F800C5074E /* AppConfig.swift */; };
+		F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14B2F089C1300C5074E /* Frecuencia.swift */; };
+		F510C14E2F089C9900C5074E /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14D2F089C9900C5074E /* Habit.swift */; };
+		F510C1502F089EAB00C5074E /* HabitCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14F2F089EAB00C5074E /* HabitCreateView.swift */; };
+		F510C1522F089F9900C5074E /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1512F089F9900C5074E /* HabitDetailView.swift */; };
+		F510C1542F089FB900C5074E /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1532F089FB900C5074E /* HabitListView.swift */; };
+		F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1552F08A06600C5074E /* StorageProvider.swift */; };
+		F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1572F08A10600C5074E /* JSONStorageProvider.swift */; };
+		F510C15A2F08A23600C5074E /* HabitListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1592F08A23600C5074E /* HabitListViewModel.swift */; };
+		F510C15C2F08A66E00C5074E /* HabitInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15B2F08A66E00C5074E /* HabitInstance.swift */; };
+		F510C15E2F08A72C00C5074E /* HabitInstanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15D2F08A72C00C5074E /* HabitInstanceViewModel.swift */; };
+		F510C1602F08A7CB00C5074E /* HabitInstanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15F2F08A7CB00C5074E /* HabitInstanceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +49,8 @@
 /* Begin PBXFileReference section */
 		F510C10D2F08953300C5074E /* habitapp6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitapp6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F510C1102F08953300C5074E /* habitapp6App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitapp6App.swift; sourceTree = "<group>"; };
-		F510C1122F08953300C5074E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F510C1142F08953600C5074E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F510C1172F08953600C5074E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F510C1192F08953600C5074E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F510C11C2F08953600C5074E /* habitapp6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = habitapp6.xcdatamodel; sourceTree = "<group>"; };
 		F510C1222F08953700C5074E /* habitapp6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = habitapp6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F510C1262F08953700C5074E /* habitapp6Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitapp6Tests.swift; sourceTree = "<group>"; };
@@ -50,6 +58,18 @@
 		F510C1302F08953700C5074E /* habitapp6UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitapp6UITests.swift; sourceTree = "<group>"; };
 		F510C1322F08953700C5074E /* habitapp6UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitapp6UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F510C13F2F08969800C5074E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F510C1462F0899F800C5074E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		F510C14B2F089C1300C5074E /* Frecuencia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frecuencia.swift; sourceTree = "<group>"; };
+		F510C14D2F089C9900C5074E /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		F510C14F2F089EAB00C5074E /* HabitCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateView.swift; sourceTree = "<group>"; };
+		F510C1512F089F9900C5074E /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		F510C1532F089FB900C5074E /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
+		F510C1552F08A06600C5074E /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
+		F510C1572F08A10600C5074E /* JSONStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStorageProvider.swift; sourceTree = "<group>"; };
+		F510C1592F08A23600C5074E /* HabitListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewModel.swift; sourceTree = "<group>"; };
+		F510C15B2F08A66E00C5074E /* HabitInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInstance.swift; sourceTree = "<group>"; };
+		F510C15D2F08A72C00C5074E /* HabitInstanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInstanceViewModel.swift; sourceTree = "<group>"; };
+		F510C15F2F08A7CB00C5074E /* HabitInstanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInstanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +121,12 @@
 		F510C10F2F08953300C5074E /* habitapp6 */ = {
 			isa = PBXGroup;
 			children = (
-				F510C1102F08953300C5074E /* habitapp6App.swift */,
-				F510C1122F08953300C5074E /* ContentView.swift */,
+				F510C14A2F089A7E00C5074E /* Utils */,
+				F510C1492F089A5400C5074E /* Infraestructure */,
+				F510C1482F089A3600C5074E /* Features */,
+				F510C1422F0898FB00C5074E /* Core */,
+				F510C1412F0898DA00C5074E /* Application */,
 				F510C1142F08953600C5074E /* Assets.xcassets */,
-				F510C1192F08953600C5074E /* Persistence.swift */,
 				F510C11B2F08953600C5074E /* habitapp6.xcdatamodeld */,
 				F510C1162F08953600C5074E /* Preview Content */,
 			);
@@ -134,6 +156,78 @@
 				F510C1322F08953700C5074E /* habitapp6UITestsLaunchTests.swift */,
 			);
 			path = habitapp6UITests;
+			sourceTree = "<group>";
+		};
+		F510C1412F0898DA00C5074E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F510C1102F08953300C5074E /* habitapp6App.swift */,
+				F510C1462F0899F800C5074E /* AppConfig.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		F510C1422F0898FB00C5074E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F510C1452F08992600C5074E /* ViewModels */,
+				F510C1442F08991C00C5074E /* Views */,
+				F510C1432F08991100C5074E /* Models */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F510C1432F08991100C5074E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F510C14B2F089C1300C5074E /* Frecuencia.swift */,
+				F510C14D2F089C9900C5074E /* Habit.swift */,
+				F510C15B2F08A66E00C5074E /* HabitInstance.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F510C1442F08991C00C5074E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F510C14F2F089EAB00C5074E /* HabitCreateView.swift */,
+				F510C1512F089F9900C5074E /* HabitDetailView.swift */,
+				F510C1532F089FB900C5074E /* HabitListView.swift */,
+				F510C15F2F08A7CB00C5074E /* HabitInstanceView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F510C1452F08992600C5074E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F510C1592F08A23600C5074E /* HabitListViewModel.swift */,
+				F510C15D2F08A72C00C5074E /* HabitInstanceViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F510C1482F089A3600C5074E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		F510C1492F089A5400C5074E /* Infraestructure */ = {
+			isa = PBXGroup;
+			children = (
+				F510C1552F08A06600C5074E /* StorageProvider.swift */,
+				F510C1572F08A10600C5074E /* JSONStorageProvider.swift */,
+			);
+			path = Infraestructure;
+			sourceTree = "<group>";
+		};
+		F510C14A2F089A7E00C5074E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +361,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F510C11A2F08953600C5074E /* Persistence.swift in Sources */,
+				F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */,
+				F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */,
+				F510C1542F089FB900C5074E /* HabitListView.swift in Sources */,
+				F510C15A2F08A23600C5074E /* HabitListViewModel.swift in Sources */,
+				F510C1502F089EAB00C5074E /* HabitCreateView.swift in Sources */,
+				F510C1472F0899F800C5074E /* AppConfig.swift in Sources */,
+				F510C1522F089F9900C5074E /* HabitDetailView.swift in Sources */,
+				F510C14E2F089C9900C5074E /* Habit.swift in Sources */,
+				F510C1602F08A7CB00C5074E /* HabitInstanceView.swift in Sources */,
+				F510C15E2F08A72C00C5074E /* HabitInstanceViewModel.swift in Sources */,
+				F510C15C2F08A66E00C5074E /* HabitInstance.swift in Sources */,
 				F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */,
-				F510C1132F08953300C5074E /* ContentView.swift in Sources */,
+				F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */,
 				F510C1112F08953300C5074E /* habitapp6App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
