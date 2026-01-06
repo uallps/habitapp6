@@ -97,7 +97,6 @@ class CoreDataStorageProvider: StorageProvider {
         let entities = try context.fetch(request)
         return entities.map { entity in
             Habit(
-                id: entity.id,
                 nombre: entity.nombre,
                 frecuencia: Frecuencia(rawValue: entity.frecuencia) ?? .diario,
                 fechaCreacion: entity.fechaCreacion,

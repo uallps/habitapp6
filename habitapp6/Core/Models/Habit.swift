@@ -1,27 +1,21 @@
 import Foundation
 
-public struct Habit: Identifiable, Codable, Equatable, Hashable {
+public class Habit: Identifiable, Codable {
+        
     public let id: UUID
     public var nombre: String
     public var frecuencia: Frecuencia
     public var fechaCreacion: Date
     public var activo: Bool
+    public var recordar : RecordatorioManager?
     
-    public init(
-        id: UUID = UUID(),
-        nombre: String,
-        frecuencia: Frecuencia = .diario,
-        fechaCreacion: Date = Date(),
-        activo: Bool = true
-    ) {
-        self.id = id
+    public init(nombre: String, frecuencia: Frecuencia = .diario,
+                fechaCreacion: Date = Date(), activo: Bool = true, recordar: RecoratorioManager? = nil) {
+        self.id = UUID()
         self.nombre = nombre
         self.frecuencia = frecuencia
         self.fechaCreacion = fechaCreacion
         self.activo = activo
+        self.recordar = recordar
     }
-}
-
-public extension Habit {
-    static let sample = Habit(nombre: "Ejemplo", frecuencia: .diario)
 }

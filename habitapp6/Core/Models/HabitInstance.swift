@@ -1,6 +1,6 @@
 import Foundation
 
-public struct HabitInstance: Identifiable, Codable, Equatable, Hashable {
+public class HabitInstance: Identifiable, Codable {
     public let id: UUID
     public let habitID: UUID
     public var fecha: Date
