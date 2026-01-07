@@ -17,12 +17,17 @@
 		F510C1402F08969800C5074E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F510C13F2F08969800C5074E /* .gitignore */; };
 		F510C1472F0899F800C5074E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1462F0899F800C5074E /* AppConfig.swift */; };
 		F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14B2F089C1300C5074E /* Frecuencia.swift */; };
-		F510C14E2F089C9900C5074E /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14D2F089C9900C5074E /* Habit.swift */; };
-		F510C1522F089F9900C5074E /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1512F089F9900C5074E /* HabitDetailView.swift */; };
-		F510C1542F089FB900C5074E /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1532F089FB900C5074E /* HabitListView.swift */; };
 		F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1552F08A06600C5074E /* StorageProvider.swift */; };
 		F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1572F08A10600C5074E /* JSONStorageProvider.swift */; };
 		F510C15C2F08A66E00C5074E /* HabitInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15B2F08A66E00C5074E /* HabitInstance.swift */; };
+		F5225B472F0EDBCE00DB3F06 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B462F0EDBCE00DB3F06 /* NotificationService.swift */; };
+		F5225B492F0EDC0600DB3F06 /* RecordatorioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B482F0EDC0600DB3F06 /* RecordatorioViewModel.swift */; };
+		F5225B4B2F0EDC1D00DB3F06 /* RecordatorioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */; };
+		F5225B4E2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4C2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift */; };
+		F5225B4F2F0EDC3100DB3F06 /* RecordatorioConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4D2F0EDC3100DB3F06 /* RecordatorioConfigView.swift */; };
+		F5225B572F0EDD1E00DB3F06 /* HabitsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B562F0EDD1E00DB3F06 /* HabitsListView.swift */; };
+		F5225B5B2F0EDD8200DB3F06 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B5A2F0EDD8200DB3F06 /* Habit.swift */; };
+		F5225B5D2F0EDDB600DB3F06 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B5C2F0EDDB500DB3F06 /* HabitDetailView.swift */; };
 		F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
 		F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
 		F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
@@ -65,12 +70,17 @@
 		F510C13F2F08969800C5074E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F510C1462F0899F800C5074E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		F510C14B2F089C1300C5074E /* Frecuencia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frecuencia.swift; sourceTree = "<group>"; };
-		F510C14D2F089C9900C5074E /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
-		F510C1512F089F9900C5074E /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
-		F510C1532F089FB900C5074E /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
 		F510C1552F08A06600C5074E /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		F510C1572F08A10600C5074E /* JSONStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStorageProvider.swift; sourceTree = "<group>"; };
 		F510C15B2F08A66E00C5074E /* HabitInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInstance.swift; sourceTree = "<group>"; };
+		F5225B462F0EDBCE00DB3F06 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		F5225B482F0EDC0600DB3F06 /* RecordatorioViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatorioViewModel.swift; sourceTree = "<group>"; };
+		F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatorioManager.swift; sourceTree = "<group>"; };
+		F5225B4C2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatorioBadgeView.swift; sourceTree = "<group>"; };
+		F5225B4D2F0EDC3100DB3F06 /* RecordatorioConfigView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatorioConfigView.swift; sourceTree = "<group>"; };
+		F5225B562F0EDD1E00DB3F06 /* HabitsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitsListView.swift; sourceTree = "<group>"; };
+		F5225B5A2F0EDD8200DB3F06 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		F5225B5C2F0EDDB500DB3F06 /* HabitDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		F58237752F09668500F6DB8B /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		F58237772F0966BC00F6DB8B /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
@@ -190,8 +200,8 @@
 		F510C1432F08991100C5074E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F5225B5A2F0EDD8200DB3F06 /* Habit.swift */,
 				F510C14B2F089C1300C5074E /* Frecuencia.swift */,
-				F510C14D2F089C9900C5074E /* Habit.swift */,
 				F510C15B2F08A66E00C5074E /* HabitInstance.swift */,
 			);
 			path = Models;
@@ -200,8 +210,8 @@
 		F510C1442F08991C00C5074E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F510C1512F089F9900C5074E /* HabitDetailView.swift */,
-				F510C1532F089FB900C5074E /* HabitListView.swift */,
+				F5225B5C2F0EDDB500DB3F06 /* HabitDetailView.swift */,
+				F5225B562F0EDD1E00DB3F06 /* HabitsListView.swift */,
 				F582377D2F09675400F6DB8B /* ContentView.swift */,
 				F582377F2F09678B00F6DB8B /* TodayView.swift */,
 				F58237812F0967D600F6DB8B /* CreateHabitView.swift */,
@@ -223,6 +233,7 @@
 		F510C1482F089A3600C5074E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F5FAFC762F0E996A007488C3 /* Recordatorios */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 		F510C1492F089A5400C5074E /* Infraestructure */ = {
 			isa = PBXGroup;
 			children = (
+				F51316352F0DD385007203B7 /* Plugins */,
 				F510C1552F08A06600C5074E /* StorageProvider.swift */,
 				F510C1572F08A10600C5074E /* JSONStorageProvider.swift */,
 				F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */,
@@ -243,6 +255,57 @@
 			children = (
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		F51316352F0DD385007203B7 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		F5FAFC762F0E996A007488C3 /* Recordatorios */ = {
+			isa = PBXGroup;
+			children = (
+				F5FAFC7B2F0E99A1007488C3 /* Services */,
+				F5FAFC7A2F0E9999007488C3 /* Views */,
+				F5FAFC792F0E9991007488C3 /* ViewModels */,
+				F5FAFC772F0E9977007488C3 /* Models */,
+			);
+			path = Recordatorios;
+			sourceTree = "<group>";
+		};
+		F5FAFC772F0E9977007488C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5FAFC792F0E9991007488C3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B482F0EDC0600DB3F06 /* RecordatorioViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F5FAFC7A2F0E9999007488C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B4C2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift */,
+				F5225B4D2F0EDC3100DB3F06 /* RecordatorioConfigView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F5FAFC7B2F0E99A1007488C3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B462F0EDBCE00DB3F06 /* NotificationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,20 +442,25 @@
 				F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */,
 				F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */,
 				F58237862F0969F100F6DB8B /* HabitDataStore.swift in Sources */,
-				F510C1542F089FB900C5074E /* HabitListView.swift in Sources */,
+				F5225B4E2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift in Sources */,
+				F5225B4F2F0EDC3100DB3F06 /* RecordatorioConfigView.swift in Sources */,
 				F58237802F09678B00F6DB8B /* TodayView.swift in Sources */,
 				F510C1472F0899F800C5074E /* AppConfig.swift in Sources */,
-				F510C1522F089F9900C5074E /* HabitDetailView.swift in Sources */,
-				F510C14E2F089C9900C5074E /* Habit.swift in Sources */,
+				F5225B4B2F0EDC1D00DB3F06 /* RecordatorioManager.swift in Sources */,
+				F5225B472F0EDBCE00DB3F06 /* NotificationService.swift in Sources */,
 				F582377E2F09675400F6DB8B /* ContentView.swift in Sources */,
 				F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */,
 				F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */,
+				F5225B572F0EDD1E00DB3F06 /* HabitsListView.swift in Sources */,
 				F510C15C2F08A66E00C5074E /* HabitInstance.swift in Sources */,
 				F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */,
 				F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */,
+				F5225B5D2F0EDDB600DB3F06 /* HabitDetailView.swift in Sources */,
 				F582377C2F09672200F6DB8B /* CreateHabitViewModel.swift in Sources */,
 				F58237822F0967D600F6DB8B /* CreateHabitView.swift in Sources */,
 				F58237842F0968C000F6DB8B /* CoreDataStorageProvider.swift in Sources */,
+				F5225B492F0EDC0600DB3F06 /* RecordatorioViewModel.swift in Sources */,
+				F5225B5B2F0EDD8200DB3F06 /* Habit.swift in Sources */,
 				F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */,
 				F510C1112F08953300C5074E /* habitapp6App.swift in Sources */,
 			);
@@ -489,6 +557,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -543,6 +612,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
