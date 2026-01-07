@@ -15,7 +15,6 @@
 		F510C1312F08953700C5074E /* habitapp6UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1302F08953700C5074E /* habitapp6UITests.swift */; };
 		F510C1332F08953700C5074E /* habitapp6UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1322F08953700C5074E /* habitapp6UITestsLaunchTests.swift */; };
 		F510C1402F08969800C5074E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F510C13F2F08969800C5074E /* .gitignore */; };
-		F510C1472F0899F800C5074E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1462F0899F800C5074E /* AppConfig.swift */; };
 		F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14B2F089C1300C5074E /* Frecuencia.swift */; };
 		F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1552F08A06600C5074E /* StorageProvider.swift */; };
 		F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1572F08A10600C5074E /* JSONStorageProvider.swift */; };
@@ -25,9 +24,20 @@
 		F5225B4B2F0EDC1D00DB3F06 /* RecordatorioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */; };
 		F5225B4E2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4C2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift */; };
 		F5225B4F2F0EDC3100DB3F06 /* RecordatorioConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4D2F0EDC3100DB3F06 /* RecordatorioConfigView.swift */; };
-		F5225B572F0EDD1E00DB3F06 /* HabitsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B562F0EDD1E00DB3F06 /* HabitsListView.swift */; };
 		F5225B5B2F0EDD8200DB3F06 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B5A2F0EDD8200DB3F06 /* Habit.swift */; };
-		F5225B5D2F0EDDB600DB3F06 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B5C2F0EDDB500DB3F06 /* HabitDetailView.swift */; };
+		F5225B642F0EE54200DB3F06 /* Racha.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B632F0EE54200DB3F06 /* Racha.swift */; };
+		F5225B662F0EE5B200DB3F06 /* RachaCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B652F0EE5B200DB3F06 /* RachaCalculator.swift */; };
+		F5225B682F0EE5D900DB3F06 /* RachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B672F0EE5D900DB3F06 /* RachaViewModel.swift */; };
+		F5225B6A2F0EE5E100DB3F06 /* RachaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B692F0EE5E100DB3F06 /* RachaDetailView.swift */; };
+		F5225B6C2F0EE5E700DB3F06 /* RachaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B6B2F0EE5E700DB3F06 /* RachaBadgeView.swift */; };
+		F5225B742F0EEBC000DB3F06 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B732F0EEBC000DB3F06 /* AppConfig.swift */; };
+		F5225B782F0EEC2700DB3F06 /* RecordatoriosPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B772F0EEC2700DB3F06 /* RecordatoriosPlugin.swift */; };
+		F5225B7A2F0EEC4000DB3F06 /* RachasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B792F0EEC4000DB3F06 /* RachasPlugin.swift */; };
+		F5225B7D2F0EEC6F00DB3F06 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */; };
+		F5225B802F0EECC400DB3F06 /* HabitsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7E2F0EECC400DB3F06 /* HabitsListView.swift */; };
+		F5225B812F0EECC400DB3F06 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7F2F0EECC400DB3F06 /* HabitDetailView.swift */; };
+		F5225B852F0EEFDA00DB3F06 /* PluginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B842F0EEFDA00DB3F06 /* PluginProtocols.swift */; };
+		F5225B8B2F0EF03600DB3F06 /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B8A2F0EF03600DB3F06 /* PluginManager.swift */; };
 		F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
 		F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
 		F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
@@ -68,7 +78,6 @@
 		F510C1302F08953700C5074E /* habitapp6UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitapp6UITests.swift; sourceTree = "<group>"; };
 		F510C1322F08953700C5074E /* habitapp6UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitapp6UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F510C13F2F08969800C5074E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		F510C1462F0899F800C5074E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		F510C14B2F089C1300C5074E /* Frecuencia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frecuencia.swift; sourceTree = "<group>"; };
 		F510C1552F08A06600C5074E /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		F510C1572F08A10600C5074E /* JSONStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStorageProvider.swift; sourceTree = "<group>"; };
@@ -78,9 +87,20 @@
 		F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatorioManager.swift; sourceTree = "<group>"; };
 		F5225B4C2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatorioBadgeView.swift; sourceTree = "<group>"; };
 		F5225B4D2F0EDC3100DB3F06 /* RecordatorioConfigView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatorioConfigView.swift; sourceTree = "<group>"; };
-		F5225B562F0EDD1E00DB3F06 /* HabitsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitsListView.swift; sourceTree = "<group>"; };
 		F5225B5A2F0EDD8200DB3F06 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
-		F5225B5C2F0EDDB500DB3F06 /* HabitDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		F5225B632F0EE54200DB3F06 /* Racha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Racha.swift; sourceTree = "<group>"; };
+		F5225B652F0EE5B200DB3F06 /* RachaCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachaCalculator.swift; sourceTree = "<group>"; };
+		F5225B672F0EE5D900DB3F06 /* RachaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachaViewModel.swift; sourceTree = "<group>"; };
+		F5225B692F0EE5E100DB3F06 /* RachaDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachaDetailView.swift; sourceTree = "<group>"; };
+		F5225B6B2F0EE5E700DB3F06 /* RachaBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachaBadgeView.swift; sourceTree = "<group>"; };
+		F5225B732F0EEBC000DB3F06 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		F5225B772F0EEC2700DB3F06 /* RecordatoriosPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordatoriosPlugin.swift; sourceTree = "<group>"; };
+		F5225B792F0EEC4000DB3F06 /* RachasPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RachasPlugin.swift; sourceTree = "<group>"; };
+		F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F5225B7E2F0EECC400DB3F06 /* HabitsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitsListView.swift; sourceTree = "<group>"; };
+		F5225B7F2F0EECC400DB3F06 /* HabitDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		F5225B842F0EEFDA00DB3F06 /* PluginProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginProtocols.swift; sourceTree = "<group>"; };
+		F5225B8A2F0EF03600DB3F06 /* PluginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
 		F58237752F09668500F6DB8B /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		F58237772F0966BC00F6DB8B /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
@@ -181,8 +201,9 @@
 		F510C1412F0898DA00C5074E /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				F5225B8A2F0EF03600DB3F06 /* PluginManager.swift */,
+				F5225B732F0EEBC000DB3F06 /* AppConfig.swift */,
 				F510C1102F08953300C5074E /* habitapp6App.swift */,
-				F510C1462F0899F800C5074E /* AppConfig.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -210,8 +231,8 @@
 		F510C1442F08991C00C5074E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F5225B5C2F0EDDB500DB3F06 /* HabitDetailView.swift */,
-				F5225B562F0EDD1E00DB3F06 /* HabitsListView.swift */,
+				F5225B7F2F0EECC400DB3F06 /* HabitDetailView.swift */,
+				F5225B7E2F0EECC400DB3F06 /* HabitsListView.swift */,
 				F582377D2F09675400F6DB8B /* ContentView.swift */,
 				F582377F2F09678B00F6DB8B /* TodayView.swift */,
 				F58237812F0967D600F6DB8B /* CreateHabitView.swift */,
@@ -233,6 +254,8 @@
 		F510C1482F089A3600C5074E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F5225B7B2F0EEC6400DB3F06 /* Settings */,
+				F5225B5E2F0EE4A400DB3F06 /* Rachas */,
 				F5FAFC762F0E996A007488C3 /* Recordatorios */,
 			);
 			path = Features;
@@ -260,13 +283,68 @@
 		F51316352F0DD385007203B7 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				F5225B842F0EEFDA00DB3F06 /* PluginProtocols.swift */,
 			);
 			path = Plugins;
+			sourceTree = "<group>";
+		};
+		F5225B5E2F0EE4A400DB3F06 /* Rachas */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B792F0EEC4000DB3F06 /* RachasPlugin.swift */,
+				F5225B622F0EE4E000DB3F06 /* Services */,
+				F5225B612F0EE4D600DB3F06 /* Views */,
+				F5225B602F0EE4CC00DB3F06 /* ViewModels */,
+				F5225B5F2F0EE4BB00DB3F06 /* Models */,
+			);
+			path = Rachas;
+			sourceTree = "<group>";
+		};
+		F5225B5F2F0EE4BB00DB3F06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B632F0EE54200DB3F06 /* Racha.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5225B602F0EE4CC00DB3F06 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B672F0EE5D900DB3F06 /* RachaViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F5225B612F0EE4D600DB3F06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B6B2F0EE5E700DB3F06 /* RachaBadgeView.swift */,
+				F5225B692F0EE5E100DB3F06 /* RachaDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F5225B622F0EE4E000DB3F06 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B652F0EE5B200DB3F06 /* RachaCalculator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F5225B7B2F0EEC6400DB3F06 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		F5FAFC762F0E996A007488C3 /* Recordatorios */ = {
 			isa = PBXGroup;
 			children = (
+				F5225B772F0EEC2700DB3F06 /* RecordatoriosPlugin.swift */,
 				F5FAFC7B2F0E99A1007488C3 /* Services */,
 				F5FAFC7A2F0E9999007488C3 /* Views */,
 				F5FAFC792F0E9991007488C3 /* ViewModels */,
@@ -439,28 +517,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5225B642F0EE54200DB3F06 /* Racha.swift in Sources */,
 				F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */,
 				F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */,
+				F5225B782F0EEC2700DB3F06 /* RecordatoriosPlugin.swift in Sources */,
 				F58237862F0969F100F6DB8B /* HabitDataStore.swift in Sources */,
+				F5225B7D2F0EEC6F00DB3F06 /* SettingsView.swift in Sources */,
 				F5225B4E2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift in Sources */,
 				F5225B4F2F0EDC3100DB3F06 /* RecordatorioConfigView.swift in Sources */,
 				F58237802F09678B00F6DB8B /* TodayView.swift in Sources */,
-				F510C1472F0899F800C5074E /* AppConfig.swift in Sources */,
+				F5225B682F0EE5D900DB3F06 /* RachaViewModel.swift in Sources */,
 				F5225B4B2F0EDC1D00DB3F06 /* RecordatorioManager.swift in Sources */,
 				F5225B472F0EDBCE00DB3F06 /* NotificationService.swift in Sources */,
 				F582377E2F09675400F6DB8B /* ContentView.swift in Sources */,
+				F5225B8B2F0EF03600DB3F06 /* PluginManager.swift in Sources */,
 				F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */,
+				F5225B852F0EEFDA00DB3F06 /* PluginProtocols.swift in Sources */,
+				F5225B6C2F0EE5E700DB3F06 /* RachaBadgeView.swift in Sources */,
 				F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */,
-				F5225B572F0EDD1E00DB3F06 /* HabitsListView.swift in Sources */,
 				F510C15C2F08A66E00C5074E /* HabitInstance.swift in Sources */,
+				F5225B7A2F0EEC4000DB3F06 /* RachasPlugin.swift in Sources */,
 				F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */,
 				F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */,
-				F5225B5D2F0EDDB600DB3F06 /* HabitDetailView.swift in Sources */,
 				F582377C2F09672200F6DB8B /* CreateHabitViewModel.swift in Sources */,
+				F5225B662F0EE5B200DB3F06 /* RachaCalculator.swift in Sources */,
+				F5225B812F0EECC400DB3F06 /* HabitDetailView.swift in Sources */,
+				F5225B742F0EEBC000DB3F06 /* AppConfig.swift in Sources */,
 				F58237822F0967D600F6DB8B /* CreateHabitView.swift in Sources */,
 				F58237842F0968C000F6DB8B /* CoreDataStorageProvider.swift in Sources */,
 				F5225B492F0EDC0600DB3F06 /* RecordatorioViewModel.swift in Sources */,
 				F5225B5B2F0EDD8200DB3F06 /* Habit.swift in Sources */,
+				F5225B6A2F0EE5E100DB3F06 /* RachaDetailView.swift in Sources */,
+				F5225B802F0EECC400DB3F06 /* HabitsListView.swift in Sources */,
 				F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */,
 				F510C1112F08953300C5074E /* habitapp6App.swift in Sources */,
 			);
