@@ -2,7 +2,7 @@
 //  HabitsListView.swift
 //  HabitTracker
 //
-//  Vista de lista de hábitos - Actualizada con indicadores de Recordatorios
+//  Vista de lista de hábitos - Integrada con sistema de plugins SPL
 //
 
 import SwiftUI
@@ -11,6 +11,7 @@ struct HabitsListView: View {
     
     @ObservedObject var dataStore: HabitDataStore
     @StateObject private var viewModel: HabitsViewModel
+    @ObservedObject private var pluginManager = PluginManager.shared
     @State private var showingCreateView = false
     @State private var selectedHabitForReminder: Habit?
     
@@ -28,7 +29,9 @@ struct HabitsListView: View {
                     ForEach(dataStore.habits) { habit in
                         NavigationLink(destination: HabitDetailView(dataStore: dataStore, habit: habit)) {
                             HabitRowView(
+                                dataStore: dataStore,
                                 habit: habit,
+                                pluginManager: pluginManager,
                                 onToggleActive: {
                                     viewModel.toggleHabitActive(habit)
                                 },
@@ -55,7 +58,9 @@ struct HabitsListView: View {
                 CreateHabitView(dataStore: dataStore)
             }
             .sheet(item: $selectedHabitForReminder) { habit in
-                RecordatorioConfigView(dataStore: dataStore, habit: habit)
+                if pluginManager.isRecordatoriosEnabled {
+                    RecordatorioConfigView(dataStore: dataStore, habit: habit)
+                }
             }
         }
     }
@@ -87,10 +92,12 @@ struct HabitsListView: View {
         for index in offsets {
             let habit = dataStore.habits[index]
             
-            // Cancelar recordatorios antes de eliminar
-            NotificationService.shared.cancelReminder(for: habit)
-            
-            viewModel.deleteHabit(habit)
+            // Notificar a los plugins antes de eliminar
+            Task {
+                await pluginManager.willDeleteHabit(habit)
+                viewModel.deleteHabit(habit)
+                await pluginManager.didDeleteHabit(habitId: habit.id)
+            }
         }
     }
 }
@@ -100,9 +107,13 @@ struct HabitsListView: View {
 /// Vista de fila para cada hábito en la lista
 struct HabitRowView: View {
     
+    @ObservedObject var dataStore: HabitDataStore
     let habit: Habit
+    @ObservedObject var pluginManager: PluginManager
     let onToggleActive: () -> Void
     let onReminderTap: () -> Void
+    
+    @State private var rachaActual: Int = 0
     
     var body: some View {
         HStack(spacing: 12) {
@@ -113,8 +124,15 @@ struct HabitRowView: View {
                         .font(.headline)
                         .foregroundColor(habit.activo ? .primary : .secondary)
                     
-                    // Badge de recordatorio
-                    RecordatorioBadgeView(habit: habit)
+                    // Badge de racha (solo si plugin habilitado)
+                    if pluginManager.isRachasEnabled {
+                        RachaBadgeView(rachaActual: rachaActual, frecuencia: habit.frecuencia)
+                    }
+                    
+                    // Badge de recordatorio (solo si plugin habilitado)
+                    if pluginManager.isRecordatoriosEnabled {
+                        RecordatorioBadgeView(habit: habit)
+                    }
                 }
                 
                 HStack(spacing: 8) {
@@ -137,8 +155,10 @@ struct HabitRowView: View {
             
             Spacer()
             
-            // Botón rápido de recordatorio
-            RecordatorioQuickButton(habit: habit, action: onReminderTap)
+            // Botón rápido de recordatorio (solo si plugin habilitado)
+            if pluginManager.isRecordatoriosEnabled {
+                RecordatorioQuickButton(habit: habit, action: onReminderTap)
+            }
             
             // Toggle de activo
             Toggle("", isOn: Binding(
@@ -149,6 +169,20 @@ struct HabitRowView: View {
             .tint(.green)
         }
         .padding(.vertical, 4)
+        .onAppear {
+            if pluginManager.isRachasEnabled {
+                calcularRacha()
+            }
+        }
+        .onChange(of: dataStore.instances.count) { _ in
+            if pluginManager.isRachasEnabled {
+                calcularRacha()
+            }
+        }
+    }
+    
+    private func calcularRacha() {
+        rachaActual = RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances)
     }
 }
 

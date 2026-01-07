@@ -1,12 +1,15 @@
 //
-//  AppDelegate.swift
+//  HabitTrackerApp.swift
 //  HabitTracker
 //
-//  Configuración de la aplicación - Incluye setup de notificaciones
+//  Punto de entrada de la aplicación - Configuración de plugins SPL
 //
 
 import Foundation
 import UserNotifications
+import SwiftUI
+
+// MARK: - App Delegates
 
 #if os(iOS)
 import UIKit
@@ -17,8 +20,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        // Configurar el delegado de notificaciones
         setupNotifications()
+        setupPlugins()
         return true
     }
     
@@ -32,12 +35,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
     
+    private func setupPlugins() {
+        // Inicializar el gestor de plugins
+        _ = PluginManager.shared
+        print("🚀 Plugins inicializados")
+    }
+    
     func application(
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
-        // Manejar notificaciones remotas si se implementan en el futuro
         completionHandler(.noData)
     }
 }
@@ -49,11 +57,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupNotifications()
+        setupPlugins()
     }
     
     private func setupNotifications() {
-        // Establecer el delegado para manejar notificaciones
         UNUserNotificationCenter.current().delegate = NotificationService.shared
+    }
+    
+    private func setupPlugins() {
+        _ = PluginManager.shared
+        print("🚀 Plugins inicializados")
     }
     
     func applicationWillTerminate(_ notification: Notification) {
@@ -62,9 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 #endif
 
-// MARK: - SwiftUI App Integration
-
-import SwiftUI
+// MARK: - SwiftUI App
 
 @main
 struct HabitTrackerApp: App {
@@ -76,11 +87,15 @@ struct HabitTrackerApp: App {
     #endif
     
     @StateObject private var dataStore = HabitDataStore()
+    @StateObject private var appConfig = AppConfig.shared
+    @StateObject private var pluginManager = PluginManager.shared
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(dataStore)
+                .environmentObject(appConfig)
+                .environmentObject(pluginManager)
                 .task {
                     await setupApp()
                 }
@@ -88,13 +103,19 @@ struct HabitTrackerApp: App {
     }
     
     private func setupApp() async {
-        // Verificar estado de autorización de notificaciones
-        await NotificationService.shared.checkAuthorizationStatus()
+        // Verificar estado de autorización de notificaciones si el plugin está habilitado
+        if pluginManager.isRecordatoriosEnabled {
+            await NotificationService.shared.checkAuthorizationStatus()
+            
+            // Programar recordatorios para hábitos activos
+            await NotificationService.shared.scheduleAllReminders(
+                habits: dataStore.habits,
+                instances: dataStore.instances
+            )
+        }
         
-        // Programar recordatorios para hábitos activos
-        await NotificationService.shared.scheduleAllReminders(
-            habits: dataStore.habits,
-            instances: dataStore.instances
-        )
+        print("✅ App configurada correctamente")
+        print("   - Recordatorios: \(pluginManager.isRecordatoriosEnabled ? "Habilitado" : "Deshabilitado")")
+        print("   - Rachas: \(pluginManager.isRachasEnabled ? "Habilitado" : "Deshabilitado")")
     }
 }
