@@ -17,6 +17,7 @@ struct HabitDetailView: View {
     @State private var showingRecordatorioConfig = false
     @State private var showingRachaDetail = false
     @State private var rachaInfo: RachaInfo = .empty
+    @State private var selectedCategoria: Categoria = .ninguno
     
     init(dataStore: HabitDataStore, habit: Habit) {
         self.dataStore = dataStore
@@ -39,6 +40,11 @@ struct HabitDetailView: View {
                 }
                 
                 Toggle("Activo", isOn: $viewModel.habit.activo)
+            }
+            
+            // MARK: - Categoría (Feature Plugin - Solo si está habilitado)
+            if pluginManager.isCategoriasEnabled {
+                categoriaSection
             }
             
             // MARK: - Racha (Feature Plugin - Solo si está habilitado)
@@ -95,12 +101,25 @@ struct HabitDetailView: View {
             if pluginManager.isRachasEnabled {
                 calcularRacha()
             }
+            if pluginManager.isCategoriasEnabled {
+                selectedCategoria = viewModel.habit.categoriaEnum
+            }
         }
         .onChange(of: dataStore.instances.count) { _ in
             if pluginManager.isRachasEnabled {
                 calcularRacha()
             }
         }
+        .onChange(of: selectedCategoria) { newValue in
+            viewModel.habit.categoriaEnum = newValue
+        }
+    }
+    
+    // MARK: - Categoria Section (Plugin)
+    
+    @ViewBuilder
+    private var categoriaSection: some View {
+        CategoriaDetailSectionView(categoria: $selectedCategoria)
     }
     
     // MARK: - Racha Section (Plugin)

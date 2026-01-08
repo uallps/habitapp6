@@ -38,6 +38,11 @@
 		F5225B812F0EECC400DB3F06 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7F2F0EECC400DB3F06 /* HabitDetailView.swift */; };
 		F5225B852F0EEFDA00DB3F06 /* PluginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B842F0EEFDA00DB3F06 /* PluginProtocols.swift */; };
 		F5225B8B2F0EF03600DB3F06 /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B8A2F0EF03600DB3F06 /* PluginManager.swift */; };
+		F5225B932F0F2CF600DB3F06 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B922F0F2CF600DB3F06 /* Categoria.swift */; };
+		F5225B972F0F2D0C00DB3F06 /* CategoriaPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B942F0F2D0B00DB3F06 /* CategoriaPickerView.swift */; };
+		F5225B982F0F2D0C00DB3F06 /* CategoriaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */; };
+		F5225B992F0F2D0C00DB3F06 /* CategoriaFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */; };
+		F5225B9B2F0F2D1E00DB3F06 /* CategoriasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */; };
 		F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
 		F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
 		F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
@@ -101,6 +106,11 @@
 		F5225B7F2F0EECC400DB3F06 /* HabitDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		F5225B842F0EEFDA00DB3F06 /* PluginProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginProtocols.swift; sourceTree = "<group>"; };
 		F5225B8A2F0EF03600DB3F06 /* PluginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
+		F5225B922F0F2CF600DB3F06 /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
+		F5225B942F0F2D0B00DB3F06 /* CategoriaPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaPickerView.swift; sourceTree = "<group>"; };
+		F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaBadgeView.swift; sourceTree = "<group>"; };
+		F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaFilterView.swift; sourceTree = "<group>"; };
+		F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriasPlugin.swift; sourceTree = "<group>"; };
 		F58237752F09668500F6DB8B /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		F58237772F0966BC00F6DB8B /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
@@ -254,6 +264,7 @@
 		F510C1482F089A3600C5074E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F5225B8E2F0F2CB800DB3F06 /* Categorias */,
 				F5225B7B2F0EEC6400DB3F06 /* Settings */,
 				F5225B5E2F0EE4A400DB3F06 /* Rachas */,
 				F5FAFC762F0E996A007488C3 /* Recordatorios */,
@@ -339,6 +350,42 @@
 				F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F5225B8E2F0F2CB800DB3F06 /* Categorias */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */,
+				F5225B912F0F2CE400DB3F06 /* Views */,
+				F5225B902F0F2CD800DB3F06 /* ViewModels */,
+				F5225B8F2F0F2CD100DB3F06 /* Models */,
+			);
+			path = Categorias;
+			sourceTree = "<group>";
+		};
+		F5225B8F2F0F2CD100DB3F06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B922F0F2CF600DB3F06 /* Categoria.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5225B902F0F2CD800DB3F06 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F5225B912F0F2CE400DB3F06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */,
+				F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */,
+				F5225B942F0F2D0B00DB3F06 /* CategoriaPickerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F5FAFC762F0E996A007488C3 /* Recordatorios */ = {
@@ -526,6 +573,8 @@
 				F5225B4E2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift in Sources */,
 				F5225B4F2F0EDC3100DB3F06 /* RecordatorioConfigView.swift in Sources */,
 				F58237802F09678B00F6DB8B /* TodayView.swift in Sources */,
+				F5225B932F0F2CF600DB3F06 /* Categoria.swift in Sources */,
+				F5225B9B2F0F2D1E00DB3F06 /* CategoriasPlugin.swift in Sources */,
 				F5225B682F0EE5D900DB3F06 /* RachaViewModel.swift in Sources */,
 				F5225B4B2F0EDC1D00DB3F06 /* RecordatorioManager.swift in Sources */,
 				F5225B472F0EDBCE00DB3F06 /* NotificationService.swift in Sources */,
@@ -540,8 +589,11 @@
 				F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */,
 				F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */,
 				F582377C2F09672200F6DB8B /* CreateHabitViewModel.swift in Sources */,
+				F5225B972F0F2D0C00DB3F06 /* CategoriaPickerView.swift in Sources */,
 				F5225B662F0EE5B200DB3F06 /* RachaCalculator.swift in Sources */,
+				F5225B992F0F2D0C00DB3F06 /* CategoriaFilterView.swift in Sources */,
 				F5225B812F0EECC400DB3F06 /* HabitDetailView.swift in Sources */,
+				F5225B982F0F2D0C00DB3F06 /* CategoriaBadgeView.swift in Sources */,
 				F5225B742F0EEBC000DB3F06 /* AppConfig.swift in Sources */,
 				F58237822F0967D600F6DB8B /* CreateHabitView.swift in Sources */,
 				F58237842F0968C000F6DB8B /* CoreDataStorageProvider.swift in Sources */,

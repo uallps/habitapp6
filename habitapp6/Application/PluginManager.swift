@@ -28,6 +28,9 @@ class PluginManager: ObservableObject {
     /// Plugin de Rachas
     @Published private(set) var rachasPlugin: RachasPlugin?
     
+    /// Plugin de Categorías
+    @Published private(set) var categoriasPlugin: CategoriasPlugin?
+    
     // MARK: - Initialization
     
     private init() {
@@ -45,6 +48,7 @@ class PluginManager: ObservableObject {
     private func registerPlugins() {
         recordatoriosPlugin = RecordatoriosPlugin(config: config)
         rachasPlugin = RachasPlugin(config: config)
+        categoriasPlugin = CategoriasPlugin(config: config)
     }
     
     /// Configura los bindings para reaccionar a cambios de configuración
@@ -62,6 +66,7 @@ class PluginManager: ObservableObject {
         print("🔌 Estado de plugins:")
         print("   - Recordatorios: \(isRecordatoriosEnabled ? "✅" : "❌")")
         print("   - Rachas: \(isRachasEnabled ? "✅" : "❌")")
+        print("   - Categorías: \(isCategoriasEnabled ? "✅" : "❌")")
     }
     
     // MARK: - Feature Checks
@@ -76,6 +81,11 @@ class PluginManager: ObservableObject {
         config.showRachas
     }
     
+    /// Verifica si la feature de Categorías está habilitada
+    var isCategoriasEnabled: Bool {
+        config.showCategorias
+    }
+    
     // MARK: - Data Plugin Methods
     
     /// Notifica a todos los DataPlugins que se va a crear un hábito
@@ -85,6 +95,9 @@ class PluginManager: ObservableObject {
         }
         if isRachasEnabled {
             await rachasPlugin?.willCreateHabit(habit)
+        }
+        if isCategoriasEnabled {
+            await categoriasPlugin?.willCreateHabit(habit)
         }
     }
     
@@ -96,6 +109,9 @@ class PluginManager: ObservableObject {
         if isRachasEnabled {
             await rachasPlugin?.didCreateHabit(habit)
         }
+        if isCategoriasEnabled {
+            await categoriasPlugin?.didCreateHabit(habit)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se va a eliminar un hábito
@@ -105,6 +121,9 @@ class PluginManager: ObservableObject {
         }
         if isRachasEnabled {
             await rachasPlugin?.willDeleteHabit(habit)
+        }
+        if isCategoriasEnabled {
+            await categoriasPlugin?.willDeleteHabit(habit)
         }
     }
     
@@ -116,6 +135,9 @@ class PluginManager: ObservableObject {
         if isRachasEnabled {
             await rachasPlugin?.didDeleteHabit(habitId: habitId)
         }
+        if isCategoriasEnabled {
+            await categoriasPlugin?.didDeleteHabit(habitId: habitId)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se toggleó una instancia
@@ -125,6 +147,9 @@ class PluginManager: ObservableObject {
         }
         if isRachasEnabled {
             await rachasPlugin?.didToggleInstance(instance, habit: habit)
+        }
+        if isCategoriasEnabled {
+            await categoriasPlugin?.didToggleInstance(instance, habit: habit)
         }
     }
 }
