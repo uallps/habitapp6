@@ -31,6 +31,9 @@ class PluginManager: ObservableObject {
     /// Plugin de Categorías
     @Published private(set) var categoriasPlugin: CategoriasPlugin?
     
+    /// Plugin de Metas
+    @Published private(set) var metasPlugin: MetasPlugin?
+    
     // MARK: - Initialization
     
     private init() {
@@ -49,6 +52,7 @@ class PluginManager: ObservableObject {
         recordatoriosPlugin = RecordatoriosPlugin(config: config)
         rachasPlugin = RachasPlugin(config: config)
         categoriasPlugin = CategoriasPlugin(config: config)
+        metasPlugin = MetasPlugin(config: config)
     }
     
     /// Configura los bindings para reaccionar a cambios de configuración
@@ -67,6 +71,7 @@ class PluginManager: ObservableObject {
         print("   - Recordatorios: \(isRecordatoriosEnabled ? "✅" : "❌")")
         print("   - Rachas: \(isRachasEnabled ? "✅" : "❌")")
         print("   - Categorías: \(isCategoriasEnabled ? "✅" : "❌")")
+        print("   - Metas: \(isMetasEnabled ? "✅" : "❌")")
     }
     
     // MARK: - Feature Checks
@@ -86,6 +91,11 @@ class PluginManager: ObservableObject {
         config.showCategorias
     }
     
+    /// Verifica si la feature de Metas está habilitada
+    var isMetasEnabled: Bool {
+        config.showMetas
+    }
+    
     // MARK: - Data Plugin Methods
     
     /// Notifica a todos los DataPlugins que se va a crear un hábito
@@ -98,6 +108,9 @@ class PluginManager: ObservableObject {
         }
         if isCategoriasEnabled {
             await categoriasPlugin?.willCreateHabit(habit)
+        }
+        if isMetasEnabled {
+            await metasPlugin?.willCreateHabit(habit)
         }
     }
     
@@ -112,6 +125,9 @@ class PluginManager: ObservableObject {
         if isCategoriasEnabled {
             await categoriasPlugin?.didCreateHabit(habit)
         }
+        if isMetasEnabled {
+            await metasPlugin?.didCreateHabit(habit)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se va a eliminar un hábito
@@ -124,6 +140,9 @@ class PluginManager: ObservableObject {
         }
         if isCategoriasEnabled {
             await categoriasPlugin?.willDeleteHabit(habit)
+        }
+        if isMetasEnabled {
+            await metasPlugin?.willDeleteHabit(habit)
         }
     }
     
@@ -138,6 +157,9 @@ class PluginManager: ObservableObject {
         if isCategoriasEnabled {
             await categoriasPlugin?.didDeleteHabit(habitId: habitId)
         }
+        if isMetasEnabled {
+            await metasPlugin?.didDeleteHabit(habitId: habitId)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se toggleó una instancia
@@ -150,6 +172,9 @@ class PluginManager: ObservableObject {
         }
         if isCategoriasEnabled {
             await categoriasPlugin?.didToggleInstance(instance, habit: habit)
+        }
+        if isMetasEnabled {
+            await metasPlugin?.didToggleInstance(instance, habit: habit)
         }
     }
 }

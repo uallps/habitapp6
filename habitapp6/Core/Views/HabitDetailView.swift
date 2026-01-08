@@ -16,6 +16,7 @@ struct HabitDetailView: View {
     
     @State private var showingRecordatorioConfig = false
     @State private var showingRachaDetail = false
+    @State private var showingMetasDetail = false
     @State private var rachaInfo: RachaInfo = .empty
     @State private var selectedCategoria: Categoria = .ninguno
     
@@ -50,6 +51,11 @@ struct HabitDetailView: View {
             // MARK: - Racha (Feature Plugin - Solo si está habilitado)
             if pluginManager.isRachasEnabled {
                 rachaSection
+            }
+            
+            // MARK: - Metas (Feature Plugin - Solo si está habilitado)
+            if pluginManager.isMetasEnabled {
+                metasSection
             }
             
             // MARK: - Recordatorios (Feature Plugin - Solo si está habilitado)
@@ -95,6 +101,11 @@ struct HabitDetailView: View {
                             }
                         }
                 }
+            }
+        }
+        .sheet(isPresented: $showingMetasDetail) {
+            if pluginManager.isMetasEnabled {
+                MetasListView(habit: viewModel.habit, dataStore: dataStore)
             }
         }
         .onAppear {
@@ -153,6 +164,17 @@ struct HabitDetailView: View {
         } footer: {
             Text("Mantén la constancia completando el hábito cada \(viewModel.habit.frecuencia == .diario ? "día" : "semana") para aumentar tu racha.")
         }
+    }
+    
+    // MARK: - Metas Section (Plugin)
+    
+    @ViewBuilder
+    private var metasSection: some View {
+        MetaDetailSectionView(
+            habit: viewModel.habit,
+            dataStore: dataStore,
+            showDetail: $showingMetasDetail
+        )
     }
     
     // MARK: - Recordatorio Section (Plugin)

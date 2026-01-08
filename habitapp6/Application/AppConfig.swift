@@ -43,12 +43,21 @@ class AppConfig: ObservableObject {
         }
     }
     
+    /// Habilita/deshabilita la feature de Metas
+    @Published var showMetas: Bool {
+        didSet {
+            UserDefaults.standard.set(showMetas, forKey: Keys.showMetas)
+            notifyPluginsChanged()
+        }
+    }
+    
     // MARK: - Keys
     
     private enum Keys {
         static let showRecordatorios = "feature.recordatorios.enabled"
         static let showRachas = "feature.rachas.enabled"
         static let showCategorias = "feature.categorias.enabled"
+        static let showMetas = "feature.metas.enabled"
     }
     
     // MARK: - Initialization
@@ -58,11 +67,13 @@ class AppConfig: ObservableObject {
         self.showRecordatorios = UserDefaults.standard.object(forKey: Keys.showRecordatorios) as? Bool ?? true
         self.showRachas = UserDefaults.standard.object(forKey: Keys.showRachas) as? Bool ?? true
         self.showCategorias = UserDefaults.standard.object(forKey: Keys.showCategorias) as? Bool ?? true
+        self.showMetas = UserDefaults.standard.object(forKey: Keys.showMetas) as? Bool ?? true
         
         print("⚙️ AppConfig inicializado:")
         print("   - Recordatorios: \(showRecordatorios)")
         print("   - Rachas: \(showRachas)")
         print("   - Categorías: \(showCategorias)")
+        print("   - Metas: \(showMetas)")
     }
     
     // MARK: - Methods
@@ -77,6 +88,7 @@ class AppConfig: ObservableObject {
         showRecordatorios = true
         showRachas = true
         showCategorias = true
+        showMetas = true
     }
     
     /// Deshabilita todas las features
@@ -84,6 +96,7 @@ class AppConfig: ObservableObject {
         showRecordatorios = false
         showRachas = false
         showCategorias = false
+        showMetas = false
     }
     
     /// Habilita todas las features
@@ -91,6 +104,7 @@ class AppConfig: ObservableObject {
         showRecordatorios = true
         showRachas = true
         showCategorias = true
+        showMetas = true
     }
 }
 
