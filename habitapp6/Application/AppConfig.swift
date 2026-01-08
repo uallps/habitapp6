@@ -35,11 +35,20 @@ class AppConfig: ObservableObject {
         }
     }
     
+    /// Habilita/deshabilita la feature de Categorías
+    @Published var showCategorias: Bool {
+        didSet {
+            UserDefaults.standard.set(showCategorias, forKey: Keys.showCategorias)
+            notifyPluginsChanged()
+        }
+    }
+    
     // MARK: - Keys
     
     private enum Keys {
         static let showRecordatorios = "feature.recordatorios.enabled"
         static let showRachas = "feature.rachas.enabled"
+        static let showCategorias = "feature.categorias.enabled"
     }
     
     // MARK: - Initialization
@@ -48,10 +57,12 @@ class AppConfig: ObservableObject {
         // Cargar valores guardados o usar defaults
         self.showRecordatorios = UserDefaults.standard.object(forKey: Keys.showRecordatorios) as? Bool ?? true
         self.showRachas = UserDefaults.standard.object(forKey: Keys.showRachas) as? Bool ?? true
+        self.showCategorias = UserDefaults.standard.object(forKey: Keys.showCategorias) as? Bool ?? true
         
         print("⚙️ AppConfig inicializado:")
         print("   - Recordatorios: \(showRecordatorios)")
         print("   - Rachas: \(showRachas)")
+        print("   - Categorías: \(showCategorias)")
     }
     
     // MARK: - Methods
@@ -65,18 +76,21 @@ class AppConfig: ObservableObject {
     func resetToDefaults() {
         showRecordatorios = true
         showRachas = true
+        showCategorias = true
     }
     
     /// Deshabilita todas las features
     func disableAllFeatures() {
         showRecordatorios = false
         showRachas = false
+        showCategorias = false
     }
     
     /// Habilita todas las features
     func enableAllFeatures() {
         showRecordatorios = true
         showRachas = true
+        showCategorias = true
     }
 }
 

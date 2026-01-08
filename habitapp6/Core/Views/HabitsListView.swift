@@ -14,6 +14,8 @@ struct HabitsListView: View {
     @ObservedObject private var pluginManager = PluginManager.shared
     @State private var showingCreateView = false
     @State private var selectedHabitForReminder: Habit?
+    @State private var selectedCategoriaFilter: Categoria? = nil
+    @State private var showByCategoria: Bool = false
     
     init(dataStore: HabitDataStore) {
         self.dataStore = dataStore
@@ -22,26 +24,61 @@ struct HabitsListView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                if dataStore.habits.isEmpty {
-                    emptyStateView
-                } else {
-                    ForEach(dataStore.habits) { habit in
-                        NavigationLink(destination: HabitDetailView(dataStore: dataStore, habit: habit)) {
-                            HabitRowView(
-                                dataStore: dataStore,
-                                habit: habit,
-                                pluginManager: pluginManager,
-                                onToggleActive: {
-                                    viewModel.toggleHabitActive(habit)
-                                },
-                                onReminderTap: {
-                                    selectedHabitForReminder = habit
+            VStack(spacing: 0) {
+                // Filtro de categorías (solo si plugin habilitado)
+                if pluginManager.isCategoriasEnabled && !dataStore.habits.isEmpty {
+                    VStack(spacing: 8) {
+                        CategoriaFilterView(selectedFilter: $selectedCategoriaFilter)
+                        
+                        // Toggle para ver por categoría
+                        HStack {
+                            Spacer()
+                            Button {
+                                showByCategoria.toggle()
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Image(systemName: showByCategoria ? "list.bullet" : "folder")
+                                    Text(showByCategoria ? "Ver lista" : "Ver por categoría")
+                                        .font(.caption)
                                 }
-                            )
+                                .foregroundColor(.accentColor)
+                            }
+                            .padding(.trailing)
                         }
                     }
-                    .onDelete(perform: deleteHabits)
+                    .padding(.top, 8)
+                }
+                
+                // Lista de hábitos
+                if showByCategoria && pluginManager.isCategoriasEnabled {
+                    HabitsByCategoriaView(dataStore: dataStore, pluginManager: pluginManager)
+                } else {
+                    List {
+                        if filteredHabits.isEmpty {
+                            if dataStore.habits.isEmpty {
+                                emptyStateView
+                            } else {
+                                noResultsView
+                            }
+                        } else {
+                            ForEach(filteredHabits) { habit in
+                                NavigationLink(destination: HabitDetailView(dataStore: dataStore, habit: habit)) {
+                                    HabitRowView(
+                                        dataStore: dataStore,
+                                        habit: habit,
+                                        pluginManager: pluginManager,
+                                        onToggleActive: {
+                                            viewModel.toggleHabitActive(habit)
+                                        },
+                                        onReminderTap: {
+                                            selectedHabitForReminder = habit
+                                        }
+                                    )
+                                }
+                            }
+                            .onDelete(perform: deleteHabits)
+                        }
+                    }
                 }
             }
             .navigationTitle("Mis Hábitos")
@@ -65,6 +102,15 @@ struct HabitsListView: View {
         }
     }
     
+    // MARK: - Computed Properties
+    
+    private var filteredHabits: [Habit] {
+        guard pluginManager.isCategoriasEnabled, let filter = selectedCategoriaFilter else {
+            return dataStore.habits
+        }
+        return dataStore.habits.filter { $0.categoriaEnum == filter }
+    }
+    
     // MARK: - Views
     
     private var emptyStateView: some View {
@@ -86,12 +132,36 @@ struct HabitsListView: View {
         .listRowBackground(Color.clear)
     }
     
+    private var noResultsView: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 50))
+                .foregroundColor(.secondary)
+            
+            Text("Sin resultados")
+                .font(.headline)
+            
+            Text("No hay hábitos en esta categoría")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+            
+            Button("Mostrar todos") {
+                selectedCategoriaFilter = nil
+            }
+            .buttonStyle(.bordered)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 40)
+        .listRowBackground(Color.clear)
+    }
+    
     // MARK: - Actions
     
     func deleteHabits(at offsets: IndexSet) {
-        for index in offsets {
-            let habit = dataStore.habits[index]
-            
+        let habitsToDelete = offsets.map { filteredHabits[$0] }
+        
+        for habit in habitsToDelete {
             // Notificar a los plugins antes de eliminar
             Task {
                 await pluginManager.willDeleteHabit(habit)
@@ -123,6 +193,11 @@ struct HabitRowView: View {
                     Text(habit.nombre)
                         .font(.headline)
                         .foregroundColor(habit.activo ? .primary : .secondary)
+                    
+                    // Badge de categoría (solo si plugin habilitado)
+                    if pluginManager.isCategoriasEnabled && habit.tieneCategoria {
+                        CategoriaBadgeView(categoria: habit.categoriaEnum)
+                    }
                     
                     // Badge de racha (solo si plugin habilitado)
                     if pluginManager.isRachasEnabled {

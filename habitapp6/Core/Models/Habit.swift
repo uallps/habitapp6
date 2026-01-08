@@ -2,7 +2,7 @@
 //  Habit.swift
 //  HabitTracker
 //
-//  Core Model - Actualizado con soporte para Recordatorios
+//  Core Model - Actualizado con soporte para Recordatorios y Categorías
 //
 
 import Foundation
@@ -17,6 +17,7 @@ public class Habit: Identifiable, Codable {
     public var fechaCreacion: Date
     public var activo: Bool
     public var recordar: RecordatorioManager?
+    public var categoria: String? 
     
     // MARK: - Initialization
     
@@ -25,7 +26,8 @@ public class Habit: Identifiable, Codable {
         frecuencia: Frecuencia = .diario,
         fechaCreacion: Date = Date(),
         activo: Bool = true,
-        recordar: RecordatorioManager? = nil
+        recordar: RecordatorioManager? = nil,
+        categoria: String? = nil
     ) {
         self.id = UUID()
         self.nombre = nombre
@@ -33,6 +35,7 @@ public class Habit: Identifiable, Codable {
         self.fechaCreacion = fechaCreacion
         self.activo = activo
         self.recordar = recordar
+        self.categoria = categoria
     }
     
     // MARK: - Codable
@@ -44,6 +47,7 @@ public class Habit: Identifiable, Codable {
         case fechaCreacion
         case activo
         case recordar
+        case categoria
     }
     
     public required init(from decoder: Decoder) throws {
@@ -54,6 +58,7 @@ public class Habit: Identifiable, Codable {
         fechaCreacion = try container.decode(Date.self, forKey: .fechaCreacion)
         activo = try container.decode(Bool.self, forKey: .activo)
         recordar = try container.decodeIfPresent(RecordatorioManager.self, forKey: .recordar)
+        categoria = try container.decodeIfPresent(String.self, forKey: .categoria)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -64,6 +69,7 @@ public class Habit: Identifiable, Codable {
         try container.encode(fechaCreacion, forKey: .fechaCreacion)
         try container.encode(activo, forKey: .activo)
         try container.encodeIfPresent(recordar, forKey: .recordar)
+        try container.encodeIfPresent(categoria, forKey: .categoria)
     }
     
     // MARK: - Recordatorio Helpers
