@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -121,6 +121,11 @@
 		F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorageProvider.swift; sourceTree = "<group>"; };
 		F58237852F0969F100F6DB8B /* HabitDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4381BAFB2F125AC100CD6F54 /* Sugerencias */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sugerencias; sourceTree = "<group>"; };
+		4381BB122F12685100CD6F54 /* Logros */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Logros; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F510C10A2F08953300C5074E /* Frameworks */ = {
@@ -264,6 +269,8 @@
 		F510C1482F089A3600C5074E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4381BB122F12685100CD6F54 /* Logros */,
+				4381BAFB2F125AC100CD6F54 /* Sugerencias */,
 				F5225B8E2F0F2CB800DB3F06 /* Categorias */,
 				F5225B7B2F0EEC6400DB3F06 /* Settings */,
 				F5225B5E2F0EE4A400DB3F06 /* Rachas */,
@@ -447,6 +454,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4381BAFB2F125AC100CD6F54 /* Sugerencias */,
+				4381BB122F12685100CD6F54 /* Logros */,
 			);
 			name = habitapp6;
 			productName = habitapp6;
