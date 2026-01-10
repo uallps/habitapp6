@@ -1,4 +1,3 @@
-
 //
 // SugerenciasPlugin.swift
 // HabitTracker
@@ -15,8 +14,9 @@ class SugerenciasPlugin: DataPlugin {
     
     // MARK: - FeaturePlugin Properties
     
+    // Conectado al AppConfig para activar/desactivar remotamente
     var isEnabled: Bool {
-        return true
+        return config.showSugerencias
     }
     
     let pluginId: String = "com.habittracker.sugerencias"
@@ -25,33 +25,34 @@ class SugerenciasPlugin: DataPlugin {
     
     // MARK: - Private Properties
     
+    private let config: AppConfig
     private let generator: SuggestionGenerator
     
     // MARK: - Initialization
     
-    init() {
+    init(config: AppConfig) {
+        self.config = config
         self.generator = SuggestionGenerator.shared
         print("💡 SugerenciasPlugin inicializado")
     }
     
-    // MARK: - DataPlugin Methods
+    // MARK: - DataPlugin Methods (Hooks)
     
     func willCreateHabit(_ habit: Habit) async { }
     
     func didCreateHabit(_ habit: Habit) async {
+        guard isEnabled else { return }
         print("💡 SugerenciasPlugin: Nuevo hábito creado")
     }
     
     func willDeleteHabit(_ habit: Habit) async { }
-    
     func didDeleteHabit(habitId: UUID) async { }
-    
     func didToggleInstance(_ instance: HabitInstance, habit: Habit) async { }
     
-    // MARK: - View Methods
+    // MARK: - View Methods (UI Injection)
     
-    /// Provee el botón para la barra de herramientas
-    /// ACEPTA EL PROTOCOLO 'HabitSuggestionHandler', NO LA CLASE CONCRETA
+    /// Provee el botón (bombilla) para la barra de herramientas
+    /// ACEPTA EL PROTOCOLO 'HabitSuggestionHandler'
     @ViewBuilder
     func toolbarButton(handler: HabitSuggestionHandler) -> some View {
         if isEnabled {
@@ -62,25 +63,36 @@ class SugerenciasPlugin: DataPlugin {
         }
     }
     
-    /// Provee una sección de "Sugerencia del día" para la pantalla principal
+    /// Provee una sección de "Sugerencia del día" incrustada en la lista principal
     @ViewBuilder
     func featuredSuggestionSection(handler: HabitSuggestionHandler) -> some View {
         if isEnabled {
-            // Obtenemos una sugerencia (lógica simplificada para la vista)
+            // Lógica para obtener una sugerencia aleatoria
             let suggestion = generator.obtenerSugerenciaDelDia()
             
-            // Verificamos si ya existe usando el protocolo
-            if !handler.habits.contains(where: { $0.nombre == suggestion.nombre }) {
+            // Solo la mostramos si el usuario NO tiene ese hábito ya
+            if !handler.habits.contains(where: { $0.nombre.lowercased() == suggestion.nombre.lowercased() }) {
                 Section {
-                    HStack {
-                        VStack(alignment: .leading) {
+                    HStack(spacing: 12) {
+                        // Icono
+                        ZStack {
+                            Circle()
+                                .fill(colorParaCategoria(suggestion.categoria).opacity(0.15))
+                                .frame(width: 40, height: 40)
+                            Text(suggestion.categoria.emoji)
+                        }
+                        
+                        // Textos
+                        VStack(alignment: .leading, spacing: 2) {
                             Text("Sugerencia del día")
-                                .font(.caption)
+                                .font(.caption2)
+                                .fontWeight(.bold)
                                 .foregroundColor(.secondary)
                                 .textCase(.uppercase)
                             
                             Text(suggestion.nombre)
-                                .font(.headline)
+                                .font(.subheadline)
+                                .fontWeight(.medium)
                                 .foregroundColor(.primary)
                             
                             Text(suggestion.impacto)
@@ -91,21 +103,32 @@ class SugerenciasPlugin: DataPlugin {
                         
                         Spacer()
                         
+                        // Botón de acción rápida (+)
                         Button {
-                            // Acción rápida de agregar
                             let habit = Habit(nombre: suggestion.nombre, frecuencia: suggestion.frecuencia)
                             handler.addHabit(habit)
                         } label: {
                             Image(systemName: "plus.circle.fill")
-                                .foregroundColor(.green)
+                                .foregroundColor(.blue)
                                 .font(.title2)
                         }
-                        .buttonStyle(PlainButtonStyle())
+                        .buttonStyle(PlainButtonStyle()) // Para que no clicable toda la celda
                     }
                 } header: {
                     Text("Descubrir")
                 }
             }
+        }
+    }
+    
+    // Helper para colores
+    private func colorParaCategoria(_ cat: SuggestionCategory) -> Color {
+        switch cat {
+        case .salud: return .green
+        case .productividad: return .blue
+        case .mindfulness: return .purple
+        case .finanzas: return .yellow
+        case .hogar: return .orange
         }
     }
 }

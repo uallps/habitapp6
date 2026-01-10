@@ -24,5 +24,7 @@ class HabitsViewModel: ObservableObject {
             await dataStore.saveData()
         }
     }
+    
 }
+
 
