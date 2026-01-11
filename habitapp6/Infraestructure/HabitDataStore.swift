@@ -29,6 +29,8 @@ class HabitDataStore: ObservableObject {
         do {
             try await storageProvider.saveHabits(habits)
             try await storageProvider.saveInstances(instances)
+            // Exportar datos para el widget (sin App Groups)
+            try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
         } catch {
             print("Error saving data: \(error)")
         }
