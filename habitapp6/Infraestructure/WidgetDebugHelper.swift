@@ -1,5 +1,7 @@
 import Foundation
+#if !WIDGET_EXTENSION
 import SwiftUI
+#endif
 
 /// Helper para testing y debugging del widget
 /// Úsalo en una vista temporal para verificar que los datos se exportan correctamente
@@ -34,35 +36,42 @@ struct WidgetDebugHelper {
     }
     
     /// Muestra información de debugging sobre la exportación
-    @MainActor
-    static func printDebugInfo(dataStore: HabitDataStore) {
-        print("\n🔍 === WIDGET DEBUG INFO ===")
-        print("📱 Hábitos activos: \(dataStore.habits.filter { $0.activo }.count)")
-        print("📅 Instancias totales: \(dataStore.instances.count)")
+    #if !WIDGET_EXTENSION
+        @MainActor
         
-        let today = Calendar.current.startOfDay(for: Date())
-        let todayInstances = dataStore.instances.filter { 
-            Calendar.current.isDate($0.fecha, inSameDayAs: today)
-        }
-        print("📍 Instancias de hoy: \(todayInstances.count)")
-        
-        if let path = getWidgetDataPath() {
-            print("📂 Archivo widget: \(path)")
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: path) {
-                if let attr = try? fileManager.attributesOfItem(atPath: path),
-                   let size = attr[.size] as? Int {
-                    print("📦 Tamaño: \(size) bytes")
-                }
-                if let modDate = attr[.modificationDate] as? Date {
-                    print("🕐 Última actualización: \(modDate)")
-                }
-            } else {
-                print("⚠️ Archivo no encontrado")
+        static func printDebugInfo(dataStore: HabitDataStore) {
+            print("\n🔍 === WIDGET DEBUG INFO ===")
+            print("📱 Hábitos activos: \(dataStore.habits.filter { $0.activo }.count)")
+            print("📅 Instancias totales: \(dataStore.instances.count)")
+            
+            let today = Calendar.current.startOfDay(for: Date())
+            let todayInstances = dataStore.instances.filter {
+                Calendar.current.isDate($0.fecha, inSameDayAs: today)
             }
+            print("📍 Instancias de hoy: \(todayInstances.count)")
+            
+            if let path = getWidgetDataPath() {
+                print("📂 Archivo widget: \(path)")
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: path) {
+                    do{
+                        let attributes = try fileManager.attributesOfItem(atPath: path)
+                        if let size = attributes[.size] as? Int {
+                            print("Tamaño: \(size) bytes")
+                        }
+                        if let modDate = attributes[.modificationDate] as? Date{
+                            print("Ultima actualizacion: \(modDate)")
+                        }
+                    } catch {
+                        print("Error leyendo atributos: \(error)")
+                    }
+                } else {
+                    print("⚠️ Archivo no encontrado")
+                }
+            }
+            print("========================\n")
         }
-        print("========================\n")
-    }
+    #endif
 }
 
 // MARK: - Preview / Testing View (comentado, usar solo para debug)

@@ -1,4 +1,5 @@
 import Foundation
+import WidgetKit
 
 @MainActor
 class HabitDataStore: ObservableObject {
@@ -26,11 +27,18 @@ class HabitDataStore: ObservableObject {
     }
     
     func saveData() async {
+        print("Probando SaveData")
         do {
+            print("Se hace SaveData")
             try await storageProvider.saveHabits(habits)
             try await storageProvider.saveInstances(instances)
-            // Exportar datos para el widget (sin App Groups)
+            #if !WIDGET_EXTENSION
             try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
+            #endif
+            
+            #if !WIDGET_EXTENSION
+            WidgetCenter.shared.reloadAllTimelines()
+            #endif
         } catch {
             print("Error saving data: \(error)")
         }
@@ -63,5 +71,7 @@ class HabitDataStore: ObservableObject {
             }
         }
         await saveData()
+        
+
     }
 }

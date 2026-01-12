@@ -20,7 +20,7 @@ struct HabitWidgetDataSource {
             print("[Widget] ⚠️ No hay snapshot de la app, intentando JSON directo: \(error)")
             #endif
             // Fallback: intentar cargar desde JSON directamente
-            return loadFromJSON()
+            return await loadFromJSON()
         }
     }
     

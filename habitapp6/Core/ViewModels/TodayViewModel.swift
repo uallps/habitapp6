@@ -33,6 +33,7 @@ class TodayViewModel: ObservableObject {
             dataStore.instances[index].completado.toggle()
             Task {
                 await dataStore.saveData()
+
             }
         }
     }
