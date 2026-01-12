@@ -1,25 +1,22 @@
+
 //
 //  AppConfig.swift
 //  HabitTracker
 //
-//  Core - Configuración de la aplicación y features activas (Compatible con Swift 5.5)
+//  Core - Configuración de la aplicación y features activas
 //
 
 import Foundation
 import SwiftUI
 
-/// Configuración global de la aplicación
-/// Controla qué features/plugins están habilitados
 @MainActor
 class AppConfig: ObservableObject {
     
     // MARK: - Singleton
-    
     static let shared = AppConfig()
     
     // MARK: - Feature Flags
     
-    /// Habilita/deshabilita la feature de Recordatorios
     @Published var showRecordatorios: Bool {
         didSet {
             UserDefaults.standard.set(showRecordatorios, forKey: Keys.showRecordatorios)
@@ -27,7 +24,6 @@ class AppConfig: ObservableObject {
         }
     }
     
-    /// Habilita/deshabilita la feature de Rachas
     @Published var showRachas: Bool {
         didSet {
             UserDefaults.standard.set(showRachas, forKey: Keys.showRachas)
@@ -35,7 +31,6 @@ class AppConfig: ObservableObject {
         }
     }
     
-    /// Habilita/deshabilita la feature de Categorías
     @Published var showCategorias: Bool {
         didSet {
             UserDefaults.standard.set(showCategorias, forKey: Keys.showCategorias)
@@ -43,58 +38,79 @@ class AppConfig: ObservableObject {
         }
     }
     
-    // MARK: - Keys
+    @Published var showMetas: Bool {
+        didSet {
+            UserDefaults.standard.set(showMetas, forKey: Keys.showMetas)
+            notifyPluginsChanged()
+        }
+    }
     
+    @Published var showSugerencias: Bool {
+        didSet {
+            UserDefaults.standard.set(showSugerencias, forKey: Keys.showSugerencias)
+            notifyPluginsChanged()
+        }
+    }
+    
+    @Published var showLogros: Bool {
+        didSet {
+            UserDefaults.standard.set(showLogros, forKey: Keys.showLogros)
+            notifyPluginsChanged()
+        }
+    }
+    
+    // MARK: - Keys
     private enum Keys {
         static let showRecordatorios = "feature.recordatorios.enabled"
         static let showRachas = "feature.rachas.enabled"
         static let showCategorias = "feature.categorias.enabled"
+        static let showMetas = "feature.metas.enabled"
+        static let showSugerencias = "feature.sugerencias.enabled"
+        static let showLogros = "feature.logros.enabled"
     }
     
     // MARK: - Initialization
-    
     private init() {
-        // Cargar valores guardados o usar defaults
         self.showRecordatorios = UserDefaults.standard.object(forKey: Keys.showRecordatorios) as? Bool ?? true
         self.showRachas = UserDefaults.standard.object(forKey: Keys.showRachas) as? Bool ?? true
         self.showCategorias = UserDefaults.standard.object(forKey: Keys.showCategorias) as? Bool ?? true
-        
-        print("⚙️ AppConfig inicializado:")
-        print("   - Recordatorios: \(showRecordatorios)")
-        print("   - Rachas: \(showRachas)")
-        print("   - Categorías: \(showCategorias)")
+        self.showMetas = UserDefaults.standard.object(forKey: Keys.showMetas) as? Bool ?? true
+        self.showSugerencias = UserDefaults.standard.object(forKey: Keys.showSugerencias) as? Bool ?? true
+        self.showLogros = UserDefaults.standard.object(forKey: Keys.showLogros) as? Bool ?? true
     }
     
     // MARK: - Methods
-    
-    /// Notifica que la configuración de plugins ha cambiado
     private func notifyPluginsChanged() {
         NotificationCenter.default.post(name: .pluginConfigurationChanged, object: nil)
     }
     
-    /// Resetea todas las features a sus valores por defecto
     func resetToDefaults() {
         showRecordatorios = true
         showRachas = true
         showCategorias = true
+        showMetas = true
+        showSugerencias = true
+        showLogros = true
     }
     
-    /// Deshabilita todas las features
     func disableAllFeatures() {
         showRecordatorios = false
         showRachas = false
         showCategorias = false
+        showMetas = false
+        showSugerencias = false
+        showLogros = false
     }
     
-    /// Habilita todas las features
     func enableAllFeatures() {
         showRecordatorios = true
         showRachas = true
         showCategorias = true
+        showMetas = true
+        showSugerencias = true
+        showLogros = true
     }
 }
-
-// MARK: - Notification Names
 
 extension Notification.Name {
     static let pluginConfigurationChanged = Notification.Name("pluginConfigurationChanged")

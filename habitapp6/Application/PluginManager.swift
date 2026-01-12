@@ -31,6 +31,7 @@ class PluginManager: ObservableObject {
     /// Plugin de Categorías
     @Published private(set) var categoriasPlugin: CategoriasPlugin?
     
+    @Published private(set) var logrosPlugin: LogrosPlugin?
     // MARK: - Initialization
     
     private init() {
@@ -49,6 +50,7 @@ class PluginManager: ObservableObject {
         recordatoriosPlugin = RecordatoriosPlugin(config: config)
         rachasPlugin = RachasPlugin(config: config)
         categoriasPlugin = CategoriasPlugin(config: config)
+        logrosPlugin = LogrosPlugin(config: config)
     }
     
     /// Configura los bindings para reaccionar a cambios de configuración

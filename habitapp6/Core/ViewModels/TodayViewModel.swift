@@ -1,3 +1,4 @@
+
 import Foundation
 
 @MainActor
@@ -31,8 +32,15 @@ class TodayViewModel: ObservableObject {
     func toggleInstance(_ instance: HabitInstance) {
         if let index = dataStore.instances.firstIndex(where: { $0.id == instance.id }) {
             dataStore.instances[index].completado.toggle()
+            
+            let updatedInstance = dataStore.instances[index]
+            let habit = dataStore.habits.first(where: { $0.id == updatedInstance.habitID })
+            
             Task {
                 await dataStore.saveData()
+                if let habit = habit {
+                    await PluginManager.shared.didToggleInstance(updatedInstance, habit: habit)
+                }
             }
         }
     }

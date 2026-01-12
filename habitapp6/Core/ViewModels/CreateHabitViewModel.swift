@@ -1,3 +1,4 @@
+
 import Foundation
 
 @MainActor
@@ -12,10 +13,13 @@ class CreateHabitViewModel: ObservableObject {
     
     func createHabit() {
         let newHabit = Habit(nombre: nombre, frecuencia: frecuencia)
+        
         dataStore.habits.append(newHabit)
+        
         Task {
             await dataStore.generateTodayInstances()
             await dataStore.saveData()
+            await PluginManager.shared.didCreateHabit(newHabit)
         }
     }
     

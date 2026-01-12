@@ -2,6 +2,7 @@ import Foundation
 
 @MainActor
 class HabitDataStore: ObservableObject {
+    static let shared = HabitDataStore()
     @Published var habits: [Habit] = []
     @Published var instances: [HabitInstance] = []
     
