@@ -12,8 +12,13 @@ struct HabitsListView: View {
     @ObservedObject var dataStore: HabitDataStore
     @StateObject private var viewModel: HabitsViewModel
     @ObservedObject private var pluginManager = PluginManager.shared
+    
+    // Estados de navegación
     @State private var showingCreateView = false
+    @State private var showingSuggestions = false
     @State private var selectedHabitForReminder: Habit?
+    
+    // Estados de filtrado
     @State private var selectedCategoriaFilter: Categoria? = nil
     @State private var showByCategoria: Bool = false
     
@@ -84,10 +89,23 @@ struct HabitsListView: View {
             .navigationTitle("Mis Hábitos")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        showingCreateView = true
-                    } label: {
-                        Image(systemName: "plus")
+                    HStack(spacing: 16) {
+                        // BOTÓN BOMBILLA
+                        Button {
+                            showingSuggestions = true
+                        } label: {
+                            Image(systemName: "lightbulb")
+                                .symbolVariant(.fill)
+                                .foregroundColor(.yellow)
+                        }
+                        .accessibilityLabel("Sugerencias de hábitos")
+
+                        // BOTÓN AÑADIR
+                        Button {
+                            showingCreateView = true
+                        } label: {
+                            Image(systemName: "plus")
+                        }
                     }
                 }
             }
@@ -122,7 +140,7 @@ struct HabitsListView: View {
             Text("No hay hábitos")
                 .font(.headline)
             
-            Text("Toca el botón + para crear tu primer hábito")
+            Text("Toca el botón + para crear uno o la bombilla para obtener ideas")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
@@ -162,7 +180,6 @@ struct HabitsListView: View {
         let habitsToDelete = offsets.map { filteredHabits[$0] }
         
         for habit in habitsToDelete {
-            // Notificar a los plugins antes de eliminar
             Task {
                 await pluginManager.willDeleteHabit(habit)
                 viewModel.deleteHabit(habit)
@@ -173,125 +190,54 @@ struct HabitsListView: View {
 }
 
 // MARK: - Habit Row View
-
-/// Vista de fila para cada hábito en la lista
 struct HabitRowView: View {
-    
     @ObservedObject var dataStore: HabitDataStore
     let habit: Habit
     @ObservedObject var pluginManager: PluginManager
     let onToggleActive: () -> Void
     let onReminderTap: () -> Void
-    
     @State private var rachaActual: Int = 0
     
     var body: some View {
         HStack(spacing: 12) {
-            // Información del hábito
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 8) {
                     Text(habit.nombre)
                         .font(.headline)
                         .foregroundColor(habit.activo ? .primary : .secondary)
                     
-                    // Badge de categoría (solo si plugin habilitado)
                     if pluginManager.isCategoriasEnabled && habit.tieneCategoria {
                         CategoriaBadgeView(categoria: habit.categoriaEnum)
                     }
-                    
-                    // Badge de racha (solo si plugin habilitado)
                     if pluginManager.isRachasEnabled {
                         RachaBadgeView(rachaActual: rachaActual, frecuencia: habit.frecuencia)
                     }
-                    
-                    // Badge de recordatorio (solo si plugin habilitado)
                     if pluginManager.isRecordatoriosEnabled {
                         RecordatorioBadgeView(habit: habit)
                     }
                 }
-                
                 HStack(spacing: 8) {
-                    // Frecuencia
-                    Label(
-                        habit.frecuencia.rawValue.capitalized,
-                        systemImage: habit.frecuencia == .diario ? "sun.max" : "calendar.badge.clock"
-                    )
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    
-                    // Estado
+                    Label(habit.frecuencia.rawValue.capitalized, systemImage: habit.frecuencia == .diario ? "sun.max" : "calendar.badge.clock")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                     if !habit.activo {
-                        Text("• Pausado")
-                            .font(.caption)
-                            .foregroundColor(.orange)
+                        Text("• Pausado").font(.caption).foregroundColor(.orange)
                     }
                 }
             }
-            
             Spacer()
-            
-            // Botón rápido de recordatorio (solo si plugin habilitado)
             if pluginManager.isRecordatoriosEnabled {
                 RecordatorioQuickButton(habit: habit, action: onReminderTap)
             }
-            
-            // Toggle de activo
-            Toggle("", isOn: Binding(
-                get: { habit.activo },
-                set: { _ in onToggleActive() }
-            ))
+            Toggle("", isOn: Binding(get: { habit.activo }, set: { _ in onToggleActive() }))
             .labelsHidden()
             .tint(.green)
         }
         .padding(.vertical, 4)
-        .onAppear {
-            if pluginManager.isRachasEnabled {
-                calcularRacha()
-            }
-        }
-        .onChange(of: dataStore.instances.count) { _ in
-            if pluginManager.isRachasEnabled {
-                calcularRacha()
-            }
-        }
+        .onAppear { if pluginManager.isRachasEnabled { calcularRacha() } }
     }
     
     private func calcularRacha() {
         rachaActual = RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances)
     }
 }
-
-// MARK: - Habit Identifiable Extension
-
-extension Habit: Hashable {
-    public static func == (lhs: Habit, rhs: Habit) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
-// MARK: - Preview
-
-#if DEBUG
-struct HabitsListView_Previews: PreviewProvider {
-    static var previews: some View {
-        let dataStore = HabitDataStore()
-        
-        // Añadir hábitos de ejemplo
-        let habit1 = Habit(nombre: "Ejercicio", frecuencia: .diario)
-        habit1.activarRecordatorio(horasAnticipacion: 5)
-        
-        let habit2 = Habit(nombre: "Leer", frecuencia: .diario)
-        
-        let habit3 = Habit(nombre: "Revisión semanal", frecuencia: .semanal)
-        habit3.activarRecordatorio(horasAnticipacion: 12)
-        
-        dataStore.habits = [habit1, habit2, habit3]
-        
-        return HabitsListView(dataStore: dataStore)
-    }
-}
-#endif

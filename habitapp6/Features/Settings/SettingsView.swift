@@ -34,6 +34,15 @@ struct SettingsView: View {
                         activeColor: .red,
                         isEnabled: $config.showRachas
                     )
+                    
+                    // NUEVO: Sugerencias (Bombilla)
+                    PluginToggleRowView(
+                        name: "Sugerencias IA",
+                        description: "Recibe ideas de hábitos basadas en tus objetivos",
+                        icon: "lightbulb.fill", // Icono de bombilla solicitado
+                        activeColor: .yellow,
+                        isEnabled: $config.showSugerencias // Requiere actualizar AppConfig
+                    )
                 } header: {
                     Text("Features")
                 } footer: {
@@ -80,14 +89,15 @@ struct SettingsView: View {
                     HStack {
                         Text("Features activas")
                         Spacer()
-                        Text("\(enabledFeaturesCount) de 2")
+                        // Actualizado el total de features a 3
+                        Text("\(enabledFeaturesCount) de 3")
                             .foregroundColor(.secondary)
                     }
                     
                     HStack {
                         Text("Versión")
                         Spacer()
-                        Text("1.0.0")
+                        Text("1.1.0")
                             .foregroundColor(.secondary)
                     }
                 } header: {
@@ -121,12 +131,14 @@ struct SettingsView: View {
         var count = 0
         if config.showRecordatorios { count += 1 }
         if config.showRachas { count += 1 }
+        // Contamos la nueva feature
+        if config.showSugerencias { count += 1 }
         return count
     }
 }
 
 // MARK: - Plugin Toggle Row View
-
+// (Sin cambios, se reutiliza para la nueva feature)
 struct PluginToggleRowView: View {
     let name: String
     let description: String
@@ -136,13 +148,11 @@ struct PluginToggleRowView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            // Icono del plugin
             Image(systemName: icon)
                 .foregroundColor(isEnabled ? activeColor : .gray)
                 .font(.title2)
                 .frame(width: 30)
             
-            // Info del plugin
             VStack(alignment: .leading, spacing: 2) {
                 Text(name)
                     .font(.headline)
@@ -154,20 +164,9 @@ struct PluginToggleRowView: View {
             
             Spacer()
             
-            // Toggle
             Toggle("", isOn: $isEnabled)
                 .labelsHidden()
         }
         .padding(.vertical, 4)
     }
 }
-
-// MARK: - Preview
-
-#if DEBUG
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}
-#endif

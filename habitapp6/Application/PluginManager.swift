@@ -1,3 +1,4 @@
+
 //
 //  PluginManager.swift
 //  HabitTracker
@@ -31,6 +32,9 @@ class PluginManager: ObservableObject {
     /// Plugin de Categorías
     @Published private(set) var categoriasPlugin: CategoriasPlugin?
     
+    // 👇 NUEVO: Plugin de Sugerencias
+    @Published private(set) var sugerenciasPlugin: SugerenciasPlugin?
+    
     // MARK: - Initialization
     
     private init() {
@@ -49,6 +53,9 @@ class PluginManager: ObservableObject {
         recordatoriosPlugin = RecordatoriosPlugin(config: config)
         rachasPlugin = RachasPlugin(config: config)
         categoriasPlugin = CategoriasPlugin(config: config)
+        
+        // 👇 NUEVO: Inicializar Sugerencias
+        sugerenciasPlugin = SugerenciasPlugin(config: config)
     }
     
     /// Configura los bindings para reaccionar a cambios de configuración
@@ -67,6 +74,8 @@ class PluginManager: ObservableObject {
         print("   - Recordatorios: \(isRecordatoriosEnabled ? "✅" : "❌")")
         print("   - Rachas: \(isRachasEnabled ? "✅" : "❌")")
         print("   - Categorías: \(isCategoriasEnabled ? "✅" : "❌")")
+        // 👇 NUEVO: Log de estado
+        print("   - Sugerencias: \(isSugerenciasEnabled ? "✅" : "❌")")
     }
     
     // MARK: - Feature Checks
@@ -86,6 +95,12 @@ class PluginManager: ObservableObject {
         config.showCategorias
     }
     
+    // 👇 NUEVO: Check para Sugerencias
+    /// Verifica si la feature de Sugerencias está habilitada
+    var isSugerenciasEnabled: Bool {
+        config.showSugerencias
+    }
+    
     // MARK: - Data Plugin Methods
     
     /// Notifica a todos los DataPlugins que se va a crear un hábito
@@ -98,6 +113,10 @@ class PluginManager: ObservableObject {
         }
         if isCategoriasEnabled {
             await categoriasPlugin?.willCreateHabit(habit)
+        }
+        // 👇 NUEVO
+        if isSugerenciasEnabled {
+            await sugerenciasPlugin?.willCreateHabit(habit)
         }
     }
     
@@ -112,6 +131,10 @@ class PluginManager: ObservableObject {
         if isCategoriasEnabled {
             await categoriasPlugin?.didCreateHabit(habit)
         }
+        // 👇 NUEVO
+        if isSugerenciasEnabled {
+            await sugerenciasPlugin?.didCreateHabit(habit)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se va a eliminar un hábito
@@ -124,6 +147,10 @@ class PluginManager: ObservableObject {
         }
         if isCategoriasEnabled {
             await categoriasPlugin?.willDeleteHabit(habit)
+        }
+        // 👇 NUEVO
+        if isSugerenciasEnabled {
+            await sugerenciasPlugin?.willDeleteHabit(habit)
         }
     }
     
@@ -138,6 +165,10 @@ class PluginManager: ObservableObject {
         if isCategoriasEnabled {
             await categoriasPlugin?.didDeleteHabit(habitId: habitId)
         }
+        // 👇 NUEVO
+        if isSugerenciasEnabled {
+            await sugerenciasPlugin?.didDeleteHabit(habitId: habitId)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se toggleó una instancia
@@ -150,6 +181,10 @@ class PluginManager: ObservableObject {
         }
         if isCategoriasEnabled {
             await categoriasPlugin?.didToggleInstance(instance, habit: habit)
+        }
+        // 👇 NUEVO
+        if isSugerenciasEnabled {
+            await sugerenciasPlugin?.didToggleInstance(instance, habit: habit)
         }
     }
 }

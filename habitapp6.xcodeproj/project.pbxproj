@@ -43,7 +43,7 @@
 		F5225B982F0F2D0C00DB3F06 /* CategoriaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */; };
 		F5225B992F0F2D0C00DB3F06 /* CategoriaFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */; };
 		F5225B9B2F0F2D1E00DB3F06 /* CategoriasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */; };
-		F58237762F09668500F6DB8B /* HabbitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabbitViewModel.swift */; };
+		F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
 		F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
 		F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
 		F582377C2F09672200F6DB8B /* CreateHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */; };
@@ -111,7 +111,7 @@
 		F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaBadgeView.swift; sourceTree = "<group>"; };
 		F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaFilterView.swift; sourceTree = "<group>"; };
 		F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriasPlugin.swift; sourceTree = "<group>"; };
-		F58237752F09668500F6DB8B /* HabbitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitViewModel.swift; sourceTree = "<group>"; };
+		F58237752F09668500F6DB8B /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		F58237772F0966BC00F6DB8B /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
 		F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitViewModel.swift; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 		F510C1452F08992600C5074E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F58237752F09668500F6DB8B /* HabbitViewModel.swift */,
+				F58237752F09668500F6DB8B /* HabitsViewModel.swift */,
 				F58237772F0966BC00F6DB8B /* TodayViewModel.swift */,
 				F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */,
 				F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */,
@@ -591,7 +591,7 @@
 				F5225B472F0EDBCE00DB3F06 /* NotificationService.swift in Sources */,
 				F582377E2F09675400F6DB8B /* ContentView.swift in Sources */,
 				F5225B8B2F0EF03600DB3F06 /* PluginManager.swift in Sources */,
-				F58237762F09668500F6DB8B /* HabbitViewModel.swift in Sources */,
+				F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */,
 				F5225B852F0EEFDA00DB3F06 /* PluginProtocols.swift in Sources */,
 				F5225B6C2F0EE5E700DB3F06 /* RachaBadgeView.swift in Sources */,
 				F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */,
