@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F50254B82F158EB700E97DE1 /* TimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50254B72F158EB700E97DE1 /* TimeProvider.swift */; };
+		F50254BA2F158ED000E97DE1 /* DemoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50254B92F158ED000E97DE1 /* DemoControlView.swift */; };
 		F510C1152F08953600C5074E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1142F08953600C5074E /* Assets.xcassets */; };
 		F510C1182F08953600C5074E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1172F08953600C5074E /* Preview Assets.xcassets */; };
 		F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F510C11B2F08953600C5074E /* habitapp6.xcdatamodeld */; };
@@ -82,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F50254B72F158EB700E97DE1 /* TimeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeProvider.swift; sourceTree = "<group>"; };
+		F50254B92F158ED000E97DE1 /* DemoControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoControlView.swift; sourceTree = "<group>"; };
 		F510C10D2F08953300C5074E /* habitapp6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitapp6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F510C1142F08953600C5074E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F510C1172F08953600C5074E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 		F510C1492F089A5400C5074E /* Infraestructure */ = {
 			isa = PBXGroup;
 			children = (
+				F50254B72F158EB700E97DE1 /* TimeProvider.swift */,
 				F51316352F0DD385007203B7 /* Plugins */,
 				F510C1552F08A06600C5074E /* StorageProvider.swift */,
 				F510C1572F08A10600C5074E /* JSONStorageProvider.swift */,
@@ -368,6 +373,7 @@
 		F5225B7B2F0EEC6400DB3F06 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F50254B92F158ED000E97DE1 /* DemoControlView.swift */,
 				F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -660,8 +666,10 @@
 				F5225B852F0EEFDA00DB3F06 /* PluginProtocols.swift in Sources */,
 				F5EDA8362F1026650078AE96 /* MetaFelicitacionView.swift in Sources */,
 				F5225B6C2F0EE5E700DB3F06 /* RachaBadgeView.swift in Sources */,
+				F50254BA2F158ED000E97DE1 /* DemoControlView.swift in Sources */,
 				F5EDA8542F1027080078AE96 /* habitapp6App.swift in Sources */,
 				F5EDA8402F1026CD0078AE96 /* HabitDetailView.swift in Sources */,
+				F50254B82F158EB700E97DE1 /* TimeProvider.swift in Sources */,
 				F5225B7A2F0EEC4000DB3F06 /* RachasPlugin.swift in Sources */,
 				F510C11D2F08953600C5074E /* habitapp6.xcdatamodeld in Sources */,
 				F510C1582F08A10600C5074E /* JSONStorageProvider.swift in Sources */,
