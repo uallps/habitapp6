@@ -32,13 +32,19 @@ class HabitDataStore: ObservableObject {
             print("Se hace SaveData")
             try await storageProvider.saveHabits(habits)
             try await storageProvider.saveInstances(instances)
-            #if !WIDGET_EXTENSION
-            try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
-            #endif
             
-            #if !WIDGET_EXTENSION
-            WidgetCenter.shared.reloadAllTimelines()
-            #endif
+            try (storageProvider as? CoreDataStorageProvider)?.persistChanges()
+
+            // Widget export
+            try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
+
+            //#if !WIDGET_EXTENSION
+            //try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
+            //#endif
+            
+            //#if !WIDGET_EXTENSION
+            //WidgetCenter.shared.reloadAllTimelines()
+            //#endif
         } catch {
             print("Error saving data: \(error)")
         }

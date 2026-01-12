@@ -10,12 +10,16 @@ class WidgetDataExporter {
     
     /// Ruta donde se guardan los datos del widget (accessible por ambos)
     private var widgetDataURL: URL {
-        let fileManager = FileManager.default
-        if let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "TODO"){
-            return containerURL.appendingPathComponent("widget_snapshot.json")
-        }else{
-            fatalError("Add Group container no encontrado")
-        }
+        // Usamos el directorio de documentos por ahora. Cambia a App Group cuando lo configures.
+        return fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+            .appendingPathComponent(widgetFileName)
+        
+        /// Descomentar cuando se define el App Group y cambiar "TODO"
+        // if let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "TODO") {
+        //     return containerURL.appendingPathComponent(widgetFileName)
+        // } else {
+        //     fatalError("App Group container no encontrado")
+        // }
     }
     
     /// Estructura que contiene el snapshot para el widget
