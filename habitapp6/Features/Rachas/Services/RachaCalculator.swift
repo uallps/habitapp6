@@ -134,7 +134,7 @@ public class RachaCalculator: RachaCalculatorProtocol {
     private func calcularRachaActualDesdePeriodos(_ periodos: [Periodo], frecuencia: Frecuencia) -> Int {
         guard !periodos.isEmpty else { return 0 }
         
-        let hoy = Date()
+        let hoy = TimeConfiguration.shared.now
         let periodoActualId = identificadorPeriodo(fecha: hoy, frecuencia: frecuencia)
         
         // Ordenar períodos de más reciente a más antiguo
@@ -233,7 +233,7 @@ public class RachaCalculator: RachaCalculatorProtocol {
     
     /// Determina si la racha está en riesgo (período actual no completado)
     private func determinarRachaEnRiesgo(periodos: [Periodo], frecuencia: Frecuencia) -> Bool {
-        let hoy = Date()
+        let hoy = TimeConfiguration.shared.now
         let periodoActualId = identificadorPeriodo(fecha: hoy, frecuencia: frecuencia)
         
         // Buscar el período actual

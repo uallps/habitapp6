@@ -43,6 +43,8 @@
 		F5225B982F0F2D0C00DB3F06 /* CategoriaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */; };
 		F5225B992F0F2D0C00DB3F06 /* CategoriaFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */; };
 		F5225B9B2F0F2D1E00DB3F06 /* CategoriasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */; };
+		F57BD4F02F157B3F00A00597 /* TimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BD4EF2F157B3F00A00597 /* TimeProvider.swift */; };
+		F57BD4F22F157C3600A00597 /* DemoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BD4F12F157C3600A00597 /* DemoControlView.swift */; };
 		F58237762F09668500F6DB8B /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
 		F58237782F0966BC00F6DB8B /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
 		F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
@@ -111,6 +113,8 @@
 		F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaBadgeView.swift; sourceTree = "<group>"; };
 		F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaFilterView.swift; sourceTree = "<group>"; };
 		F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriasPlugin.swift; sourceTree = "<group>"; };
+		F57BD4EF2F157B3F00A00597 /* TimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProvider.swift; sourceTree = "<group>"; };
+		F57BD4F12F157C3600A00597 /* DemoControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoControlView.swift; sourceTree = "<group>"; };
 		F58237752F09668500F6DB8B /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
 		F58237772F0966BC00F6DB8B /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailViewModel.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				F510C1572F08A10600C5074E /* JSONStorageProvider.swift */,
 				F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */,
 				F58237852F0969F100F6DB8B /* HabitDataStore.swift */,
+				F57BD4EF2F157B3F00A00597 /* TimeProvider.swift */,
 			);
 			path = Infraestructure;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */,
+				F57BD4F12F157C3600A00597 /* DemoControlView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -566,6 +572,7 @@
 			files = (
 				F5225B642F0EE54200DB3F06 /* Racha.swift in Sources */,
 				F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */,
+				F57BD4F22F157C3600A00597 /* DemoControlView.swift in Sources */,
 				F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */,
 				F5225B782F0EEC2700DB3F06 /* RecordatoriosPlugin.swift in Sources */,
 				F58237862F0969F100F6DB8B /* HabitDataStore.swift in Sources */,
@@ -595,6 +602,7 @@
 				F5225B812F0EECC400DB3F06 /* HabitDetailView.swift in Sources */,
 				F5225B982F0F2D0C00DB3F06 /* CategoriaBadgeView.swift in Sources */,
 				F5225B742F0EEBC000DB3F06 /* AppConfig.swift in Sources */,
+				F57BD4F02F157B3F00A00597 /* TimeProvider.swift in Sources */,
 				F58237822F0967D600F6DB8B /* CreateHabitView.swift in Sources */,
 				F58237842F0968C000F6DB8B /* CoreDataStorageProvider.swift in Sources */,
 				F5225B492F0EDC0600DB3F06 /* RecordatorioViewModel.swift in Sources */,
