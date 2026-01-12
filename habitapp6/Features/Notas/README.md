@@ -67,8 +67,6 @@ Estructura para filtrar y buscar notas:
 ```swift
 public struct NotaFiltro {
     public var rangoFechas: ClosedRange<Date>?  // Filtro por rango de fechas
-    public var soloImportantes: Bool             // Solo notas importantes
-    public var tags: [String]                    // Filtrar por tags
     public var textoBusqueda: String?            // Búsqueda de texto
     public var habitIDs: [UUID]                  // Filtro por hábitos
 }
@@ -102,16 +100,12 @@ Conecta el servicio con la UI y gestiona el estado:
 - `notaActual`: Nota siendo editada o de hoy
 - `estadisticas`: Estadísticas agregadas
 - `textoEditor`: Contenido del editor
-- `tagsDisponibles`: Tags sugeridos
 
 **Métodos:**
 - `cargarNotas()`: Carga las notas del hábito
 - `guardarNotaActual()`: Persiste la nota en edición
 - `eliminarNota(_:)`: Elimina una nota
-- `toggleImportante(_:)`: Marca/desmarca como importante
-- `agregarTag(_:aNota:)`: Añade un tag
 - `buscarNotas(texto:)`: Búsqueda por texto
-- `obtenerNotasPorTags(_:)`: Filtrado por tags
 
 ### 6. Views
 
@@ -144,8 +138,6 @@ Editor de texto para crear/editar notas:
 
 - Editor de texto con altura dinámica
 - Contador de palabras y caracteres en tiempo real
-- Sistema de tags con sugerencias automáticas
-- Toggle de importancia
 - Validación de contenido antes de guardar
 - Botón rápido en teclado para finalizar edición
 
@@ -154,18 +146,7 @@ Editor de texto para crear/editar notas:
 ### 1. **Notas Diarias**
 Una nota por día por hábito. Si hay una nota existente para ese día, se actualiza en lugar de crear duplicado.
 
-### 2. **Sistema de Tags**
-- Agregar múltiples tags a cada nota
-- Tags sugeridos basados en uso anterior
-- Filtrado por tags
-- Contador de tags populares
-
-### 3. **Marcado de Importancia**
-- Marcar notas como importantes
-- Vista especial para notas importantes
-- Indicador visual con estrella
-
-### 4. **Estadísticas**
+### 2. **Estadísticas**
 - Total de notas
 - Notas importantes
 - Total de palabras y caracteres
@@ -173,20 +154,18 @@ Una nota por día por hábito. Si hay una nota existente para ese día, se actua
 - Tags más populares
 - Fecha de primera y última nota
 
-### 5. **Búsqueda y Filtrado**
+### 3. **Búsqueda y Filtrado**
 - Búsqueda de texto en tiempo real
 - Filtro por rango de fechas
-- Filtro por tags
-- Filtro por importancia
 - Combinación de múltiples filtros
 
-### 6. **Visualización**
+### 4. **Visualización**
 - Calendario de 7 días con indicadores
 - Previews del contenido (primeros 100 caracteres)
 - Información de edición (si fue editada)
 - Contador de palabras y caracteres por nota
 
-### 7. **Persistencia**
+### 5. **Persistencia**
 - Almacenamiento local en JSON
 - Carga automática al iniciar
 - Sincronización automática con cambios
@@ -275,8 +254,6 @@ let notas = try await NotaStorage.shared.obtenerNotas(habitID: habitID)
 ```swift
 let filtro = NotaFiltro(
     textoBusqueda: "ejercicio",
-    soloImportantes: true,
-    tags: ["motivado"]
 )
 
 let notasFiltradas = try await NotaStorage.shared.obtenerNotas(filtro: filtro)
@@ -305,7 +282,6 @@ for i in 0..<5 {
         habitID: habit.id,
         fecha: fecha,
         contenido: "Nota de prueba #\(i)",
-        tags: ["test", "debug"]
     )
     try await NotaStorage.shared.guardarNota(nota)
 }

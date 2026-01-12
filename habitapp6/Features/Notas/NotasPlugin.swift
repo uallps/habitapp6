@@ -29,7 +29,7 @@ class NotasPlugin: DataPlugin, StatisticsPlugin {
     
     // MARK: - Initialization
     
-    init(config: AppConfig, storage: NotaStorage = .shared) {
+    init(config: AppConfig, storage: NotaStorage = NotaStorage.shared) {
         self.config = config
         self.storage = storage
         print("📝 NotasPlugin inicializado - Habilitado: \(isEnabled)")

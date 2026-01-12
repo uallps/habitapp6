@@ -21,12 +21,11 @@ public protocol NotaStorageProtocol {
 }
 
 /// Servicio para gestionar el almacenamiento de notas
-@MainActor
 public class NotaStorage: ObservableObject, NotaStorageProtocol {
     
     // MARK: - Singleton
     
-    public static let shared = NotaStorage()
+    nonisolated public static let shared = NotaStorage()
     
     // MARK: - Published Properties
     
@@ -36,6 +35,10 @@ public class NotaStorage: ObservableObject, NotaStorageProtocol {
     
     private let fileManager = FileManager.default
     private let calendar = Calendar.current
+    
+    // MARK: - Main Actor Isolation
+    
+    @MainActor private var _mainActorMaker: Void = ()
     
     private var documentosURL: URL {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]

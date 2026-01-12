@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@MainActor
 class NotaViewModel: ObservableObject {
     
     // MARK: - Published Properties
@@ -49,7 +48,7 @@ class NotaViewModel: ObservableObject {
     
     // MARK: - Initialization
     
-    init(storage: NotaStorage = .shared, habit: Habit) {
+    init(storage: NotaStorage = NotaStorage.shared, habit: Habit) {
         self.storage = storage
         self.habit = habit
         

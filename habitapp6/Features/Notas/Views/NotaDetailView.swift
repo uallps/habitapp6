@@ -288,7 +288,7 @@ struct NotaDetailSheet: View {
                             Text("Tags")
                                 .font(.headline)
                             
-                            FlowLayout(spacing: 8) {
+                            TagsFlowContainer(spacing: 8) {
                                 ForEach(nota.tags, id: \.self) { tag in
                                     HStack {
                                         Text("#\(tag)")
@@ -366,55 +366,40 @@ struct StatItem: View {
         }
     }
 }
-
-/// Layout para organizar tags en flow
-struct FlowLayout: Layout {
-    var spacing: CGFloat = 8
+/// Contenedor con wrapping de tags compatible iOS 15.2+
+struct TagsFlowContainer<Content: View>: View {
+    let spacing: CGFloat
+    let content: () -> Content
     
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
-        let result = FlowResult(
-            in: proposal.replacingUnspecifiedDimensions().width,
-            subviews: subviews,
-            spacing: spacing
-        )
-        return result.size
-    }
-    
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        let result = FlowResult(
-            in: bounds.width,
-            subviews: subviews,
-            spacing: spacing
-        )
-        for (index, subview) in subviews.enumerated() {
-            subview.place(at: result.positions[index], proposal: .unspecified)
-        }
-    }
-    
-    struct FlowResult {
-        var size: CGSize = .zero
-        var positions: [CGPoint] = []
+    var body: some View {
+        var width = CGFloat.zero
+        var height = CGFloat.zero
         
-        init(in maxWidth: CGFloat, subviews: Subviews, spacing: CGFloat) {
-            var x: CGFloat = 0
-            var y: CGFloat = 0
-            var lineHeight: CGFloat = 0
+        return ZStack(alignment: .topLeading) {
+            Color.clear
+                .frame(height: height)
             
-            for subview in subviews {
-                let size = subview.sizeThatFits(.unspecified)
-                
-                if x + size.width > maxWidth && x > 0 {
-                    x = 0
-                    y += lineHeight + spacing
-                    lineHeight = 0
-                }
-                
-                positions.append(CGPoint(x: x, y: y))
-                lineHeight = max(lineHeight, size.height)
-                x += size.width + spacing
+            HStack(spacing: spacing) {
+                content()
             }
-            
-            self.size = CGSize(width: maxWidth, height: y + lineHeight)
+            .alignmentGuide(.leading) { d in
+                if abs(width - d.width) > .ulpOfOne {
+                    width = 0
+                    height += d.height
+                }
+                let offset = width
+                if d.width != .infinity {
+                    width += d.width
+                }
+                return offset
+            }
+            .alignmentGuide(.top) { _ in
+                let offset = height
+                if content is EmptyView {
+                    height = 0
+                }
+                return offset
+            }
         }
     }
 }

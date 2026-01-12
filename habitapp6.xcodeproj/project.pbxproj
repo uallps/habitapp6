@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351E2CE62F156C260010A3B5 /* NotaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDD2F156C260010A3B5 /* NotaViewModel.swift */; };
+		351E2CE72F156C260010A3B5 /* Nota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CD92F156C260010A3B5 /* Nota.swift */; };
+		351E2CE82F156C260010A3B5 /* NotaStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDB2F156C260010A3B5 /* NotaStorage.swift */; };
+		351E2CE92F156C260010A3B5 /* NotaEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE12F156C260010A3B5 /* NotaEditorView.swift */; };
+		351E2CEA2F156C260010A3B5 /* NotasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE32F156C260010A3B5 /* NotasPlugin.swift */; };
+		351E2CEB2F156C260010A3B5 /* NotaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */; };
+		351E2CEC2F156C260010A3B5 /* NotaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE02F156C260010A3B5 /* NotaDetailView.swift */; };
+		351E2CED2F156C260010A3B5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 351E2CE42F156C260010A3B5 /* README.md */; };
+		351E2CEF2F15713B0010A3B5 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */; };
 		F510C1112F08953300C5074E /* habitapp6App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1102F08953300C5074E /* habitapp6App.swift */; };
 		F510C1152F08953600C5074E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1142F08953600C5074E /* Assets.xcassets */; };
 		F510C1182F08953600C5074E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1172F08953600C5074E /* Preview Assets.xcassets */; };
@@ -72,6 +81,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		351E2CD92F156C260010A3B5 /* Nota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nota.swift; sourceTree = "<group>"; };
+		351E2CDB2F156C260010A3B5 /* NotaStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaStorage.swift; sourceTree = "<group>"; };
+		351E2CDD2F156C260010A3B5 /* NotaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaViewModel.swift; sourceTree = "<group>"; };
+		351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaBadgeView.swift; sourceTree = "<group>"; };
+		351E2CE02F156C260010A3B5 /* NotaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaDetailView.swift; sourceTree = "<group>"; };
+		351E2CE12F156C260010A3B5 /* NotaEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaEditorView.swift; sourceTree = "<group>"; };
+		351E2CE32F156C260010A3B5 /* NotasPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasPlugin.swift; sourceTree = "<group>"; };
+		351E2CE42F156C260010A3B5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		F510C10D2F08953300C5074E /* habitapp6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitapp6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F510C1102F08953300C5074E /* habitapp6App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitapp6App.swift; sourceTree = "<group>"; };
 		F510C1142F08953600C5074E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +165,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		351E2CDA2F156C260010A3B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				351E2CD92F156C260010A3B5 /* Nota.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		351E2CDC2F156C260010A3B5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				351E2CDB2F156C260010A3B5 /* NotaStorage.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		351E2CDE2F156C260010A3B5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				351E2CDD2F156C260010A3B5 /* NotaViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		351E2CE22F156C260010A3B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */,
+				351E2CE02F156C260010A3B5 /* NotaDetailView.swift */,
+				351E2CE12F156C260010A3B5 /* NotaEditorView.swift */,
+				351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		351E2CE52F156C260010A3B5 /* Notas */ = {
+			isa = PBXGroup;
+			children = (
+				351E2CDA2F156C260010A3B5 /* Models */,
+				351E2CDC2F156C260010A3B5 /* Services */,
+				351E2CDE2F156C260010A3B5 /* ViewModels */,
+				351E2CE22F156C260010A3B5 /* Views */,
+				351E2CE32F156C260010A3B5 /* NotasPlugin.swift */,
+				351E2CE42F156C260010A3B5 /* README.md */,
+			);
+			path = Notas;
+			sourceTree = "<group>";
+		};
 		F510C1042F08953200C5074E = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +330,7 @@
 		F510C1482F089A3600C5074E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				351E2CE52F156C260010A3B5 /* Notas */,
 				F5225B8E2F0F2CB800DB3F06 /* Categorias */,
 				F5225B7B2F0EEC6400DB3F06 /* Settings */,
 				F5225B5E2F0EE4A400DB3F06 /* Rachas */,
@@ -539,6 +606,7 @@
 			files = (
 				F510C1182F08953600C5074E /* Preview Assets.xcassets in Resources */,
 				F510C1402F08969800C5074E /* .gitignore in Resources */,
+				351E2CED2F156C260010A3B5 /* README.md in Resources */,
 				F510C1152F08953600C5074E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,6 +670,14 @@
 				F5225B6A2F0EE5E100DB3F06 /* RachaDetailView.swift in Sources */,
 				F5225B802F0EECC400DB3F06 /* HabitsListView.swift in Sources */,
 				F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */,
+				351E2CE62F156C260010A3B5 /* NotaViewModel.swift in Sources */,
+				351E2CE72F156C260010A3B5 /* Nota.swift in Sources */,
+				351E2CE82F156C260010A3B5 /* NotaStorage.swift in Sources */,
+				351E2CE92F156C260010A3B5 /* NotaEditorView.swift in Sources */,
+				351E2CEF2F15713B0010A3B5 /* FlowLayout.swift in Sources */,
+				351E2CEA2F156C260010A3B5 /* NotasPlugin.swift in Sources */,
+				351E2CEB2F156C260010A3B5 /* NotaBadgeView.swift in Sources */,
+				351E2CEC2F156C260010A3B5 /* NotaDetailView.swift in Sources */,
 				F510C1112F08953300C5074E /* habitapp6App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
