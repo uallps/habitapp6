@@ -51,7 +51,7 @@ class HabitDataStore: ObservableObject {
     }
     
     func generateTodayInstances() async {
-        let today = Calendar.current.startOfDay(for: Date())
+        let today = Calendar.current.startOfDay(for: TimeConfiguration.shared.now)
         let activeHabits = habits.filter { $0.activo }
         
         for habit in activeHabits {

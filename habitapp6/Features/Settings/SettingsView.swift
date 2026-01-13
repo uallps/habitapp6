@@ -9,12 +9,31 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var dataStore: HabitDataStore
     @ObservedObject private var config = AppConfig.shared
     @ObservedObject private var pluginManager = PluginManager.shared
     
     var body: some View {
         NavigationView {
             Form {
+                // MARK: - Demo Section
+                Section {
+                    NavigationLink {
+                        DemoControlView()
+                            .environmentObject(dataStore)
+                    } label: {
+                        HStack {
+                            Image(systemName: "clock.arrow.circlepath")
+                                .foregroundColor(.purple)
+                            Text("Modo Demo (Control de Tiempo)")
+                        }
+                    }
+                } header: {
+                    Text("Demostración")
+                } footer: {
+                    Text("Permite simular el paso del tiempo para demostrar rachas y otras funciones.")
+                }
+                
                 // MARK: - Features Section
                 Section {
                     // Recordatorios Toggle
