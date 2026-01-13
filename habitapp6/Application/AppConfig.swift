@@ -69,6 +69,11 @@ class AppConfig: ObservableObject {
         self.showCategorias = UserDefaults.standard.object(forKey: Keys.showCategorias) as? Bool ?? true
         self.showNotas = UserDefaults.standard.object(forKey: Keys.showNotas) as? Bool ?? true
         
+        #if DEVELOP || PREMIUM
+        #else
+        disableAllFeatures()
+        #endif
+        
         print("⚙️ AppConfig inicializado:")
         print("   - Recordatorios: \(showRecordatorios)")
         print("   - Rachas: \(showRachas)")
