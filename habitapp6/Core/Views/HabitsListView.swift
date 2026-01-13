@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HabitsListView: View {
     
+    // 1. Usamos ObservedObject directamente, sin ViewModel intermedio que cause el crash
     @ObservedObject var dataStore: HabitDataStore
-    @StateObject private var viewModel: HabitsViewModel
     @ObservedObject private var pluginManager = PluginManager.shared
     
     // Estados de navegación
@@ -22,10 +22,7 @@ struct HabitsListView: View {
     @State private var selectedCategoriaFilter: Categoria? = nil
     @State private var showByCategoria: Bool = false
     
-    init(dataStore: HabitDataStore) {
-        self.dataStore = dataStore
-        _viewModel = StateObject(wrappedValue: HabitsViewModel(dataStore: dataStore))
-    }
+    // 2. Borramos el 'init' personalizado que causaba el error EXC_BAD_ACCESS
     
     var body: some View {
         NavigationView {
@@ -73,7 +70,8 @@ struct HabitsListView: View {
                                         habit: habit,
                                         pluginManager: pluginManager,
                                         onToggleActive: {
-                                            viewModel.toggleHabitActive(habit)
+                                            // 3. Llamamos a la función local
+                                            toggleHabitActive(habit)
                                         },
                                         onReminderTap: {
                                             selectedHabitForReminder = habit
@@ -81,6 +79,7 @@ struct HabitsListView: View {
                                     )
                                 }
                             }
+                            // 4. Llamamos a la función local
                             .onDelete(perform: deleteHabits)
                         }
                     }
@@ -90,7 +89,6 @@ struct HabitsListView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     HStack(spacing: 16) {
-                        // BOTÓN BOMBILLA
                         Button {
                             showingSuggestions = true
                         } label: {
@@ -98,9 +96,7 @@ struct HabitsListView: View {
                                 .symbolVariant(.fill)
                                 .foregroundColor(.yellow)
                         }
-                        .accessibilityLabel("Sugerencias de hábitos")
-
-                        // BOTÓN AÑADIR
+                        
                         Button {
                             showingCreateView = true
                         } label: {
@@ -111,6 +107,9 @@ struct HabitsListView: View {
             }
             .sheet(isPresented: $showingCreateView) {
                 CreateHabitView(dataStore: dataStore)
+            }
+            .sheet(isPresented: $showingSuggestions) {
+                SuggestionListView(habitHandler: dataStore)
             }
             .sheet(item: $selectedHabitForReminder) { habit in
                 if pluginManager.isRecordatoriosEnabled {
@@ -129,17 +128,15 @@ struct HabitsListView: View {
         return dataStore.habits.filter { $0.categoriaEnum == filter }
     }
     
-    // MARK: - Views
+    // MARK: - Views Auxiliares
     
     private var emptyStateView: some View {
         VStack(spacing: 16) {
             Image(systemName: "list.bullet.clipboard")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
-            
             Text("No hay hábitos")
                 .font(.headline)
-            
             Text("Toca el botón + para crear uno o la bombilla para obtener ideas")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
@@ -155,15 +152,12 @@ struct HabitsListView: View {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
-            
             Text("Sin resultados")
                 .font(.headline)
-            
             Text("No hay hábitos en esta categoría")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-            
             Button("Mostrar todos") {
                 selectedCategoriaFilter = nil
             }
@@ -174,7 +168,16 @@ struct HabitsListView: View {
         .listRowBackground(Color.clear)
     }
     
-    // MARK: - Actions
+    // MARK: - Logic Actions (Movidas aquí para evitar el crash)
+    
+    func toggleHabitActive(_ habit: Habit) {
+        if let index = dataStore.habits.firstIndex(where: { $0.id == habit.id }) {
+            dataStore.habits[index].activo.toggle()
+            Task {
+                await dataStore.saveData()
+            }
+        }
+    }
     
     func deleteHabits(at offsets: IndexSet) {
         let habitsToDelete = offsets.map { filteredHabits[$0] }
@@ -182,14 +185,21 @@ struct HabitsListView: View {
         for habit in habitsToDelete {
             Task {
                 await pluginManager.willDeleteHabit(habit)
-                viewModel.deleteHabit(habit)
+                
+                // Lógica de borrado directa en dataStore
+                if let index = dataStore.habits.firstIndex(where: { $0.id == habit.id }) {
+                    dataStore.habits.remove(at: index)
+                }
+                dataStore.instances.removeAll { $0.habitID == habit.id }
+                await dataStore.saveData()
+                
                 await pluginManager.didDeleteHabit(habitId: habit.id)
             }
         }
     }
 }
 
-// MARK: - Habit Row View
+// MARK: - Habit Row View (Mantenemos la fila igual)
 struct HabitRowView: View {
     @ObservedObject var dataStore: HabitDataStore
     let habit: Habit
@@ -234,10 +244,13 @@ struct HabitRowView: View {
             .tint(.green)
         }
         .padding(.vertical, 4)
-        .onAppear { if pluginManager.isRachasEnabled { calcularRacha() } }
-    }
-    
-    private func calcularRacha() {
-        rachaActual = RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances)
+        .onAppear {
+            if pluginManager.isRachasEnabled {
+                // Pequeña protección por si RachaCalculator falla
+                if let racha = try? RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances) {
+                    rachaActual = racha
+                }
+            }
+        }
     }
 }
