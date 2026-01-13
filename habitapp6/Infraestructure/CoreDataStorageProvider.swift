@@ -123,7 +123,6 @@ class CoreDataStorageProvider: StorageProvider {
             entity.activo = habit.activo
         }
         
-        try context.save()
     }
     
     func loadInstances() async throws -> [HabitInstance] {
@@ -153,6 +152,12 @@ class CoreDataStorageProvider: StorageProvider {
             entity.completado = instance.completado
         }
         
-        try context.save()
+    }
+    
+    func persistChanges() throws{
+        let context = container.viewContext
+        if context.hasChanges {
+            try context.save()
+        }
     }
 }

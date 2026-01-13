@@ -13,6 +13,7 @@ class HabitsViewModel: ObservableObject {
             dataStore.habits[index].activo.toggle()
             Task {
                 await dataStore.saveData()
+
             }
         }
     }
@@ -22,6 +23,7 @@ class HabitsViewModel: ObservableObject {
         dataStore.instances.removeAll { $0.habitID == habit.id }
         Task {
             await dataStore.saveData()
+
         }
     }
 }

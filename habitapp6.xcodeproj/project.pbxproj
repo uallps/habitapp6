@@ -3,127 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F50254B82F158EB700E97DE1 /* TimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50254B72F158EB700E97DE1 /* TimeProvider.swift */; };
-		F50254BA2F158ED000E97DE1 /* DemoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50254B92F158ED000E97DE1 /* DemoControlView.swift */; };
-		351E2CE62F156C260010A3B5 /* NotaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDD2F156C260010A3B5 /* NotaViewModel.swift */; };
-		351E2CE72F156C260010A3B5 /* Nota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CD92F156C260010A3B5 /* Nota.swift */; };
-		351E2CE82F156C260010A3B5 /* NotaStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDB2F156C260010A3B5 /* NotaStorage.swift */; };
-		351E2CE92F156C260010A3B5 /* NotaEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE12F156C260010A3B5 /* NotaEditorView.swift */; };
-		351E2CEA2F156C260010A3B5 /* NotasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE32F156C260010A3B5 /* NotasPlugin.swift */; };
-		351E2CEB2F156C260010A3B5 /* NotaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */; };
-		351E2CEC2F156C260010A3B5 /* NotaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE02F156C260010A3B5 /* NotaDetailView.swift */; };
-		351E2CED2F156C260010A3B5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 351E2CE42F156C260010A3B5 /* README.md */; };
-		351E2CEF2F15713B0010A3B5 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */; };
-		35C3A9D42F169232000EAC4F /* Racha.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B632F0EE54200DB3F06 /* Racha.swift */; };
-		35C3A9D52F169232000EAC4F /* Frecuencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14B2F089C1300C5074E /* Frecuencia.swift */; };
-		35C3A9D62F169232000EAC4F /* DemoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BD4F12F157C3600A00597 /* DemoControlView.swift */; };
-		35C3A9D72F169232000EAC4F /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1552F08A06600C5074E /* StorageProvider.swift */; };
-		35C3A9D82F169232000EAC4F /* RecordatoriosPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B772F0EEC2700DB3F06 /* RecordatoriosPlugin.swift */; };
-		35C3A9D92F169232000EAC4F /* HabitDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237852F0969F100F6DB8B /* HabitDataStore.swift */; };
-		35C3A9DA2F169232000EAC4F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */; };
-		35C3A9DB2F169232000EAC4F /* RecordatorioBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4C2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift */; };
-		35C3A9DC2F169232000EAC4F /* RecordatorioConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4D2F0EDC3100DB3F06 /* RecordatorioConfigView.swift */; };
-		35C3A9DD2F169232000EAC4F /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377F2F09678B00F6DB8B /* TodayView.swift */; };
-		35C3A9DE2F169232000EAC4F /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B922F0F2CF600DB3F06 /* Categoria.swift */; };
-		35C3A9DF2F169232000EAC4F /* CategoriasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */; };
-		35C3A9E02F169232000EAC4F /* RachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B672F0EE5D900DB3F06 /* RachaViewModel.swift */; };
-		35C3A9E12F169232000EAC4F /* RecordatorioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */; };
-		35C3A9E22F169232000EAC4F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B462F0EDBCE00DB3F06 /* NotificationService.swift */; };
-		35C3A9E32F169232000EAC4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377D2F09675400F6DB8B /* ContentView.swift */; };
-		35C3A9E42F169232000EAC4F /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B8A2F0EF03600DB3F06 /* PluginManager.swift */; };
-		35C3A9E52F169232000EAC4F /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
-		35C3A9E62F169232000EAC4F /* PluginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B842F0EEFDA00DB3F06 /* PluginProtocols.swift */; };
-		35C3A9E72F169232000EAC4F /* RachaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B6B2F0EE5E700DB3F06 /* RachaBadgeView.swift */; };
-		35C3A9E82F169232000EAC4F /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
-		35C3A9E92F169232000EAC4F /* HabitInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15B2F08A66E00C5074E /* HabitInstance.swift */; };
-		35C3A9EA2F169232000EAC4F /* RachasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B792F0EEC4000DB3F06 /* RachasPlugin.swift */; };
-		35C3A9EB2F169232000EAC4F /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F510C11B2F08953600C5074E /* habitapp6.xcdatamodeld */; };
-		35C3A9EC2F169232000EAC4F /* JSONStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1572F08A10600C5074E /* JSONStorageProvider.swift */; };
-		35C3A9ED2F169232000EAC4F /* CreateHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */; };
-		35C3A9EE2F169232000EAC4F /* CategoriaPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B942F0F2D0B00DB3F06 /* CategoriaPickerView.swift */; };
-		35C3A9EF2F169232000EAC4F /* RachaCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B652F0EE5B200DB3F06 /* RachaCalculator.swift */; };
-		35C3A9F02F169232000EAC4F /* CategoriaFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */; };
-		35C3A9F12F169232000EAC4F /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7F2F0EECC400DB3F06 /* HabitDetailView.swift */; };
-		35C3A9F22F169232000EAC4F /* CategoriaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */; };
-		35C3A9F32F169232000EAC4F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B732F0EEBC000DB3F06 /* AppConfig.swift */; };
-		35C3A9F42F169232000EAC4F /* TimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BD4EF2F157B3F00A00597 /* TimeProvider.swift */; };
-		35C3A9F52F169232000EAC4F /* CreateHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237812F0967D600F6DB8B /* CreateHabitView.swift */; };
-		35C3A9F62F169232000EAC4F /* CoreDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */; };
-		35C3A9F72F169232000EAC4F /* RecordatorioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B482F0EDC0600DB3F06 /* RecordatorioViewModel.swift */; };
-		35C3A9F82F169232000EAC4F /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B5A2F0EDD8200DB3F06 /* Habit.swift */; };
-		35C3A9F92F169232000EAC4F /* RachaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B692F0EE5E100DB3F06 /* RachaDetailView.swift */; };
-		35C3A9FA2F169232000EAC4F /* HabitsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7E2F0EECC400DB3F06 /* HabitsListView.swift */; };
-		35C3A9FB2F169232000EAC4F /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
-		35C3A9FC2F169232000EAC4F /* NotaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDD2F156C260010A3B5 /* NotaViewModel.swift */; };
-		35C3A9FD2F169232000EAC4F /* Nota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CD92F156C260010A3B5 /* Nota.swift */; };
-		35C3A9FE2F169232000EAC4F /* NotaStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDB2F156C260010A3B5 /* NotaStorage.swift */; };
-		35C3A9FF2F169232000EAC4F /* NotaEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE12F156C260010A3B5 /* NotaEditorView.swift */; };
-		35C3AA002F169232000EAC4F /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */; };
-		35C3AA012F169232000EAC4F /* NotasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE32F156C260010A3B5 /* NotasPlugin.swift */; };
-		35C3AA022F169232000EAC4F /* NotaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */; };
-		35C3AA032F169232000EAC4F /* NotaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE02F156C260010A3B5 /* NotaDetailView.swift */; };
-		35C3AA042F169232000EAC4F /* habitapp6App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1102F08953300C5074E /* habitapp6App.swift */; };
-		35C3AA072F169232000EAC4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1172F08953600C5074E /* Preview Assets.xcassets */; };
-		35C3AA082F169232000EAC4F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F510C13F2F08969800C5074E /* .gitignore */; };
-		35C3AA092F169232000EAC4F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 351E2CE42F156C260010A3B5 /* README.md */; };
-		35C3AA0A2F169232000EAC4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1142F08953600C5074E /* Assets.xcassets */; };
-		35C3AA112F169828000EAC4F /* Racha.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B632F0EE54200DB3F06 /* Racha.swift */; };
-		35C3AA122F169828000EAC4F /* Frecuencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14B2F089C1300C5074E /* Frecuencia.swift */; };
-		35C3AA132F169828000EAC4F /* DemoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BD4F12F157C3600A00597 /* DemoControlView.swift */; };
-		35C3AA142F169828000EAC4F /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1552F08A06600C5074E /* StorageProvider.swift */; };
-		35C3AA152F169828000EAC4F /* RecordatoriosPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B772F0EEC2700DB3F06 /* RecordatoriosPlugin.swift */; };
-		35C3AA162F169828000EAC4F /* HabitDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237852F0969F100F6DB8B /* HabitDataStore.swift */; };
-		35C3AA172F169828000EAC4F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7C2F0EEC6F00DB3F06 /* SettingsView.swift */; };
-		35C3AA182F169828000EAC4F /* RecordatorioBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4C2F0EDC3100DB3F06 /* RecordatorioBadgeView.swift */; };
-		35C3AA192F169828000EAC4F /* RecordatorioConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4D2F0EDC3100DB3F06 /* RecordatorioConfigView.swift */; };
-		35C3AA1A2F169828000EAC4F /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377F2F09678B00F6DB8B /* TodayView.swift */; };
-		35C3AA1B2F169828000EAC4F /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B922F0F2CF600DB3F06 /* Categoria.swift */; };
-		35C3AA1C2F169828000EAC4F /* CategoriasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B9A2F0F2D1E00DB3F06 /* CategoriasPlugin.swift */; };
-		35C3AA1D2F169828000EAC4F /* RachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B672F0EE5D900DB3F06 /* RachaViewModel.swift */; };
-		35C3AA1E2F169828000EAC4F /* RecordatorioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */; };
-		35C3AA1F2F169828000EAC4F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B462F0EDBCE00DB3F06 /* NotificationService.swift */; };
-		35C3AA202F169828000EAC4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377D2F09675400F6DB8B /* ContentView.swift */; };
-		35C3AA212F169828000EAC4F /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B8A2F0EF03600DB3F06 /* PluginManager.swift */; };
-		35C3AA222F169828000EAC4F /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237752F09668500F6DB8B /* HabitsViewModel.swift */; };
-		35C3AA232F169828000EAC4F /* PluginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B842F0EEFDA00DB3F06 /* PluginProtocols.swift */; };
-		35C3AA242F169828000EAC4F /* RachaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B6B2F0EE5E700DB3F06 /* RachaBadgeView.swift */; };
-		35C3AA252F169828000EAC4F /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237772F0966BC00F6DB8B /* TodayViewModel.swift */; };
-		35C3AA262F169828000EAC4F /* HabitInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15B2F08A66E00C5074E /* HabitInstance.swift */; };
-		35C3AA272F169828000EAC4F /* RachasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B792F0EEC4000DB3F06 /* RachasPlugin.swift */; };
-		35C3AA282F169828000EAC4F /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F510C11B2F08953600C5074E /* habitapp6.xcdatamodeld */; };
-		35C3AA292F169828000EAC4F /* JSONStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1572F08A10600C5074E /* JSONStorageProvider.swift */; };
-		35C3AA2A2F169828000EAC4F /* CreateHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F582377B2F09672200F6DB8B /* CreateHabitViewModel.swift */; };
-		35C3AA2B2F169828000EAC4F /* CategoriaPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B942F0F2D0B00DB3F06 /* CategoriaPickerView.swift */; };
-		35C3AA2C2F169828000EAC4F /* RachaCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B652F0EE5B200DB3F06 /* RachaCalculator.swift */; };
-		35C3AA2D2F169828000EAC4F /* CategoriaFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B962F0F2D0C00DB3F06 /* CategoriaFilterView.swift */; };
-		35C3AA2E2F169828000EAC4F /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7F2F0EECC400DB3F06 /* HabitDetailView.swift */; };
-		35C3AA2F2F169828000EAC4F /* CategoriaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B952F0F2D0C00DB3F06 /* CategoriaBadgeView.swift */; };
-		35C3AA302F169828000EAC4F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B732F0EEBC000DB3F06 /* AppConfig.swift */; };
-		35C3AA312F169828000EAC4F /* TimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57BD4EF2F157B3F00A00597 /* TimeProvider.swift */; };
-		35C3AA322F169828000EAC4F /* CreateHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237812F0967D600F6DB8B /* CreateHabitView.swift */; };
-		35C3AA332F169828000EAC4F /* CoreDataStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */; };
-		35C3AA342F169828000EAC4F /* RecordatorioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B482F0EDC0600DB3F06 /* RecordatorioViewModel.swift */; };
-		35C3AA352F169828000EAC4F /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B5A2F0EDD8200DB3F06 /* Habit.swift */; };
-		35C3AA362F169828000EAC4F /* RachaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B692F0EE5E100DB3F06 /* RachaDetailView.swift */; };
-		35C3AA372F169828000EAC4F /* HabitsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B7E2F0EECC400DB3F06 /* HabitsListView.swift */; };
-		35C3AA382F169828000EAC4F /* HabitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58237792F0966FC00F6DB8B /* HabitDetailViewModel.swift */; };
-		35C3AA392F169828000EAC4F /* NotaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDD2F156C260010A3B5 /* NotaViewModel.swift */; };
-		35C3AA3A2F169828000EAC4F /* Nota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CD92F156C260010A3B5 /* Nota.swift */; };
-		35C3AA3B2F169828000EAC4F /* NotaStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDB2F156C260010A3B5 /* NotaStorage.swift */; };
-		35C3AA3C2F169828000EAC4F /* NotaEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE12F156C260010A3B5 /* NotaEditorView.swift */; };
-		35C3AA3D2F169828000EAC4F /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */; };
-		35C3AA3E2F169828000EAC4F /* NotasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE32F156C260010A3B5 /* NotasPlugin.swift */; };
-		35C3AA3F2F169828000EAC4F /* NotaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */; };
-		35C3AA402F169828000EAC4F /* NotaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE02F156C260010A3B5 /* NotaDetailView.swift */; };
-		35C3AA412F169828000EAC4F /* habitapp6App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1102F08953300C5074E /* habitapp6App.swift */; };
-		35C3AA442F169828000EAC4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1172F08953600C5074E /* Preview Assets.xcassets */; };
-		35C3AA452F169828000EAC4F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F510C13F2F08969800C5074E /* .gitignore */; };
-		35C3AA462F169828000EAC4F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 351E2CE42F156C260010A3B5 /* README.md */; };
-		35C3AA472F169828000EAC4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1142F08953600C5074E /* Assets.xcassets */; };
+		3A8BBA592F1428C000F5338B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BBA582F1428C000F5338B /* WidgetKit.framework */; };
+		3A8BBA5B2F1428C000F5338B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BBA5A2F1428C000F5338B /* SwiftUI.framework */; };
+		3A8BBA6A2F1428C200F5338B /* HabitWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3A8BBA562F1428C000F5338B /* HabitWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3A8BBA702F1428E700F5338B /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B5A2F0EDD8200DB3F06 /* Habit.swift */; };
+		3A8BBA712F1428EC00F5338B /* Frecuencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C14B2F089C1300C5074E /* Frecuencia.swift */; };
+		3A8BBA722F1428F000F5338B /* HabitInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C15B2F08A66E00C5074E /* HabitInstance.swift */; };
+		3A8BBA732F14290300F5338B /* RecordatorioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B4A2F0EDC1D00DB3F06 /* RecordatorioManager.swift */; };
+		3A8BBA742F14291500F5338B /* RachaCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B652F0EE5B200DB3F06 /* RachaCalculator.swift */; };
+		3A8BBA752F14291A00F5338B /* Racha.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5225B632F0EE54200DB3F06 /* Racha.swift */; };
+		3A8BBA762F14292A00F5338B /* WidgetDataExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBA472F14283700F5338B /* WidgetDataExporter.swift */; };
+		3A8BBA782F14293700F5338B /* JSONStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1572F08A10600C5074E /* JSONStorageProvider.swift */; };
+		3A8BBA792F14293B00F5338B /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1552F08A06600C5074E /* StorageProvider.swift */; };
+		3A8BBA7F2F14295100F5338B /* HabitWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBA7C2F14295100F5338B /* HabitWidgetEntry.swift */; };
+		3A8BBA802F14295100F5338B /* HabitWidgetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBA7B2F14295100F5338B /* HabitWidgetDataSource.swift */; };
+		3A8BBA812F14295100F5338B /* HabitWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBA7D2F14295100F5338B /* HabitWidgetViews.swift */; };
+		3A8BBA822F14295100F5338B /* HabitWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBA7A2F14295100F5338B /* HabitWidget.swift */; };
+		3A8BBA992F142FE300F5338B /* WidgetDataExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBA472F14283700F5338B /* WidgetDataExporter.swift */; };
+		3A8BBA9A2F143F4200F5338B /* WidgetDebugHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBA452F14281F00F5338B /* WidgetDebugHelper.swift */; };
 		F510C1112F08953300C5074E /* habitapp6App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F510C1102F08953300C5074E /* habitapp6App.swift */; };
 		F510C1152F08953600C5074E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1142F08953600C5074E /* Assets.xcassets */; };
 		F510C1182F08953600C5074E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F510C1172F08953600C5074E /* Preview Assets.xcassets */; };
@@ -183,6 +84,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3A8BBA682F1428C200F5338B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F510C1052F08953200C5074E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A8BBA552F1428C000F5338B;
+			remoteInfo = HabitWidgetExtension;
+		};
 		F510C1232F08953700C5074E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F510C1052F08953200C5074E /* Project object */;
@@ -199,9 +107,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3A8BBA6F2F1428C200F5338B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3A8BBA6A2F1428C200F5338B /* HabitWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		F50254B72F158EB700E97DE1 /* TimeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeProvider.swift; sourceTree = "<group>"; };
-		F50254B92F158ED000E97DE1 /* DemoControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoControlView.swift; sourceTree = "<group>"; };
+		3A8BBA452F14281F00F5338B /* WidgetDebugHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDebugHelper.swift; sourceTree = "<group>"; };
+		3A8BBA472F14283700F5338B /* WidgetDataExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataExporter.swift; sourceTree = "<group>"; };
+		3A8BBA562F1428C000F5338B /* HabitWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HabitWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8BBA582F1428C000F5338B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3A8BBA5A2F1428C000F5338B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3A8BBA7A2F14295100F5338B /* HabitWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWidget.swift; sourceTree = "<group>"; };
+		3A8BBA7B2F14295100F5338B /* HabitWidgetDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWidgetDataSource.swift; sourceTree = "<group>"; };
+		3A8BBA7C2F14295100F5338B /* HabitWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWidgetEntry.swift; sourceTree = "<group>"; };
+		3A8BBA7D2F14295100F5338B /* HabitWidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWidgetViews.swift; sourceTree = "<group>"; };
+		3A8BBA9D2F1481B000F5338B /* habitapp6.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = habitapp6.entitlements; sourceTree = "<group>"; };
 		F510C10D2F08953300C5074E /* habitapp6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitapp6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		351E2CD92F156C260010A3B5 /* Nota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nota.swift; sourceTree = "<group>"; };
 		351E2CDB2F156C260010A3B5 /* NotaStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaStorage.swift; sourceTree = "<group>"; };
@@ -275,18 +205,27 @@
 		F5EDA8572F10277D0078AE96 /* Meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		35C3AA052F169232000EAC4F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3A8BBA6B2F1428C200F5338B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			target = 3A8BBA552F1428C000F5338B /* HabitWidgetExtension */;
 		};
-		35C3AA422F169828000EAC4F /* Frameworks */ = {
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3A8BBA5C2F1428C000F5338B /* HabitWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (3A8BBA6B2F1428C200F5338B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = HabitWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A8BBA532F1428C000F5338B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8BBA5B2F1428C000F5338B /* SwiftUI.framework in Frameworks */,
+				3A8BBA592F1428C000F5338B /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,52 +253,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		351E2CDA2F156C260010A3B5 /* Models */ = {
+		3A8BBA572F1428C000F5338B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				351E2CD92F156C260010A3B5 /* Nota.swift */,
+				3A8BBA582F1428C000F5338B /* WidgetKit.framework */,
+				3A8BBA5A2F1428C000F5338B /* SwiftUI.framework */,
 			);
-			path = Models;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		351E2CDC2F156C260010A3B5 /* Services */ = {
+		3A8BBA7E2F14295100F5338B /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				351E2CDB2F156C260010A3B5 /* NotaStorage.swift */,
+				3A8BBA7A2F14295100F5338B /* HabitWidget.swift */,
+				3A8BBA7B2F14295100F5338B /* HabitWidgetDataSource.swift */,
+				3A8BBA7C2F14295100F5338B /* HabitWidgetEntry.swift */,
+				3A8BBA7D2F14295100F5338B /* HabitWidgetViews.swift */,
 			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		351E2CDE2F156C260010A3B5 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				351E2CDD2F156C260010A3B5 /* NotaViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		351E2CE22F156C260010A3B5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */,
-				351E2CE02F156C260010A3B5 /* NotaDetailView.swift */,
-				351E2CE12F156C260010A3B5 /* NotaEditorView.swift */,
-				351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		351E2CE52F156C260010A3B5 /* Notas */ = {
-			isa = PBXGroup;
-			children = (
-				351E2CDA2F156C260010A3B5 /* Models */,
-				351E2CDC2F156C260010A3B5 /* Services */,
-				351E2CDE2F156C260010A3B5 /* ViewModels */,
-				351E2CE22F156C260010A3B5 /* Views */,
-				351E2CE32F156C260010A3B5 /* NotasPlugin.swift */,
-				351E2CE42F156C260010A3B5 /* README.md */,
-			);
-			path = Notas;
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		F510C1042F08953200C5074E = {
@@ -369,6 +280,8 @@
 				F510C10F2F08953300C5074E /* habitapp6 */,
 				F510C1252F08953700C5074E /* habitapp6Tests */,
 				F510C12F2F08953700C5074E /* habitapp6UITests */,
+				3A8BBA5C2F1428C000F5338B /* HabitWidget */,
+				3A8BBA572F1428C000F5338B /* Frameworks */,
 				F510C10E2F08953300C5074E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -379,8 +292,7 @@
 				F510C10D2F08953300C5074E /* Habit App.app */,
 				F510C1222F08953700C5074E /* habitapp6Tests.xctest */,
 				F510C12C2F08953700C5074E /* habitapp6UITests.xctest */,
-				35C3AA0E2F169232000EAC4F /* HabitApp Pro.app */,
-				35C3AA4B2F169828000EAC4F /* HabitApp Dev.app */,
+				3A8BBA562F1428C000F5338B /* HabitWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -388,6 +300,7 @@
 		F510C10F2F08953300C5074E /* habitapp6 */ = {
 			isa = PBXGroup;
 			children = (
+				3A8BBA9D2F1481B000F5338B /* habitapp6.entitlements */,
 				F510C14A2F089A7E00C5074E /* Utils */,
 				F510C1492F089A5400C5074E /* Infraestructure */,
 				F510C1482F089A3600C5074E /* Features */,
@@ -481,8 +394,7 @@
 		F510C1482F089A3600C5074E /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				F5EDA8222F1025B60078AE96 /* Metas */,
-				351E2CE52F156C260010A3B5 /* Notas */,
+				3A8BBA7E2F14295100F5338B /* Widget */,
 				F5225B8E2F0F2CB800DB3F06 /* Categorias */,
 				F5225B7B2F0EEC6400DB3F06 /* Settings */,
 				F5225B5E2F0EE4A400DB3F06 /* Rachas */,
@@ -500,6 +412,8 @@
 				F510C1572F08A10600C5074E /* JSONStorageProvider.swift */,
 				F58237832F0968C000F6DB8B /* CoreDataStorageProvider.swift */,
 				F58237852F0969F100F6DB8B /* HabitDataStore.swift */,
+				3A8BBA472F14283700F5338B /* WidgetDataExporter.swift */,
+				3A8BBA452F14281F00F5338B /* WidgetDebugHelper.swift */,
 			);
 			path = Infraestructure;
 			sourceTree = "<group>";
@@ -706,7 +620,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		35C3A9D22F169232000EAC4F /* HabitApp-Premium */ = {
+		3A8BBA552F1428C000F5338B /* HabitWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A8BBA6C2F1428C200F5338B /* Build configuration list for PBXNativeTarget "HabitWidgetExtension" */;
+			buildPhases = (
+				3A8BBA522F1428C000F5338B /* Sources */,
+				3A8BBA532F1428C000F5338B /* Frameworks */,
+				3A8BBA542F1428C000F5338B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3A8BBA5C2F1428C000F5338B /* HabitWidget */,
+			);
+			name = HabitWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HabitWidgetExtension;
+			productReference = 3A8BBA562F1428C000F5338B /* HabitWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		F510C10C2F08953300C5074E /* habitapp6 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35C3AA0B2F169232000EAC4F /* Build configuration list for PBXNativeTarget "HabitApp-Premium" */;
 			buildPhases = (
@@ -747,10 +683,12 @@
 				F510C1092F08953300C5074E /* Sources */,
 				F510C10A2F08953300C5074E /* Frameworks */,
 				F510C10B2F08953300C5074E /* Resources */,
+				3A8BBA6F2F1428C200F5338B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3A8BBA692F1428C200F5338B /* PBXTargetDependency */,
 			);
 			name = HabitApp;
 			productName = habitapp6;
@@ -800,9 +738,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					3A8BBA552F1428C000F5338B = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
 					F510C10C2F08953300C5074E = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -832,32 +773,16 @@
 				F510C10C2F08953300C5074E /* HabitApp */,
 				F510C1212F08953700C5074E /* habitapp6Tests */,
 				F510C12B2F08953700C5074E /* habitapp6UITests */,
-				35C3A9D22F169232000EAC4F /* HabitApp-Premium */,
-				35C3AA0F2F169828000EAC4F /* HabitApp-Develop */,
+				3A8BBA552F1428C000F5338B /* HabitWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		35C3AA062F169232000EAC4F /* Resources */ = {
+		3A8BBA542F1428C000F5338B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35C3AA072F169232000EAC4F /* Preview Assets.xcassets in Resources */,
-				35C3AA082F169232000EAC4F /* .gitignore in Resources */,
-				35C3AA092F169232000EAC4F /* README.md in Resources */,
-				35C3AA0A2F169232000EAC4F /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35C3AA432F169828000EAC4F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35C3AA442F169828000EAC4F /* Preview Assets.xcassets in Resources */,
-				35C3AA452F169828000EAC4F /* .gitignore in Resources */,
-				35C3AA462F169828000EAC4F /* README.md in Resources */,
-				35C3AA472F169828000EAC4F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,115 +815,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		35C3A9D32F169232000EAC4F /* Sources */ = {
+		3A8BBA522F1428C000F5338B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35C3A9D42F169232000EAC4F /* Racha.swift in Sources */,
-				35C3A9D52F169232000EAC4F /* Frecuencia.swift in Sources */,
-				35C3A9D62F169232000EAC4F /* DemoControlView.swift in Sources */,
-				35C3A9D72F169232000EAC4F /* StorageProvider.swift in Sources */,
-				35C3A9D82F169232000EAC4F /* RecordatoriosPlugin.swift in Sources */,
-				35C3A9D92F169232000EAC4F /* HabitDataStore.swift in Sources */,
-				35C3A9DA2F169232000EAC4F /* SettingsView.swift in Sources */,
-				35C3A9DB2F169232000EAC4F /* RecordatorioBadgeView.swift in Sources */,
-				35C3A9DC2F169232000EAC4F /* RecordatorioConfigView.swift in Sources */,
-				35C3A9DD2F169232000EAC4F /* TodayView.swift in Sources */,
-				35C3A9DE2F169232000EAC4F /* Categoria.swift in Sources */,
-				35C3A9DF2F169232000EAC4F /* CategoriasPlugin.swift in Sources */,
-				35C3A9E02F169232000EAC4F /* RachaViewModel.swift in Sources */,
-				35C3A9E12F169232000EAC4F /* RecordatorioManager.swift in Sources */,
-				35C3A9E22F169232000EAC4F /* NotificationService.swift in Sources */,
-				35C3A9E32F169232000EAC4F /* ContentView.swift in Sources */,
-				35C3A9E42F169232000EAC4F /* PluginManager.swift in Sources */,
-				35C3A9E52F169232000EAC4F /* HabitsViewModel.swift in Sources */,
-				35C3A9E62F169232000EAC4F /* PluginProtocols.swift in Sources */,
-				35C3A9E72F169232000EAC4F /* RachaBadgeView.swift in Sources */,
-				35C3A9E82F169232000EAC4F /* TodayViewModel.swift in Sources */,
-				35C3A9E92F169232000EAC4F /* HabitInstance.swift in Sources */,
-				35C3A9EA2F169232000EAC4F /* RachasPlugin.swift in Sources */,
-				35C3A9EB2F169232000EAC4F /* habitapp6.xcdatamodeld in Sources */,
-				35C3A9EC2F169232000EAC4F /* JSONStorageProvider.swift in Sources */,
-				35C3A9ED2F169232000EAC4F /* CreateHabitViewModel.swift in Sources */,
-				35C3A9EE2F169232000EAC4F /* CategoriaPickerView.swift in Sources */,
-				35C3A9EF2F169232000EAC4F /* RachaCalculator.swift in Sources */,
-				35C3A9F02F169232000EAC4F /* CategoriaFilterView.swift in Sources */,
-				35C3A9F12F169232000EAC4F /* HabitDetailView.swift in Sources */,
-				35C3A9F22F169232000EAC4F /* CategoriaBadgeView.swift in Sources */,
-				35C3A9F32F169232000EAC4F /* AppConfig.swift in Sources */,
-				35C3A9F42F169232000EAC4F /* TimeProvider.swift in Sources */,
-				35C3A9F52F169232000EAC4F /* CreateHabitView.swift in Sources */,
-				35C3A9F62F169232000EAC4F /* CoreDataStorageProvider.swift in Sources */,
-				35C3A9F72F169232000EAC4F /* RecordatorioViewModel.swift in Sources */,
-				35C3A9F82F169232000EAC4F /* Habit.swift in Sources */,
-				35C3A9F92F169232000EAC4F /* RachaDetailView.swift in Sources */,
-				35C3A9FA2F169232000EAC4F /* HabitsListView.swift in Sources */,
-				35C3A9FB2F169232000EAC4F /* HabitDetailViewModel.swift in Sources */,
-				35C3A9FC2F169232000EAC4F /* NotaViewModel.swift in Sources */,
-				35C3A9FD2F169232000EAC4F /* Nota.swift in Sources */,
-				35C3A9FE2F169232000EAC4F /* NotaStorage.swift in Sources */,
-				35C3A9FF2F169232000EAC4F /* NotaEditorView.swift in Sources */,
-				35C3AA002F169232000EAC4F /* FlowLayout.swift in Sources */,
-				35C3AA012F169232000EAC4F /* NotasPlugin.swift in Sources */,
-				35C3AA022F169232000EAC4F /* NotaBadgeView.swift in Sources */,
-				35C3AA032F169232000EAC4F /* NotaDetailView.swift in Sources */,
-				35C3AA042F169232000EAC4F /* habitapp6App.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35C3AA102F169828000EAC4F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35C3AA112F169828000EAC4F /* Racha.swift in Sources */,
-				35C3AA122F169828000EAC4F /* Frecuencia.swift in Sources */,
-				35C3AA132F169828000EAC4F /* DemoControlView.swift in Sources */,
-				35C3AA142F169828000EAC4F /* StorageProvider.swift in Sources */,
-				35C3AA152F169828000EAC4F /* RecordatoriosPlugin.swift in Sources */,
-				35C3AA162F169828000EAC4F /* HabitDataStore.swift in Sources */,
-				35C3AA172F169828000EAC4F /* SettingsView.swift in Sources */,
-				35C3AA182F169828000EAC4F /* RecordatorioBadgeView.swift in Sources */,
-				35C3AA192F169828000EAC4F /* RecordatorioConfigView.swift in Sources */,
-				35C3AA1A2F169828000EAC4F /* TodayView.swift in Sources */,
-				35C3AA1B2F169828000EAC4F /* Categoria.swift in Sources */,
-				35C3AA1C2F169828000EAC4F /* CategoriasPlugin.swift in Sources */,
-				35C3AA1D2F169828000EAC4F /* RachaViewModel.swift in Sources */,
-				35C3AA1E2F169828000EAC4F /* RecordatorioManager.swift in Sources */,
-				35C3AA1F2F169828000EAC4F /* NotificationService.swift in Sources */,
-				35C3AA202F169828000EAC4F /* ContentView.swift in Sources */,
-				35C3AA212F169828000EAC4F /* PluginManager.swift in Sources */,
-				35C3AA222F169828000EAC4F /* HabitsViewModel.swift in Sources */,
-				35C3AA232F169828000EAC4F /* PluginProtocols.swift in Sources */,
-				35C3AA242F169828000EAC4F /* RachaBadgeView.swift in Sources */,
-				35C3AA252F169828000EAC4F /* TodayViewModel.swift in Sources */,
-				35C3AA262F169828000EAC4F /* HabitInstance.swift in Sources */,
-				35C3AA272F169828000EAC4F /* RachasPlugin.swift in Sources */,
-				35C3AA282F169828000EAC4F /* habitapp6.xcdatamodeld in Sources */,
-				35C3AA292F169828000EAC4F /* JSONStorageProvider.swift in Sources */,
-				35C3AA2A2F169828000EAC4F /* CreateHabitViewModel.swift in Sources */,
-				35C3AA2B2F169828000EAC4F /* CategoriaPickerView.swift in Sources */,
-				35C3AA2C2F169828000EAC4F /* RachaCalculator.swift in Sources */,
-				35C3AA2D2F169828000EAC4F /* CategoriaFilterView.swift in Sources */,
-				35C3AA2E2F169828000EAC4F /* HabitDetailView.swift in Sources */,
-				35C3AA2F2F169828000EAC4F /* CategoriaBadgeView.swift in Sources */,
-				35C3AA302F169828000EAC4F /* AppConfig.swift in Sources */,
-				35C3AA312F169828000EAC4F /* TimeProvider.swift in Sources */,
-				35C3AA322F169828000EAC4F /* CreateHabitView.swift in Sources */,
-				35C3AA332F169828000EAC4F /* CoreDataStorageProvider.swift in Sources */,
-				35C3AA342F169828000EAC4F /* RecordatorioViewModel.swift in Sources */,
-				35C3AA352F169828000EAC4F /* Habit.swift in Sources */,
-				35C3AA362F169828000EAC4F /* RachaDetailView.swift in Sources */,
-				35C3AA372F169828000EAC4F /* HabitsListView.swift in Sources */,
-				35C3AA382F169828000EAC4F /* HabitDetailViewModel.swift in Sources */,
-				35C3AA392F169828000EAC4F /* NotaViewModel.swift in Sources */,
-				35C3AA3A2F169828000EAC4F /* Nota.swift in Sources */,
-				35C3AA3B2F169828000EAC4F /* NotaStorage.swift in Sources */,
-				35C3AA3C2F169828000EAC4F /* NotaEditorView.swift in Sources */,
-				35C3AA3D2F169828000EAC4F /* FlowLayout.swift in Sources */,
-				35C3AA3E2F169828000EAC4F /* NotasPlugin.swift in Sources */,
-				35C3AA3F2F169828000EAC4F /* NotaBadgeView.swift in Sources */,
-				35C3AA402F169828000EAC4F /* NotaDetailView.swift in Sources */,
-				35C3AA412F169828000EAC4F /* habitapp6App.swift in Sources */,
+				3A8BBA712F1428EC00F5338B /* Frecuencia.swift in Sources */,
+				3A8BBA7F2F14295100F5338B /* HabitWidgetEntry.swift in Sources */,
+				3A8BBA802F14295100F5338B /* HabitWidgetDataSource.swift in Sources */,
+				3A8BBA812F14295100F5338B /* HabitWidgetViews.swift in Sources */,
+				3A8BBA822F14295100F5338B /* HabitWidget.swift in Sources */,
+				3A8BBA742F14291500F5338B /* RachaCalculator.swift in Sources */,
+				3A8BBA782F14293700F5338B /* JSONStorageProvider.swift in Sources */,
+				3A8BBA702F1428E700F5338B /* Habit.swift in Sources */,
+				3A8BBA792F14293B00F5338B /* StorageProvider.swift in Sources */,
+				3A8BBA752F14291A00F5338B /* Racha.swift in Sources */,
+				3A8BBA732F14290300F5338B /* RecordatorioManager.swift in Sources */,
+				3A8BBA762F14292A00F5338B /* WidgetDataExporter.swift in Sources */,
+				3A8BBA722F1428F000F5338B /* HabitInstance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +842,8 @@
 				F5EDA84F2F1026F00078AE96 /* Habit.swift in Sources */,
 				F5EDA8332F1026650078AE96 /* MetaDetailView.swift in Sources */,
 				F5225B642F0EE54200DB3F06 /* Racha.swift in Sources */,
+				F510C14C2F089C1300C5074E /* Frecuencia.swift in Sources */,
+				3A8BBA992F142FE300F5338B /* WidgetDataExporter.swift in Sources */,
 				F510C1562F08A06600C5074E /* StorageProvider.swift in Sources */,
 				F5225B782F0EEC2700DB3F06 /* RecordatoriosPlugin.swift in Sources */,
 				F5EDA84A2F1026DD0078AE96 /* HabitDetailViewModel.swift in Sources */,
@@ -1052,10 +887,7 @@
 				F58237842F0968C000F6DB8B /* CoreDataStorageProvider.swift in Sources */,
 				F5225B492F0EDC0600DB3F06 /* RecordatorioViewModel.swift in Sources */,
 				F5225B6A2F0EE5E100DB3F06 /* RachaDetailView.swift in Sources */,
-				F5EDA8582F10277D0078AE96 /* Meta.swift in Sources */,
-				F5EDA82A2F1026490078AE96 /* MetaDataStore.swift in Sources */,
-				F5EDA8422F1026CD0078AE96 /* TodayView.swift in Sources */,
-				F5EDA8472F1026DD0078AE96 /* TodayViewModel.swift in Sources */,
+				3A8BBA9A2F143F4200F5338B /* WidgetDebugHelper.swift in Sources */,
 				F5225B802F0EECC400DB3F06 /* HabitsListView.swift in Sources */,
 				F582377A2F0966FC00F6DB8B /* HabitDetailViewModel.swift in Sources */,
 				351E2CE62F156C260010A3B5 /* NotaViewModel.swift in Sources */,
@@ -1090,6 +922,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3A8BBA692F1428C200F5338B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A8BBA552F1428C000F5338B /* HabitWidgetExtension */;
+			targetProxy = 3A8BBA682F1428C200F5338B /* PBXContainerItemProxy */;
+		};
 		F510C1242F08953700C5074E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F510C10C2F08953300C5074E /* HabitApp */;
@@ -1103,117 +940,72 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		35C3AA0C2F169232000EAC4F /* Debug */ = {
+		3A8BBA6D2F1428C200F5338B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"habitapp6/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_FILE = HabitWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabitWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
 				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitapp6.habitapp6.premium;
-				PRODUCT_NAME = "HabitApp Pro";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "PREMIUM DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitapp6.habitapp6.HabitWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		35C3AA0D2F169232000EAC4F /* Release */ = {
+		3A8BBA6E2F1428C200F5338B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"habitapp6/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_FILE = HabitWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabitWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
 				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitapp6.habitapp6.premium;
-				PRODUCT_NAME = "HabitApp Pro";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PREMIUM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.habitapp6.habitapp6.HabitWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		35C3AA492F169828000EAC4F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"habitapp6/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitapp6.habitapp6.develop;
-				PRODUCT_NAME = "HabitApp Dev";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEVELOP DEBUG";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		35C3AA4A2F169828000EAC4F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"habitapp6/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.habitapp6.habitapp6.develop;
-				PRODUCT_NAME = "HabitApp Dev";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEVELOP;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1342,9 +1134,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = habitapp6/habitapp6.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"habitapp6/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1370,9 +1164,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = habitapp6/habitapp6.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"habitapp6/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1468,20 +1264,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		35C3AA0B2F169232000EAC4F /* Build configuration list for PBXNativeTarget "HabitApp-Premium" */ = {
+		3A8BBA6C2F1428C200F5338B /* Build configuration list for PBXNativeTarget "HabitWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				35C3AA0C2F169232000EAC4F /* Debug */,
-				35C3AA0D2F169232000EAC4F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35C3AA482F169828000EAC4F /* Build configuration list for PBXNativeTarget "HabitApp-Develop" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35C3AA492F169828000EAC4F /* Debug */,
-				35C3AA4A2F169828000EAC4F /* Release */,
+				3A8BBA6D2F1428C200F5338B /* Debug */,
+				3A8BBA6E2F1428C200F5338B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
