@@ -14,12 +14,13 @@ struct ContentView: View {
                 .tabItem {
                     Label("Hábitos", systemImage: "list.bullet")
                 }
-            
+            #if DEVELOP
             SettingsView()
                 .environmentObject(dataStore)
                 .tabItem {
                     Label("Ajustes", systemImage: "gearshape.fill")
                 }
+            #endif
         }
     }
 }

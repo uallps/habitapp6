@@ -6,11 +6,12 @@ on:
       - main
       - develop
       - "feature/**"
+      - "feature-**"  # Para tus ramas como feature-metas-raul
   pull_request:
     branches:
       - main
       - develop
-  workflow_dispatch:
+  workflow_dispatch:  # Permite ejecutar manualmente
 
 permissions:
   contents: write
@@ -18,21 +19,20 @@ permissions:
 
 jobs:
   build:
-    name: Build ${{ matrix.scheme }} for ${{ matrix.platform }}
+    name: Build for ${{ matrix.platform }}
     runs-on: macos-latest
-
     strategy:
       matrix:
         platform: [iOS, macOS]
-        scheme: ["HabitApp", "HabitApp Premium"]
         include:
           - platform: iOS
             sdk: iphonesimulator
-            destination: "platform=iOS Simulator,OS=26.0.1,name=iPhone 17"
+            destination: "platform=iOS Simulator,OS=18.0,name=iPhone 16"
             artifact-name: ios-build
           - platform: macOS
             sdk: macosx
             destination: "platform=macOS"
+            artifact-name: macos-build
 
     steps:
       - name: Checkout code
@@ -44,11 +44,15 @@ jobs:
       - name: Show available SDKs
         run: xcodebuild -showsdks
 
+      - name: List available simulators
+        if: matrix.platform == 'iOS'
+        run: xcrun simctl list devices available
+
       - name: Build for ${{ matrix.platform }}
         run: |
           xcodebuild clean build \
             -project habitapp6.xcodeproj \
-            -scheme "${{ matrix.scheme }}" \
+            -scheme "habitapp6" \
             -sdk ${{ matrix.sdk }} \
             -destination '${{ matrix.destination }}' \
             -derivedDataPath ./DerivedData \
@@ -59,15 +63,15 @@ jobs:
       - name: Find and list build products
         if: success()
         run: |
-          echo "=== ${{ matrix.platform }} ${{ matrix.scheme }} Build products ==="
+          echo "=== ${{ matrix.platform }} Build products ==="
           find ./DerivedData -name "*.app" -type d
-          ls -R ./DerivedData/Build/Products/
+          ls -R ./DerivedData/Build/Products/ || echo "No products directory found"
 
       - name: Archive build artifacts
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: build-${{ matrix.platform }}-${{ matrix.scheme }}
+          name: build-${{ matrix.platform }}
           path: ./DerivedData/Build/Products/**/*.app
 
   create-release:
@@ -75,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     if: github.ref == 'refs/heads/main' && needs.build.result == 'success'
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -98,7 +102,7 @@ jobs:
           done
           cd ..
           echo "Generated zip files:"
-          ls -lh ./artifacts/*.zip
+          ls -lh ./artifacts/*.zip || echo "No zip files created"
 
       - name: Get version from commit
         id: version
@@ -135,4 +139,3 @@ jobs:
       - name: Release created
         run: |
           echo "✅ Release ${{ steps.version.outputs.version }} created successfully!"
-

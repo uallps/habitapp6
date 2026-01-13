@@ -33,7 +33,10 @@ class PluginManager: ObservableObject {
     
     /// Plugin de Metas
     @Published private(set) var metasPlugin: MetasPlugin?
-    
+
+    /// Plugin de Notas
+    @Published private(set) var notasPlugin: NotasPlugin?
+
     // MARK: - Initialization
     
     private init() {
@@ -53,6 +56,7 @@ class PluginManager: ObservableObject {
         rachasPlugin = RachasPlugin(config: config)
         categoriasPlugin = CategoriasPlugin(config: config)
         metasPlugin = MetasPlugin(config: config)
+        notasPlugin = NotasPlugin(config: config)
     }
     
     /// Configura los bindings para reaccionar a cambios de configuración
@@ -72,6 +76,7 @@ class PluginManager: ObservableObject {
         print("   - Rachas: \(isRachasEnabled ? "✅" : "❌")")
         print("   - Categorías: \(isCategoriasEnabled ? "✅" : "❌")")
         print("   - Metas: \(isMetasEnabled ? "✅" : "❌")")
+        print("   - Notas: \(isNotasEnabled ? "✅" : "❌")")
     }
     
     // MARK: - Feature Checks
@@ -95,6 +100,11 @@ class PluginManager: ObservableObject {
     var isMetasEnabled: Bool {
         config.showMetas
     }
+
+    /// Verifica si la feature de Notas está habilitada
+    var isNotasEnabled: Bool {
+        config.showNotas
+    }
     
     // MARK: - Data Plugin Methods
     
@@ -112,6 +122,9 @@ class PluginManager: ObservableObject {
         if isMetasEnabled {
             await metasPlugin?.willCreateHabit(habit)
         }
+        if isNotasEnabled {
+            await notasPlugin?.willCreateHabit(habit)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se creó un hábito
@@ -127,6 +140,9 @@ class PluginManager: ObservableObject {
         }
         if isMetasEnabled {
             await metasPlugin?.didCreateHabit(habit)
+        }
+        if isNotasEnabled {
+            await notasPlugin?.didCreateHabit(habit)
         }
     }
     
@@ -144,6 +160,9 @@ class PluginManager: ObservableObject {
         if isMetasEnabled {
             await metasPlugin?.willDeleteHabit(habit)
         }
+        if isNotasEnabled {
+            await notasPlugin?.willDeleteHabit(habit)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se eliminó un hábito
@@ -160,6 +179,9 @@ class PluginManager: ObservableObject {
         if isMetasEnabled {
             await metasPlugin?.didDeleteHabit(habitId: habitId)
         }
+        if isNotasEnabled {
+            await notasPlugin?.didDeleteHabit(habitId: habitId)
+        }
     }
     
     /// Notifica a todos los DataPlugins que se toggleó una instancia
@@ -175,6 +197,9 @@ class PluginManager: ObservableObject {
         }
         if isMetasEnabled {
             await metasPlugin?.didToggleInstance(instance, habit: habit)
+        }
+        if isNotasEnabled {
+            await notasPlugin?.didToggleInstance(instance, habit: habit)
         }
     }
 }

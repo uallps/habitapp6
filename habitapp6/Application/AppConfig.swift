@@ -50,6 +50,13 @@ class AppConfig: ObservableObject {
             notifyPluginsChanged()
         }
     }
+
+    @Published var showNotas: Bool {
+        didSet {
+            UserDefaults.standard.set(showNotas, forKey: Keys.showNotas)
+            notifyPluginsChanged()
+        }
+    }
     
     // MARK: - Keys
     
@@ -58,6 +65,7 @@ class AppConfig: ObservableObject {
         static let showRachas = "feature.rachas.enabled"
         static let showCategorias = "feature.categorias.enabled"
         static let showMetas = "feature.metas.enabled"
+        static let showNotas = "feature.notas.enabled"
     }
     
     // MARK: - Initialization
@@ -68,12 +76,19 @@ class AppConfig: ObservableObject {
         self.showRachas = UserDefaults.standard.object(forKey: Keys.showRachas) as? Bool ?? true
         self.showCategorias = UserDefaults.standard.object(forKey: Keys.showCategorias) as? Bool ?? true
         self.showMetas = UserDefaults.standard.object(forKey: Keys.showMetas) as? Bool ?? true
+        self.showNotas = UserDefaults.standard.object(forKey: Keys.showNotas) as? Bool ?? true
         
+        #if DEVELOP || PREMIUM
+        #else
+        disableAllFeatures()
+        #endif
+      
         print("⚙️ AppConfig inicializado:")
         print("   - Recordatorios: \(showRecordatorios)")
         print("   - Rachas: \(showRachas)")
         print("   - Categorías: \(showCategorias)")
         print("   - Metas: \(showMetas)")
+        print("   - Notas: \(showNotas)")
     }
     
     // MARK: - Methods
@@ -89,6 +104,7 @@ class AppConfig: ObservableObject {
         showRachas = true
         showCategorias = true
         showMetas = true
+        showNotas = true
     }
     
     /// Deshabilita todas las features
@@ -97,6 +113,7 @@ class AppConfig: ObservableObject {
         showRachas = false
         showCategorias = false
         showMetas = false
+        showNotas = false
     }
     
     /// Habilita todas las features
@@ -105,6 +122,7 @@ class AppConfig: ObservableObject {
         showRachas = true
         showCategorias = true
         showMetas = true
+        showNotas = true
     }
 }
 
