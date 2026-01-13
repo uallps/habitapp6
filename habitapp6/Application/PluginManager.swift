@@ -1,9 +1,3 @@
-//
-//  PluginManager.swift
-//  HabitTracker
-//
-//  Core - Gestor central de plugins (Compatible con Swift 5.5)
-//
 
 import Foundation
 import SwiftUI
@@ -14,11 +8,9 @@ import Combine
 class PluginManager: ObservableObject {
     
     // MARK: - Singleton
-    
     static let shared = PluginManager()
     
     // MARK: - Properties
-    
     private let config: AppConfig
     private var cancellables = Set<AnyCancellable>()
     
@@ -31,9 +23,10 @@ class PluginManager: ObservableObject {
     /// Plugin de Categorías
     @Published private(set) var categoriasPlugin: CategoriasPlugin?
     
+    /// Plugin de Logros
     @Published private(set) var logrosPlugin: LogrosPlugin?
-    // MARK: - Initialization
     
+    // MARK: - Initialization
     private init() {
         self.config = AppConfig.shared
         registerPlugins()
@@ -44,8 +37,6 @@ class PluginManager: ObservableObject {
     }
     
     // MARK: - Plugin Registration
-    
-    /// Registra todos los plugins disponibles
     private func registerPlugins() {
         recordatoriosPlugin = RecordatoriosPlugin(config: config)
         rachasPlugin = RachasPlugin(config: config)
@@ -53,7 +44,6 @@ class PluginManager: ObservableObject {
         logrosPlugin = LogrosPlugin(config: config)
     }
     
-    /// Configura los bindings para reaccionar a cambios de configuración
     private func setupBindings() {
         NotificationCenter.default.publisher(for: .pluginConfigurationChanged)
             .receive(on: DispatchQueue.main)
@@ -68,90 +58,64 @@ class PluginManager: ObservableObject {
         print("🔌 Estado de plugins:")
         print("   - Recordatorios: \(isRecordatoriosEnabled ? "✅" : "❌")")
         print("   - Rachas: \(isRachasEnabled ? "✅" : "❌")")
-        print("   - Categorías: \(isCategoriasEnabled ? "✅" : "❌")")
+        print("   - Logros: \(isLogrosEnabled ? "✅" : "❌")")
     }
     
     // MARK: - Feature Checks
+    var isRecordatoriosEnabled: Bool { config.showRecordatorios }
+    var isRachasEnabled: Bool { config.showRachas }
+    var isCategoriasEnabled: Bool { config.showCategorias }
+    var isLogrosEnabled: Bool { config.showLogros }
     
-    /// Verifica si la feature de Recordatorios está habilitada
-    var isRecordatoriosEnabled: Bool {
-        config.showRecordatorios
-    }
+    // MARK: - Data Plugin Methods (AQUÍ ESTABA EL FALLO)
     
-    /// Verifica si la feature de Rachas está habilitada
-    var isRachasEnabled: Bool {
-        config.showRachas
-    }
-    
-    /// Verifica si la feature de Categorías está habilitada
-    var isCategoriasEnabled: Bool {
-        config.showCategorias
-    }
-    
-    // MARK: - Data Plugin Methods
-    
-    /// Notifica a todos los DataPlugins que se va a crear un hábito
-    func willCreateHabit(_ habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.willCreateHabit(habit)
-        }
-        if isRachasEnabled {
-            await rachasPlugin?.willCreateHabit(habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.willCreateHabit(habit)
-        }
-    }
-    
-    /// Notifica a todos los DataPlugins que se creó un hábito
+    /// Notifica a todos los plugins que se creó un hábito
     func didCreateHabit(_ habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.didCreateHabit(habit)
-        }
-        if isRachasEnabled {
-            await rachasPlugin?.didCreateHabit(habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.didCreateHabit(habit)
-        }
-    }
-    
-    /// Notifica a todos los DataPlugins que se va a eliminar un hábito
-    func willDeleteHabit(_ habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.willDeleteHabit(habit)
-        }
-        if isRachasEnabled {
-            await rachasPlugin?.willDeleteHabit(habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.willDeleteHabit(habit)
+        print("🔌 PluginManager: Distribuyendo evento 'didCreateHabit'...")
+        
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.didCreateHabit(habit) }
+        if isRachasEnabled { await rachasPlugin?.didCreateHabit(habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.didCreateHabit(habit) }
+        
+        // ¡ESTA LÍNEA FALTABA! AHORA AVISA A LOGROS
+        if isLogrosEnabled {
+            print("   -> Avisando a LogrosPlugin")
+            await logrosPlugin?.didCreateHabit(habit)
         }
     }
     
-    /// Notifica a todos los DataPlugins que se eliminó un hábito
-    func didDeleteHabit(habitId: UUID) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.didDeleteHabit(habitId: habitId)
-        }
-        if isRachasEnabled {
-            await rachasPlugin?.didDeleteHabit(habitId: habitId)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.didDeleteHabit(habitId: habitId)
-        }
-    }
-    
-    /// Notifica a todos los DataPlugins que se toggleó una instancia
+    /// Notifica a todos los plugins que se completó/descompletó una tarea
     func didToggleInstance(_ instance: HabitInstance, habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.didToggleInstance(instance, habit: habit)
+        print("🔌 PluginManager: Distribuyendo evento 'didToggleInstance'...")
+        
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.didToggleInstance(instance, habit: habit) }
+        if isRachasEnabled { await rachasPlugin?.didToggleInstance(instance, habit: habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.didToggleInstance(instance, habit: habit) }
+        
+        if isLogrosEnabled {
+            print("   -> Avisando a LogrosPlugin")
+            await logrosPlugin?.didToggleInstance(instance, habit: habit)
         }
-        if isRachasEnabled {
-            await rachasPlugin?.didToggleInstance(instance, habit: habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.didToggleInstance(instance, habit: habit)
-        }
+    }
+    
+    func willCreateHabit(_ habit: Habit) async {
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.willCreateHabit(habit) }
+        if isRachasEnabled { await rachasPlugin?.willCreateHabit(habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.willCreateHabit(habit) }
+        if isLogrosEnabled { await logrosPlugin?.willCreateHabit(habit) }
+    }
+    
+    func willDeleteHabit(_ habit: Habit) async {
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.willDeleteHabit(habit) }
+        if isRachasEnabled { await rachasPlugin?.willDeleteHabit(habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.willDeleteHabit(habit) }
+        if isLogrosEnabled { await logrosPlugin?.willDeleteHabit(habit) }
+    }
+    
+    func didDeleteHabit(habitId: UUID) async {
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.didDeleteHabit(habitId: habitId) }
+        if isRachasEnabled { await rachasPlugin?.didDeleteHabit(habitId: habitId) }
+        if isCategoriasEnabled { await categoriasPlugin?.didDeleteHabit(habitId: habitId) }
+        if isLogrosEnabled { await logrosPlugin?.didDeleteHabit(habitId: habitId) }
     }
 }

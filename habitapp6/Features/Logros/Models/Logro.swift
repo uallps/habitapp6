@@ -4,50 +4,55 @@ import SwiftUI
 
 public enum TipoLogro: String, Codable, CaseIterable, Identifiable {
     case primerHabito = "creador_1"
-    case multicreator = "creador_3"     
+    case constructor = "creador_3"
     case primeraAccion = "accion_1"
-    case rachaExpress = "accion_3"
-    case imparable = "accion_5"
+    case constante = "accion_3"
+    case experto = "accion_5"
+    case inicioRacha = "racha_1"
     
     public var id: String { rawValue }
     
     var titulo: String {
         switch self {
         case .primerHabito: return "El Comienzo"
-        case .multicreator: return "Arquitecto"
+        case .constructor: return "Arquitecto"
         case .primeraAccion: return "Primer Paso"
-        case .rachaExpress: return "En Movimiento"
-        case .imparable: return "Imparable"
+        case .constante: return "Constante"
+        case .experto: return "Experto"
+        case .inicioRacha: return "Buena Racha"
         }
     }
     
     var descripcion: String {
         switch self {
         case .primerHabito: return "Crea tu primer hábito."
-        case .multicreator: return "Ten 3 hábitos creados en tu lista."
+        case .constructor: return "Ten 3 hábitos creados."
         case .primeraAccion: return "Completa una tarea por primera vez."
-        case .rachaExpress: return "Completa tareas 3 veces."
-        case .imparable: return "Completa tareas 5 veces."
+        case .constante: return "Completa tareas 3 veces en total."
+        case .experto: return "Completa tareas 5 veces en total."
+        case .inicioRacha: return "Consigue tu primer día de racha."
         }
     }
     
     var icon: String {
         switch self {
         case .primerHabito: return "flag.fill"
-        case .multicreator: return "square.stack.3d.up.fill"
+        case .constructor: return "square.stack.3d.up.fill"
         case .primeraAccion: return "checkmark.circle.fill"
-        case .rachaExpress: return "flame.fill"
-        case .imparable: return "star.circle.fill"
+        case .constante: return "flame.fill"
+        case .experto: return "star.circle.fill"
+        case .inicioRacha: return "bolt.fill"
         }
     }
     
     var color: Color {
         switch self {
         case .primerHabito: return .blue
-        case .multicreator: return .purple
+        case .constructor: return .purple
         case .primeraAccion: return .green
-        case .rachaExpress: return .orange
-        case .imparable: return .yellow
+        case .constante: return .orange
+        case .experto: return .red
+        case .inicioRacha: return .yellow
         }
     }
 }
@@ -57,7 +62,6 @@ public struct Logro: Identifiable, Codable, Equatable {
     public let tipo: TipoLogro
     public var desbloqueado: Bool
     public var fechaDesbloqueo: Date?
-    
     public var progresoActual: Int
     public var progresoTotal: Int
     

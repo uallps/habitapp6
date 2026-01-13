@@ -12,7 +12,6 @@ struct LogrosView: View {
             
             ScrollView {
                 VStack(spacing: 24) {
-                    // Cabecera
                     VStack(spacing: 8) {
                         Image(systemName: "trophy.circle.fill")
                             .font(.system(size: 60))
@@ -29,7 +28,6 @@ struct LogrosView: View {
                     }
                     .padding(.top, 20)
                     
-                    // Grid de Tarjetas
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(viewModel.logros) { logro in
                             LogroCard(logro: logro)
@@ -40,58 +38,20 @@ struct LogrosView: View {
                 }
             }
             
-            // Pop-up de Felicitación (Dentro de la propia vista)
             if viewModel.showingFelicitacion, let logro = viewModel.logroParaMostrar {
                 Color.black.opacity(0.4).ignoresSafeArea()
                     .onTapGesture { viewModel.cerrarFelicitacion() }
+                    .zIndex(1)
                 
                 FelicitacionCard(logro: logro) { viewModel.cerrarFelicitacion() }
                     .transition(.scale.combined(with: .opacity))
-                    .zIndex(1)
+                    .zIndex(2)
             }
         }
         .navigationTitle("Logros")
         .navigationBarTitleDisplayMode(.inline)
-        // Menú de Debug (El martillo) restaurado y actualizado
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Menu {
-                    Button(role: .destructive) { viewModel.resetearParaDemo() } label: {
-                        Label("Resetear Demo", systemImage: "trash")
-                    }
-                    Divider()
-                    Text("Simular Desbloqueo:")
-                    
-                    // Botones actualizados a los nuevos logros
-                    Button { viewModel.simularLogro(.primerHabito) } label: {
-                        Label("El Comienzo (Crear 1)", systemImage: "flag")
-                    }
-                    
-                    Button { viewModel.simularLogro(.multicreator) } label: {
-                        Label("Arquitecto (Crear 3)", systemImage: "square.stack.3d.up.fill")
-                    }
-                    
-                    Button { viewModel.simularLogro(.primeraAccion) } label: {
-                        Label("Primer Paso (Check 1)", systemImage: "checkmark.circle")
-                    }
-                    
-                    Button { viewModel.simularLogro(.rachaExpress) } label: {
-                        Label("En Movimiento (Check 3)", systemImage: "flame")
-                    }
-                    
-                    Button { viewModel.simularLogro(.imparable) } label: {
-                        Label("Imparable (Check 5)", systemImage: "star")
-                    }
-                    
-                } label: {
-                    Image(systemName: "hammer.fill").foregroundColor(.gray.opacity(0.3))
-                }
-            }
-        }
     }
 }
-
-// MARK: - Componentes Visuales
 
 struct LogroCard: View {
     let logro: Logro
