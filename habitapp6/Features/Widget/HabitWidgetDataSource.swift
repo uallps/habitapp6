@@ -72,12 +72,15 @@ struct HabitWidgetDataSource {
         }
         
         // Calcular la mejor racha de TODOS los hábitos
-        let allStreaks = habits.map { habit in
-            RachaCalculator.shared.calcularRacha(para: habit, instancias: instances)
-        }
+        //let allStreaks = habits.map { habit in
+            //RachaCalculator.shared.calcularRacha(para: habit, instancias: instances)
+        //}
         
-        let streak = allStreaks.map { $0.rachaActual }.max() ?? 0
-        let best = allStreaks.map { $0.mejorRacha }.max() ?? 0
+        //let streak = allStreaks.map { $0.rachaActual }.max() ?? 0
+        //let best = allStreaks.map { $0.mejorRacha }.max() ?? 0
+        
+        let streak = 0
+        let best = 0
         
         #if DEBUG
         print("[Widget] 📊 Mostrar: \(pending.count) pendientes, racha: \(streak)/\(best)")

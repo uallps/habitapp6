@@ -1,5 +1,8 @@
 import Foundation
+
+#if WIDGET_EXTENSION
 import WidgetKit
+#endif
 
 @MainActor
 class HabitDataStore: ObservableObject {
@@ -35,16 +38,14 @@ class HabitDataStore: ObservableObject {
             
             try (storageProvider as? CoreDataStorageProvider)?.persistChanges()
 
-            // Widget export
-            try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
 
-            //#if !WIDGET_EXTENSION
-            //try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
-            //#endif
+            #if WIDGET_EXTENSION
+            try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
+            #endif
             
-            //#if !WIDGET_EXTENSION
-            //WidgetCenter.shared.reloadAllTimelines()
-            //#endif
+            #if WIDGET_EXTENSION
+            WidgetCenter.shared.reloadAllTimelines()
+            #endif
         } catch {
             print("Error saving data: \(error)")
         }
