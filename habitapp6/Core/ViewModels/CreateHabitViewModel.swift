@@ -16,6 +16,7 @@ class CreateHabitViewModel: ObservableObject {
         Task {
             await dataStore.generateTodayInstances()
             await dataStore.saveData()
+
         }
     }
     
