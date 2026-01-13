@@ -16,7 +16,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A8BBA552F1428C000F5338B"
+               BlueprintIdentifier = "35C3AB592F16DDBD000EAC4F"
                BuildableName = "HabitWidgetExtension.appex"
                BlueprintName = "HabitWidgetExtension"
                ReferencedContainer = "container:habitapp6.xcodeproj">
@@ -31,8 +31,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F510C10C2F08953300C5074E"
-               BuildableName = "habitapp6.app"
-               BlueprintName = "habitapp6"
+               BuildableName = "Habit App.app"
+               BlueprintName = "HabitApp"
                ReferencedContainer = "container:habitapp6.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,6 +44,18 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F510C12B2F08953700C5074E"
+               BuildableName = "habitapp6UITests.xctest"
+               BlueprintName = "habitapp6UITests"
+               ReferencedContainer = "container:habitapp6.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -62,7 +74,7 @@
          BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A8BBA552F1428C000F5338B"
+            BlueprintIdentifier = "35C3AB592F16DDBD000EAC4F"
             BuildableName = "HabitWidgetExtension.appex"
             BlueprintName = "HabitWidgetExtension"
             ReferencedContainer = "container:habitapp6.xcodeproj">
@@ -72,8 +84,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F510C10C2F08953300C5074E"
-            BuildableName = "habitapp6.app"
-            BlueprintName = "habitapp6"
+            BuildableName = "Habit App.app"
+            BlueprintName = "HabitApp"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -107,8 +119,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F510C10C2F08953300C5074E"
-            BuildableName = "habitapp6.app"
-            BlueprintName = "habitapp6"
+            BuildableName = "Habit App.app"
+            BlueprintName = "HabitApp"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
