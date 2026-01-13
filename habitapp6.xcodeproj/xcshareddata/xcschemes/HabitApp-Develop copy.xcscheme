@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "35C3AA0F2F169828000EAC4F"
-               BuildableName = "HabitApp-Develop.app"
+               BuildableName = "HabitApp Dev.app"
                BlueprintName = "HabitApp-Develop"
                ReferencedContainer = "container:habitapp6.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35C3AA0F2F169828000EAC4F"
-            BuildableName = "HabitApp-Develop.app"
+            BuildableName = "HabitApp Dev.app"
             BlueprintName = "HabitApp-Develop"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35C3AA0F2F169828000EAC4F"
-            BuildableName = "HabitApp-Develop.app"
+            BuildableName = "HabitApp Dev.app"
             BlueprintName = "HabitApp-Develop"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>

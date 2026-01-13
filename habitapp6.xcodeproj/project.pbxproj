@@ -254,7 +254,6 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4381BAFB2F125AC100CD6F54 /* Sugerencias */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sugerencias; sourceTree = "<group>"; };
-		4381BB122F12685100CD6F54 /* Logros */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Logros; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,7 +462,6 @@
 		F510C1482F089A3600C5074E /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				4381BB122F12685100CD6F54 /* Logros */,
 				4381BAFB2F125AC100CD6F54 /* Sugerencias */,
 				351E2CE52F156C260010A3B5 /* Notas */,
 				F5225B8E2F0F2CB800DB3F06 /* Categorias */,
@@ -674,9 +672,9 @@
 			productReference = 35C3AA4B2F169828000EAC4F /* HabitApp Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F510C10C2F08953300C5074E /* HabitApp */ = {
+		F510C10C2F08953300C5074E /* habitapp6 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F510C1362F08953700C5074E /* Build configuration list for PBXNativeTarget "HabitApp" */;
+			buildConfigurationList = F510C1362F08953700C5074E /* Build configuration list for PBXNativeTarget "habitapp6" */;
 			buildPhases = (
 				F510C1092F08953300C5074E /* Sources */,
 				F510C10A2F08953300C5074E /* Frameworks */,
@@ -688,7 +686,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				4381BAFB2F125AC100CD6F54 /* Sugerencias */,
-				4381BB122F12685100CD6F54 /* Logros */,
 			);
 			name = habitapp6;
 			productName = habitapp6;
@@ -767,7 +764,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F510C10C2F08953300C5074E /* HabitApp */,
+				F510C10C2F08953300C5074E /* habitapp6 */,
 				F510C1212F08953700C5074E /* habitapp6Tests */,
 				F510C12B2F08953700C5074E /* habitapp6UITests */,
 				35C3A9D22F169232000EAC4F /* HabitApp-Premium */,
@@ -1017,12 +1014,12 @@
 /* Begin PBXTargetDependency section */
 		F510C1242F08953700C5074E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F510C10C2F08953300C5074E /* HabitApp */;
+			target = F510C10C2F08953300C5074E /* habitapp6 */;
 			targetProxy = F510C1232F08953700C5074E /* PBXContainerItemProxy */;
 		};
 		F510C12E2F08953700C5074E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F510C10C2F08953300C5074E /* HabitApp */;
+			target = F510C10C2F08953300C5074E /* habitapp6 */;
 			targetProxy = F510C12D2F08953700C5074E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1420,7 +1417,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F510C1362F08953700C5074E /* Build configuration list for PBXNativeTarget "HabitApp" */ = {
+		F510C1362F08953700C5074E /* Build configuration list for PBXNativeTarget "habitapp6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F510C1372F08953700C5074E /* Debug */,

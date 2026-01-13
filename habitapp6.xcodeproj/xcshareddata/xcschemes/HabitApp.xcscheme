@@ -17,7 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F510C10C2F08953300C5074E"
                BuildableName = "Habit App.app"
-               BlueprintName = "HabitApp"
+               BlueprintName = "habitapp6"
                ReferencedContainer = "container:habitapp6.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,7 +46,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F510C10C2F08953300C5074E"
             BuildableName = "Habit App.app"
-            BlueprintName = "HabitApp"
+            BlueprintName = "habitapp6"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F510C10C2F08953300C5074E"
             BuildableName = "Habit App.app"
-            BlueprintName = "HabitApp"
+            BlueprintName = "habitapp6"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
