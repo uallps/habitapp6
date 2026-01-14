@@ -39,7 +39,7 @@ jobs:
       matrix:
         platform: [iOS, macOS]
         scheme: 
-          - "HabitApp"
+          - "habitapp6"
           - "HabitApp-Premium"
           - "HabitApp-Develop"
         
