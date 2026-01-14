@@ -15,6 +15,9 @@
 		351E2CEB2F156C260010A3B5 /* NotaBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CDF2F156C260010A3B5 /* NotaBadgeView.swift */; };
 		351E2CEC2F156C260010A3B5 /* NotaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CE02F156C260010A3B5 /* NotaDetailView.swift */; };
 		351E2CEF2F15713B0010A3B5 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */; };
+		356C1CC42F17F1EE000C7FF3 /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 356C1CC22F17F1EE000C7FF3 /* habitapp6.xcdatamodeld */; };
+		356C1CC52F17F1EE000C7FF3 /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 356C1CC22F17F1EE000C7FF3 /* habitapp6.xcdatamodeld */; };
+		356C1CC62F17F1EE000C7FF3 /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 356C1CC22F17F1EE000C7FF3 /* habitapp6.xcdatamodeld */; };
 		35C14B832F16FC6500B46CD0 /* MetaFelicitacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C14B7D2F16FC6500B46CD0 /* MetaFelicitacionView.swift */; };
 		35C14B842F16FC6500B46CD0 /* MetaDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C14B762F16FC6500B46CD0 /* MetaDataStore.swift */; };
 		35C14B852F16FC6500B46CD0 /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C14B782F16FC6500B46CD0 /* MetaViewModel.swift */; };
@@ -168,9 +171,6 @@
 		35C3AB922F16DFB1000EAC4F /* HabitWidgetControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C3AB8E2F16DFB1000EAC4F /* HabitWidgetControl.swift */; };
 		35C3AB932F16DFB1000EAC4F /* HabitWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C3AB8F2F16DFB1000EAC4F /* HabitWidgetLiveActivity.swift */; };
 		35C3AB952F16DFB1000EAC4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C3AB8D2F16DFB1000EAC4F /* Assets.xcassets */; };
-		35CCB9452F17CE7E002C328E /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35CCB9432F17CE7E002C328E /* habitapp6.xcdatamodeld */; };
-		35CCB9462F17CE7E002C328E /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35CCB9432F17CE7E002C328E /* habitapp6.xcdatamodeld */; };
-		35CCB9472F17CE7E002C328E /* habitapp6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35CCB9432F17CE7E002C328E /* habitapp6.xcdatamodeld */; };
 		35CCB9542F17CF4F002C328E /* HabitDataStore+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CCB94A2F17CF4F002C328E /* HabitDataStore+Suggestions.swift */; };
 		35CCB9552F17CF4F002C328E /* SuggestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CCB94B2F17CF4F002C328E /* SuggestionGenerator.swift */; };
 		35CCB9562F17CF4F002C328E /* SugerenciasPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CCB9522F17CF4F002C328E /* SugerenciasPlugin.swift */; };
@@ -299,6 +299,7 @@
 		351E2CE32F156C260010A3B5 /* NotasPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasPlugin.swift; sourceTree = "<group>"; };
 		351E2CE42F156C260010A3B5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		351E2CEE2F15713B0010A3B5 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		356C1CC32F17F1EE000C7FF3 /* habitapp6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = habitapp6.xcdatamodel; sourceTree = "<group>"; };
 		35C14B742F16FC6500B46CD0 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		35C14B762F16FC6500B46CD0 /* MetaDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataStore.swift; sourceTree = "<group>"; };
 		35C14B782F16FC6500B46CD0 /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
@@ -329,7 +330,6 @@
 		35C3AB8E2F16DFB1000EAC4F /* HabitWidgetControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWidgetControl.swift; sourceTree = "<group>"; };
 		35C3AB8F2F16DFB1000EAC4F /* HabitWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		35C3AB902F16DFB1000EAC4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35CCB9442F17CE7E002C328E /* habitapp6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = habitapp6.xcdatamodel; sourceTree = "<group>"; };
 		35CCB9482F17CF4F002C328E /* SuggestionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionInfo.swift; sourceTree = "<group>"; };
 		35CCB94A2F17CF4F002C328E /* HabitDataStore+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitDataStore+Suggestions.swift"; sourceTree = "<group>"; };
 		35CCB94B2F17CF4F002C328E /* SuggestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionGenerator.swift; sourceTree = "<group>"; };
@@ -717,8 +717,8 @@
 				F510C1422F0898FB00C5074E /* Core */,
 				F510C1412F0898DA00C5074E /* Application */,
 				F510C1142F08953600C5074E /* Assets.xcassets */,
-				35CCB9432F17CE7E002C328E /* habitapp6.xcdatamodeld */,
 				F510C1162F08953600C5074E /* Preview Content */,
+				356C1CC22F17F1EE000C7FF3 /* habitapp6.xcdatamodeld */,
 			);
 			path = habitapp6;
 			sourceTree = "<group>";
@@ -1223,6 +1223,7 @@
 				35C3A9D42F169232000EAC4F /* Racha.swift in Sources */,
 				35C3A9D72F169232000EAC4F /* StorageProvider.swift in Sources */,
 				35C3A9D82F169232000EAC4F /* RecordatoriosPlugin.swift in Sources */,
+				356C1CC42F17F1EE000C7FF3 /* habitapp6.xcdatamodeld in Sources */,
 				35C3A9D92F169232000EAC4F /* HabitDataStore.swift in Sources */,
 				35C3A9DA2F169232000EAC4F /* SettingsView.swift in Sources */,
 				35C3A9DB2F169232000EAC4F /* RecordatorioBadgeView.swift in Sources */,
@@ -1238,7 +1239,6 @@
 				35C14B9D2F16FC6500B46CD0 /* MetasPlugin.swift in Sources */,
 				35C14B9E2F16FC6500B46CD0 /* MetasListView.swift in Sources */,
 				35C14B9F2F16FC6500B46CD0 /* MetaBadgeView.swift in Sources */,
-				35CCB9452F17CE7E002C328E /* habitapp6.xcdatamodeld in Sources */,
 				35C3A9E02F169232000EAC4F /* RachaViewModel.swift in Sources */,
 				35C3A9E12F169232000EAC4F /* RecordatorioManager.swift in Sources */,
 				35C3A9E22F169232000EAC4F /* NotificationService.swift in Sources */,
@@ -1300,6 +1300,7 @@
 				35C3AA112F169828000EAC4F /* Racha.swift in Sources */,
 				35C3AA142F169828000EAC4F /* StorageProvider.swift in Sources */,
 				35C3AA152F169828000EAC4F /* RecordatoriosPlugin.swift in Sources */,
+				356C1CC52F17F1EE000C7FF3 /* habitapp6.xcdatamodeld in Sources */,
 				35C3AA162F169828000EAC4F /* HabitDataStore.swift in Sources */,
 				35C3AA172F169828000EAC4F /* SettingsView.swift in Sources */,
 				35C3AA182F169828000EAC4F /* RecordatorioBadgeView.swift in Sources */,
@@ -1315,7 +1316,6 @@
 				35C14B942F16FC6500B46CD0 /* MetasPlugin.swift in Sources */,
 				35C14B952F16FC6500B46CD0 /* MetasListView.swift in Sources */,
 				35C14B962F16FC6500B46CD0 /* MetaBadgeView.swift in Sources */,
-				35CCB9472F17CE7E002C328E /* habitapp6.xcdatamodeld in Sources */,
 				35C3AA1D2F169828000EAC4F /* RachaViewModel.swift in Sources */,
 				35C3AA1E2F169828000EAC4F /* RecordatorioManager.swift in Sources */,
 				35C3AA1F2F169828000EAC4F /* NotificationService.swift in Sources */,
@@ -1398,6 +1398,7 @@
 				35C14B832F16FC6500B46CD0 /* MetaFelicitacionView.swift in Sources */,
 				35C14B842F16FC6500B46CD0 /* MetaDataStore.swift in Sources */,
 				35C14B852F16FC6500B46CD0 /* MetaViewModel.swift in Sources */,
+				356C1CC62F17F1EE000C7FF3 /* habitapp6.xcdatamodeld in Sources */,
 				35C14B862F16FC6500B46CD0 /* MetaDetailView.swift in Sources */,
 				35C14B872F16FC6500B46CD0 /* CrearMetaView.swift in Sources */,
 				35C14B882F16FC6500B46CD0 /* Meta.swift in Sources */,
@@ -1413,7 +1414,6 @@
 				F5225B472F0EDBCE00DB3F06 /* NotificationService.swift in Sources */,
 				F5EDA84E2F1026F00078AE96 /* HabitInstance.swift in Sources */,
 				F5225B852F0EEFDA00DB3F06 /* PluginProtocols.swift in Sources */,
-				35CCB9462F17CE7E002C328E /* habitapp6.xcdatamodeld in Sources */,
 				F5225B6C2F0EE5E700DB3F06 /* RachaBadgeView.swift in Sources */,
 				F5EDA8542F1027080078AE96 /* habitapp6App.swift in Sources */,
 				F5EDA8402F1026CD0078AE96 /* HabitDetailView.swift in Sources */,
@@ -1986,12 +1986,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		35CCB9432F17CE7E002C328E /* habitapp6.xcdatamodeld */ = {
+		356C1CC22F17F1EE000C7FF3 /* habitapp6.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				35CCB9442F17CE7E002C328E /* habitapp6.xcdatamodel */,
+				356C1CC32F17F1EE000C7FF3 /* habitapp6.xcdatamodel */,
 			);
-			currentVersion = 35CCB9442F17CE7E002C328E /* habitapp6.xcdatamodel */;
+			currentVersion = 356C1CC32F17F1EE000C7FF3 /* habitapp6.xcdatamodel */;
 			path = habitapp6.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
