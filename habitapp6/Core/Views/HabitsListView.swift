@@ -81,21 +81,17 @@ struct HabitsListView: View {
                 }
                 .navigationTitle("Mis Hábitos")
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button { showingSettings = true } label: { Image(systemName: "gearshape.fill") }
-                    }
                     ToolbarItem(placement: .primaryAction) {
                         HStack(spacing: 16) {
+                            #if DEVELOP || PREMIUM
                             Button { showingSuggestions = true } label: { Image(systemName: "lightbulb").symbolVariant(.fill).foregroundColor(.yellow) }
+                            #endif
                             Button { showingCreateView = true } label: { Image(systemName: "plus") }
                         }
                     }
                 }
                 .sheet(isPresented: $showingCreateView) {
                     CreateHabitView(dataStore: dataStore)
-                }
-                .sheet(isPresented: $showingSettings) {
-                    SettingsView()
                 }
                 .sheet(item: $selectedHabitForReminder) { habit in
                     if pluginManager.isRecordatoriosEnabled {
