@@ -1,96 +1,118 @@
+# =============================================================================
+# GitHub Actions Workflow para HabitApp
+# =============================================================================
+# Este archivo automatiza la compilación de tu proyecto Swift/Xcode.
+# Debe colocarse en: .github/workflows/build.yml
+# =============================================================================
+
 name: Build HabitApp
 
+# -----------------------------------------------------------------------------
+# ON: ¿Cuándo se ejecuta este workflow?
+# -----------------------------------------------------------------------------
 on:
   push:
     branches:
-      - main
-      - develop
-      - "feature/**"
-      - "feature-**"  # Para tus ramas como feature-metas-raul
+      - main             
+      - develop           
+      - workflow-def
+      - "feature/**"      
   pull_request:
     branches:
       - main
       - develop
-  workflow_dispatch:  # Permite ejecutar manualmente
+  workflow_dispatch:      
+
 
 permissions:
-  contents: write
-  packages: write
+  contents: write        
+  packages: write         
+
 
 jobs:
   build:
-    name: Build for ${{ matrix.platform }}
-    runs-on: macos-latest
+    name: Build ${{ matrix.scheme }} for ${{ matrix.platform }}
+    runs-on: macos-latest   # Usa una máquina virtual con macOS
+    
     strategy:
+      fail-fast: false      
       matrix:
         platform: [iOS, macOS]
+        scheme: 
+          - "HabitApp"
+          - "HabitApp-Premium"
+          - "HabitApp-Develop"
+        
         include:
           - platform: iOS
             sdk: iphonesimulator
-            destination: "platform=iOS Simulator,OS=18.0,name=iPhone 16"
-            artifact-name: ios-build
+            destination: "generic/platform=iOS Simulator"
           - platform: macOS
             sdk: macosx
             destination: "platform=macOS"
-            artifact-name: macos-build
+    
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
       - name: Show Xcode version
         run: xcodebuild -version
-
+      
       - name: Show available SDKs
         run: xcodebuild -showsdks
-
+      
       - name: List available simulators
-        if: matrix.platform == 'iOS'
         run: xcrun simctl list devices available
-
-      - name: Build for ${{ matrix.platform }}
+      
+      - name: Build ${{ matrix.scheme }} for ${{ matrix.platform }}
         run: |
           xcodebuild clean build \
-            -project habitapp6.xcodeproj \
-            -scheme "habitapp6" \
+            -project HabitApp.xcodeproj \
+            -scheme "${{ matrix.scheme }}" \
             -sdk ${{ matrix.sdk }} \
             -destination '${{ matrix.destination }}' \
             -derivedDataPath ./DerivedData \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO
-
+      
       - name: Find and list build products
         if: success()
         run: |
-          echo "=== ${{ matrix.platform }} Build products ==="
-          find ./DerivedData -name "*.app" -type d
-          ls -R ./DerivedData/Build/Products/ || echo "No products directory found"
-
-      - name: Archive build artifacts
+          echo "=== Build products for ${{ matrix.platform }} - ${{ matrix.scheme }} ==="
+          find ./DerivedData -name "*.app" -type d 2>/dev/null || echo "No .app found"
+          ls -la ./DerivedData/Build/Products/ 2>/dev/null || echo "No products directory"
+      
+      - name: Upload build artifacts
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: build-${{ matrix.platform }}
+          name: ${{ matrix.scheme }}-${{ matrix.platform }}
           path: ./DerivedData/Build/Products/**/*.app
+          if-no-files-found: warn
+
 
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [build]          
+    
     if: github.ref == 'refs/heads/main' && needs.build.result == 'success'
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
+          fetch-depth: 0   
+      
+      # Descargar todos los artefactos generados en el job anterior
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: ./artifacts
-
+      
+      # Crear archivos .zip de cada artefacto
       - name: Prepare release artifacts
         run: |
           echo "Creating zip files for all artifacts..."
@@ -102,15 +124,17 @@ jobs:
           done
           cd ..
           echo "Generated zip files:"
-          ls -lh ./artifacts/*.zip || echo "No zip files created"
-
+          ls -lh ./artifacts/*.zip 2>/dev/null || echo "No zip files created"
+      
+      # Generar número de versión automático
       - name: Get version from commit
         id: version
         run: |
           VERSION="v1.0.$(git rev-list --count HEAD)"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Version: $VERSION"
-
+      
+      # Obtener lista de cambios recientes
       - name: Get latest changes
         id: changelog
         run: |
@@ -121,12 +145,15 @@ jobs:
             CHANGES=$(git log $LAST_TAG..HEAD --pretty=format:"- %s (%h)")
           fi
           echo "$CHANGES" > changes.txt
-
+          echo "Changes:"
+          cat changes.txt
+      
+      # Crear el Release en GitHub
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.version }}
-          name: Release ${{ steps.version.outputs.version }}
+          name: HabitApp ${{ steps.version.outputs.version }}
           body_path: changes.txt
           draft: false
           prerelease: false
@@ -135,7 +162,7 @@ jobs:
             artifacts/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
       - name: Release created
         run: |
           echo "✅ Release ${{ steps.version.outputs.version }} created successfully!"
