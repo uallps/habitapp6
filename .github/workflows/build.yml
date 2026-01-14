@@ -68,7 +68,7 @@ jobs:
       - name: Build ${{ matrix.scheme }} for ${{ matrix.platform }}
         run: |
           xcodebuild clean build \
-            -project HabitApp.xcodeproj \
+            -project habitapp6.xcodeproj \
             -scheme "${{ matrix.scheme }}" \
             -sdk ${{ matrix.sdk }} \
             -destination '${{ matrix.destination }}' \
