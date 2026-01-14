@@ -300,7 +300,6 @@ struct HabitRowView: View {
             if pluginManager.isRachasEnabled {
                 rachaActual = RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances)
             }
-            }
         }
     }
 }
