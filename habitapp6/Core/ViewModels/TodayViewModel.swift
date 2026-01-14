@@ -10,7 +10,7 @@ class TodayViewModel: ObservableObject {
     }
     
     var todayInstances: [(habit: Habit, instance: HabitInstance)] {
-        let today = Date()
+        let today = TimeConfiguration.shared.now
         return dataStore.instances.compactMap { instance in
             guard let habit = dataStore.habits.first(where: { $0.id == instance.habitID }), habit.activo else { return nil }
             let isToday: Bool
@@ -31,8 +31,7 @@ class TodayViewModel: ObservableObject {
             objectWillChange.send()
             
             Task {
-                await dataStore.saveData()
-                
+                await dataStore.saveData()          
                 let totalChecks = dataStore.instances.filter { $0.completado }.count
                 
                 var maxRacha = 0

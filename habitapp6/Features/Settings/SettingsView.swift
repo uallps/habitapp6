@@ -3,6 +3,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var dataStore: HabitDataStore
     @ObservedObject private var config = AppConfig.shared
     @ObservedObject private var pluginManager = PluginManager.shared
     @Environment(\.dismiss) var dismiss
@@ -10,6 +11,24 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
+                // MARK: - Demo Section
+                Section {
+                    NavigationLink {
+                        DemoControlView()
+                            .environmentObject(dataStore)
+                    } label: {
+                        HStack {
+                            Image(systemName: "clock.arrow.circlepath")
+                                .foregroundColor(.purple)
+                            Text("Modo Demo (Control de Tiempo)")
+                        }
+                    }
+                } header: {
+                    Text("Demostración")
+                } footer: {
+                    Text("Permite simular el paso del tiempo para demostrar rachas y otras funciones.")
+                }
+                
                 // MARK: - Features Section
                 Section {
                     PluginToggleRowView(name: "Recordatorios", description: "Notificaciones", icon: "bell.badge.fill", activeColor: .orange, isEnabled: $config.showRecordatorios)

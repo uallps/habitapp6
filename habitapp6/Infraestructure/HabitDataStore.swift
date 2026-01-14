@@ -1,5 +1,9 @@
 import Foundation
 
+#if WIDGET_EXTENSION
+import WidgetKit
+#endif
+
 @MainActor
 class HabitDataStore: ObservableObject {
     static let shared = HabitDataStore()
@@ -27,16 +31,29 @@ class HabitDataStore: ObservableObject {
     }
     
     func saveData() async {
+        print("Probando SaveData")
         do {
+            print("Se hace SaveData")
             try await storageProvider.saveHabits(habits)
             try await storageProvider.saveInstances(instances)
+            
+            try (storageProvider as? CoreDataStorageProvider)?.persistChanges()
+
+
+            #if WIDGET_EXTENSION
+            try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
+            #endif
+            
+            #if WIDGET_EXTENSION
+            WidgetCenter.shared.reloadAllTimelines()
+            #endif
         } catch {
             print("Error saving data: \(error)")
         }
     }
     
     func generateTodayInstances() async {
-        let today = Calendar.current.startOfDay(for: Date())
+        let today = Calendar.current.startOfDay(for: TimeConfiguration.shared.now)
         let activeHabits = habits.filter { $0.activo }
         
         for habit in activeHabits {
@@ -62,5 +79,7 @@ class HabitDataStore: ObservableObject {
             }
         }
         await saveData()
+        
+
     }
 }

@@ -15,6 +15,7 @@ class HabitsViewModel: ObservableObject {
             Task {
                 await dataStore.saveData()
                 await PluginManager.shared.didCreateHabit(habit)
+
             }
         }
     }

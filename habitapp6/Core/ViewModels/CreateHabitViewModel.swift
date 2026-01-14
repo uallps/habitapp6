@@ -18,7 +18,7 @@ class CreateHabitViewModel: ObservableObject {
         Task {
             await dataStore.generateTodayInstances()
             await dataStore.saveData()
-            
+        
             let total = dataStore.habits.count
             LogrosManager.shared.chequearCreacion(cantidadHabitos: total)
         }

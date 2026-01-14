@@ -62,6 +62,13 @@ struct ContentView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.logroDesbloqueado = nil
             self.procesarColaLogros()
+            #if DEVELOP
+            SettingsView()
+                .environmentObject(dataStore)
+                .tabItem {
+                    Label("Ajustes", systemImage: "gearshape.fill")
+                }
+            #endif
         }
     }
 }

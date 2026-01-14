@@ -16,8 +16,12 @@ struct HabitDetailView: View {
     
     @State private var showingRecordatorioConfig = false
     @State private var showingRachaDetail = false
+    @State private var showingMetasDetail = false
     @State private var rachaInfo: RachaInfo = .empty
     @State private var selectedCategoria: Categoria = .ninguno
+    
+    // Estado para presentar el detalle completo de notas si lo necesitas
+    @State private var showNotasDetail: Bool = false
     
     init(dataStore: HabitDataStore, habit: Habit) {
         self.dataStore = dataStore
@@ -52,9 +56,19 @@ struct HabitDetailView: View {
                 rachaSection
             }
             
+            // MARK: - Metas (Feature Plugin - Solo si está habilitado)
+            if pluginManager.isMetasEnabled {
+                metasSection
+            }
+            
             // MARK: - Recordatorios (Feature Plugin - Solo si está habilitado)
             if pluginManager.isRecordatoriosEnabled {
                 recordatorioSection
+            }
+            
+            // MARK: - Notas (Feature Plugin - Solo si está habilitado)
+            if pluginManager.isNotasEnabled {
+                notasSection
             }
             
             // MARK: - Estadísticas (Core)
@@ -95,6 +109,11 @@ struct HabitDetailView: View {
                             }
                         }
                 }
+            }
+        }
+        .sheet(isPresented: $showingMetasDetail) {
+            if pluginManager.isMetasEnabled {
+                MetasListView(habit: viewModel.habit, dataStore: dataStore)
             }
         }
         .onAppear {
@@ -155,6 +174,17 @@ struct HabitDetailView: View {
         }
     }
     
+    // MARK: - Metas Section (Plugin)
+    
+    @ViewBuilder
+    private var metasSection: some View {
+        MetaDetailSectionView(
+            habit: viewModel.habit,
+            dataStore: dataStore,
+            showDetail: $showingMetasDetail
+        )
+    }
+    
     // MARK: - Recordatorio Section (Plugin)
     
     @ViewBuilder
@@ -177,6 +207,20 @@ struct HabitDetailView: View {
         } footer: {
             Text("Configura notificaciones para recordarte completar este hábito antes de que termine el período.")
         }
+    }
+    
+    // MARK: - Notas Section (Plugin)
+    
+    @ViewBuilder
+    private var notasSection: some View {
+        // Reutiliza la sección ya preparada en NotasPlugin
+        NotaDetailSectionView(
+            habit: viewModel.habit,
+            showDetail: $showNotasDetail
+        )
+        // Si quieres presentar la vista completa de notas al activar showNotasDetail,
+        // puedes hacerlo en el contenedor superior (navegación) con un sheet o push.
+        // Aquí solo mantenemos el binding para activar esa navegación desde la sección.
     }
     
     // MARK: - Estadísticas Section (Core)

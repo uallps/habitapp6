@@ -166,5 +166,14 @@ class CoreDataStorageProvider: StorageProvider {
                 try context.save()
             }
         }
+
+        
+    }
+    
+    func persistChanges() throws{
+        let context = container.viewContext
+        if context.hasChanges {
+            try context.save()
+        }
     }
 }
