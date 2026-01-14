@@ -5,6 +5,7 @@ struct HabitsListView: View {
     @ObservedObject var dataStore: HabitDataStore
     @ObservedObject private var pluginManager = PluginManager.shared
     @ObservedObject private var logrosManager = LogrosManager.shared
+    @StateObject private var viewModel: HabitsViewModel
 
     @State private var showingCreateView = false
     @State private var showingSuggestions = false
@@ -21,7 +22,6 @@ struct HabitsListView: View {
         self.dataStore = dataStore
         _viewModel = StateObject(wrappedValue: HabitsViewModel(dataStore: dataStore))
     }
-
 
     var body: some View {
         ZStack {
@@ -76,11 +76,10 @@ struct HabitsListView: View {
                                 }
                                 .onDelete(perform: deleteHabits)
                             }
-
+                        }
                     }
                 }
-            }
-            .navigationTitle("Mis Hábitos")
+                .navigationTitle("Mis Hábitos")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button { showingSettings = true } label: { Image(systemName: "gearshape.fill") }
@@ -103,6 +102,9 @@ struct HabitsListView: View {
                         RecordatorioConfigView(dataStore: dataStore, habit: habit)
                     }
                 }
+                .sheet(isPresented: $showingSuggestions) {
+                    SuggestionListView(habitHandler: dataStore)
+                }
             }
             .zIndex(0)
 
@@ -117,9 +119,6 @@ struct HabitsListView: View {
                 }
                 .transition(.scale.combined(with: .opacity))
                 .zIndex(2)
-            }
-.sheet(isPresented: $showingSuggestions) {
-                SuggestionListView(habitHandler: dataStore)
             }
         }
         .onReceive(logrosManager.$logrosRecienDesbloqueados) { nuevos in
@@ -148,7 +147,8 @@ struct HabitsListView: View {
         }
         return dataStore.habits.filter { $0.categoriaEnum == filter }
     }
-// MARK: - Views Auxiliares
+
+    // MARK: - Views Auxiliares
 
     private var emptyStateView: some View {
         VStack(spacing: 16) {
@@ -276,7 +276,6 @@ struct HabitRowView: View {
                 }
             }
 
-
             Spacer()
 
             if pluginManager.isRecordatoriosEnabled {
@@ -314,4 +313,3 @@ extension Habit: Hashable {
         hasher.combine(id)
     }
 }
-

@@ -22,6 +22,14 @@ struct ContentView: View {
                     .tabItem {
                         Label("Hábitos", systemImage: "list.bullet")
                     }
+                
+                #if DEVELOP
+                SettingsView()
+                    .environmentObject(dataStore)
+                    .tabItem {
+                        Label("Ajustes", systemImage: "gearshape.fill")
+                    }
+                #endif
             }
             .zIndex(0)
             
@@ -62,12 +70,6 @@ struct ContentView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.logroDesbloqueado = nil
             self.procesarColaLogros()
-            #if DEVELOP
-            SettingsView()
-                .environmentObject(dataStore)
-                .tabItem {
-                    Label("Ajustes", systemImage: "gearshape.fill")
-                }
         }
     }
 }
