@@ -1,7 +1,12 @@
 import Foundation
 
+#if WIDGET_EXTENSION
+import WidgetKit
+#endif
+
 @MainActor
 class HabitDataStore: ObservableObject {
+    static let shared = HabitDataStore()
     @Published var habits: [Habit] = []
     @Published var instances: [HabitInstance] = []
     
@@ -26,9 +31,22 @@ class HabitDataStore: ObservableObject {
     }
     
     func saveData() async {
+        print("Probando SaveData")
         do {
+            print("Se hace SaveData")
             try await storageProvider.saveHabits(habits)
             try await storageProvider.saveInstances(instances)
+            
+            try (storageProvider as? CoreDataStorageProvider)?.persistChanges()
+
+
+            #if WIDGET_EXTENSION
+            try await WidgetDataExporter.shared.exportDataForWidget(habits, instances)
+            #endif
+            
+            #if WIDGET_EXTENSION
+            WidgetCenter.shared.reloadAllTimelines()
+            #endif
         } catch {
             print("Error saving data: \(error)")
         }
@@ -61,5 +79,7 @@ class HabitDataStore: ObservableObject {
             }
         }
         await saveData()
+        
+
     }
 }

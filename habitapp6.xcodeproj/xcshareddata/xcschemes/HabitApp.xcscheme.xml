@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35C3A9D22F169232000EAC4F"
-               BuildableName = "HabitApp Pro.app"
-               BlueprintName = "HabitApp-Premium"
+               BlueprintIdentifier = "F510C10C2F08953300C5074E"
+               BuildableName = "Habit App.app"
+               BlueprintName = "habitapp6"
                ReferencedContainer = "container:habitapp6.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +29,18 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F510C12B2F08953700C5074E"
+               BuildableName = "habitapp6UITests.xctest"
+               BlueprintName = "habitapp6UITests"
+               ReferencedContainer = "container:habitapp6.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -44,9 +56,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35C3A9D22F169232000EAC4F"
-            BuildableName = "HabitApp Pro.app"
-            BlueprintName = "HabitApp-Premium"
+            BlueprintIdentifier = "F510C10C2F08953300C5074E"
+            BuildableName = "Habit App.app"
+            BlueprintName = "habitapp6"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +73,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35C3A9D22F169232000EAC4F"
-            BuildableName = "HabitApp Pro.app"
-            BlueprintName = "HabitApp-Premium"
+            BlueprintIdentifier = "F510C10C2F08953300C5074E"
+            BuildableName = "Habit App.app"
+            BlueprintName = "habitapp6"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

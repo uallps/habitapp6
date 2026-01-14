@@ -1,11 +1,9 @@
-
 //
 //  PluginManager.swift
 //  HabitTracker
 //
 //  Core - Gestor central de plugins (Compatible con Swift 5.5)
 //
-
 import Foundation
 import SwiftUI
 import Combine
@@ -15,11 +13,9 @@ import Combine
 class PluginManager: ObservableObject {
     
     // MARK: - Singleton
-    
     static let shared = PluginManager()
     
     // MARK: - Properties
-    
     private let config: AppConfig
     private var cancellables = Set<AnyCancellable>()
     
@@ -31,15 +27,20 @@ class PluginManager: ObservableObject {
     
     /// Plugin de Categorías
     @Published private(set) var categoriasPlugin: CategoriasPlugin?
-    
-    // 👇 NUEVO: Plugin de Sugerencias (Tu feature)
+
+    /// Plugin de Sugerencias
     @Published private(set) var sugerenciasPlugin: SugerenciasPlugin?
-    
-    // 👇 NUEVO: Plugin de Notas (Feature de Develop)
+
+    /// Plugin de Logros
+    @Published private(set) var logrosPlugin: LogrosPlugin?
+
+    /// Plugin de Metas
+    @Published private(set) var metasPlugin: MetasPlugin?
+
+    /// Plugin de Notas
     @Published private(set) var notasPlugin: NotasPlugin?
-    
+
     // MARK: - Initialization
-    
     private init() {
         self.config = AppConfig.shared
         registerPlugins()
@@ -50,21 +51,16 @@ class PluginManager: ObservableObject {
     }
     
     // MARK: - Plugin Registration
-    
-    /// Registra todos los plugins disponibles
     private func registerPlugins() {
         recordatoriosPlugin = RecordatoriosPlugin(config: config)
         rachasPlugin = RachasPlugin(config: config)
         categoriasPlugin = CategoriasPlugin(config: config)
-        
-        // Inicializar Sugerencias
         sugerenciasPlugin = SugerenciasPlugin(config: config)
-        
-        // Inicializar Notas
+        logrosPlugin = LogrosPlugin(config: config)
+        metasPlugin = MetasPlugin(config: config)
         notasPlugin = NotasPlugin(config: config)
     }
     
-    /// Configura los bindings para reaccionar a cambios de configuración
     private func setupBindings() {
         NotificationCenter.default.publisher(for: .pluginConfigurationChanged)
             .receive(on: DispatchQueue.main)
@@ -81,130 +77,99 @@ class PluginManager: ObservableObject {
         print("   - Rachas: \(isRachasEnabled ? "✅" : "❌")")
         print("   - Categorías: \(isCategoriasEnabled ? "✅" : "❌")")
         print("   - Sugerencias: \(isSugerenciasEnabled ? "✅" : "❌")")
+        print("   - Logros: \(isLogrosEnabled ? "✅" : "❌")")
+        print("   - Metas: \(isMetasEnabled ? "✅" : "❌")")
         print("   - Notas: \(isNotasEnabled ? "✅" : "❌")")
     }
     
     // MARK: - Feature Checks
-    
     /// Verifica si la feature de Recordatorios está habilitada
-    var isRecordatoriosEnabled: Bool {
-        config.showRecordatorios
-    }
+    var isRecordatoriosEnabled: Bool { config.showRecordatorios }
     
     /// Verifica si la feature de Rachas está habilitada
-    var isRachasEnabled: Bool {
-        config.showRachas
-    }
+    var isRachasEnabled: Bool { config.showRachas }
     
     /// Verifica si la feature de Categorías está habilitada
-    var isCategoriasEnabled: Bool {
-        config.showCategorias
-    }
+    var isCategoriasEnabled: Bool { config.showCategorias }
     
     /// Verifica si la feature de Sugerencias está habilitada
-    var isSugerenciasEnabled: Bool {
-        config.showSugerencias
-    }
-    
+    var isSugerenciasEnabled: Bool { config.showSugerencias }
+
+    /// Verifica si la feature de Logros está habilitada
+    var isLogrosEnabled: Bool { config.showLogros }
+
+    /// Verifica si la feature de Metas está habilitada
+    var isMetasEnabled: Bool { config.showMetas }
+
     /// Verifica si la feature de Notas está habilitada
-    var isNotasEnabled: Bool {
-        config.showNotas
-    }
-    
+    var isNotasEnabled: Bool { config.showNotas }
+
     // MARK: - Data Plugin Methods
     
     /// Notifica a todos los DataPlugins que se va a crear un hábito
     func willCreateHabit(_ habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.willCreateHabit(habit)
-        }
-        if isRachasEnabled {
-            await rachasPlugin?.willCreateHabit(habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.willCreateHabit(habit)
-        }
-        if isSugerenciasEnabled {
-            await sugerenciasPlugin?.willCreateHabit(habit)
-        }
-        if isNotasEnabled {
-            await notasPlugin?.willCreateHabit(habit)
-        }
+        if isSugerenciasEnabled { await sugerenciasPlugin?.willCreateHabit(habit) }
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.willCreateHabit(habit) }
+        if isRachasEnabled { await rachasPlugin?.willCreateHabit(habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.willCreateHabit(habit) }
+        if isLogrosEnabled { await logrosPlugin?.willCreateHabit(habit) }
+        if isMetasEnabled { await metasPlugin?.willCreateHabit(habit) }
+        if isNotasEnabled { await notasPlugin?.willCreateHabit(habit) }
     }
     
     /// Notifica a todos los DataPlugins que se creó un hábito
     func didCreateHabit(_ habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.didCreateHabit(habit)
+        print("🔌 PluginManager: Distribuyendo evento 'didCreateHabit'...")
+
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.didCreateHabit(habit) }
+        if isRachasEnabled { await rachasPlugin?.didCreateHabit(habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.didCreateHabit(habit) }
+        if isSugerenciasEnabled { await sugerenciasPlugin?.didCreateHabit(habit) }
+        if isLogrosEnabled {
+            print("   -> Avisando a LogrosPlugin")
+            await logrosPlugin?.didCreateHabit(habit)
         }
-        if isRachasEnabled {
-            await rachasPlugin?.didCreateHabit(habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.didCreateHabit(habit)
-        }
-        if isSugerenciasEnabled {
-            await sugerenciasPlugin?.didCreateHabit(habit)
-        }
-        if isNotasEnabled {
-            await notasPlugin?.didCreateHabit(habit)
-        }
+        if isMetasEnabled { await metasPlugin?.didCreateHabit(habit) }
+        if isNotasEnabled { await notasPlugin?.didCreateHabit(habit) }
+
     }
     
     /// Notifica a todos los DataPlugins que se va a eliminar un hábito
     func willDeleteHabit(_ habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.willDeleteHabit(habit)
-        }
-        if isRachasEnabled {
-            await rachasPlugin?.willDeleteHabit(habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.willDeleteHabit(habit)
-        }
-        if isSugerenciasEnabled {
-            await sugerenciasPlugin?.willDeleteHabit(habit)
-        }
-        if isNotasEnabled {
-            await notasPlugin?.willDeleteHabit(habit)
-        }
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.willDeleteHabit(habit) }
+        if isRachasEnabled { await rachasPlugin?.willDeleteHabit(habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.willDeleteHabit(habit) }
+        if isSugerenciasEnabled { await sugerenciasPlugin?.willDeleteHabit(habit) }
+        if isLogrosEnabled { await logrosPlugin?.willDeleteHabit(habit) }
+        if isMetasEnabled { await metasPlugin?.willDeleteHabit(habit) }
+        if isNotasEnabled { await notasPlugin?.willDeleteHabit(habit) }
     }
     
     /// Notifica a todos los DataPlugins que se eliminó un hábito
     func didDeleteHabit(habitId: UUID) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.didDeleteHabit(habitId: habitId)
-        }
-        if isRachasEnabled {
-            await rachasPlugin?.didDeleteHabit(habitId: habitId)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.didDeleteHabit(habitId: habitId)
-        }
-        if isSugerenciasEnabled {
-            await sugerenciasPlugin?.didDeleteHabit(habitId: habitId)
-        }
-        if isNotasEnabled {
-            await notasPlugin?.didDeleteHabit(habitId: habitId)
-        }
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.didDeleteHabit(habitId: habitId) }
+        if isRachasEnabled { await rachasPlugin?.didDeleteHabit(habitId: habitId) }
+        if isCategoriasEnabled { await categoriasPlugin?.didDeleteHabit(habitId: habitId) }
+        if isSugerenciasEnabled { await sugerenciasPlugin?.didDeleteHabit(habitId: habitId) }
+        if isLogrosEnabled { await logrosPlugin?.didDeleteHabit(habitId: habitId) }
+        if isMetasEnabled { await metasPlugin?.didDeleteHabit(habitId: habitId) }
+        if isNotasEnabled { await notasPlugin?.didDeleteHabit(habitId: habitId) }
     }
     
     /// Notifica a todos los DataPlugins que se toggleó una instancia
     func didToggleInstance(_ instance: HabitInstance, habit: Habit) async {
-        if isRecordatoriosEnabled {
-            await recordatoriosPlugin?.didToggleInstance(instance, habit: habit)
+        print("🔌 PluginManager: Distribuyendo evento 'didToggleInstance'...")
+
+        if isRecordatoriosEnabled { await recordatoriosPlugin?.didToggleInstance(instance, habit: habit) }
+        if isRachasEnabled { await rachasPlugin?.didToggleInstance(instance, habit: habit) }
+        if isCategoriasEnabled { await categoriasPlugin?.didToggleInstance(instance, habit: habit) }
+        if isSugerenciasEnabled { await sugerenciasPlugin?.didToggleInstance(instance, habit: habit) }
+        if isLogrosEnabled {
+            print("   -> Avisando a LogrosPlugin")
+            await logrosPlugin?.didToggleInstance(instance, habit: habit)
         }
-        if isRachasEnabled {
-            await rachasPlugin?.didToggleInstance(instance, habit: habit)
-        }
-        if isCategoriasEnabled {
-            await categoriasPlugin?.didToggleInstance(instance, habit: habit)
-        }
-        if isSugerenciasEnabled {
-            await sugerenciasPlugin?.didToggleInstance(instance, habit: habit)
-        }
-        if isNotasEnabled {
-            await notasPlugin?.didToggleInstance(instance, habit: habit)
-        }
+        if isMetasEnabled { await metasPlugin?.didToggleInstance(instance, habit: habit) }
+        if isNotasEnabled { await notasPlugin?.didToggleInstance(instance, habit: habit) }
     }
 }
+

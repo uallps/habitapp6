@@ -7,151 +7,125 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
-/// Configuración global de la aplicación
-/// Controla qué features/plugins están habilitados
 @MainActor
 class AppConfig: ObservableObject {
     
     // MARK: - Singleton
-    
     static let shared = AppConfig()
-    
-    // MARK: - Feature Flags
-    
-    /// Habilita/deshabilita la feature de Recordatorios
-    @Published var showRecordatorios: Bool {
-        didSet {
-            UserDefaults.standard.set(showRecordatorios, forKey: Keys.showRecordatorios)
-            notifyPluginsChanged()
-        }
-    }
-    
-    /// Habilita/deshabilita la feature de Rachas
-    @Published var showRachas: Bool {
-        didSet {
-            UserDefaults.standard.set(showRachas, forKey: Keys.showRachas)
-            notifyPluginsChanged()
-        }
-    }
-    
-    /// Habilita/deshabilita la feature de Categorías
-    @Published var showCategorias: Bool {
-        didSet {
-            UserDefaults.standard.set(showCategorias, forKey: Keys.showCategorias)
-            notifyPluginsChanged()
-        }
-    }
-    
-    /// Habilita/deshabilita la feature de Metas (Del Código 1)
-    @Published var showMetas: Bool {
-        didSet {
-            UserDefaults.standard.set(showMetas, forKey: Keys.showMetas)
-            notifyPluginsChanged()
-        }
-    }
-    
-    // 👇 NUEVO: Feature Flag para Sugerencias (Del Código 1)
-    /// Habilita/deshabilita la feature de Sugerencias
-    @Published var showSugerencias: Bool {
-        didSet {
-            UserDefaults.standard.set(showSugerencias, forKey: Keys.showSugerencias)
-            notifyPluginsChanged()
-        }
-    }
 
-    /// Habilita/deshabilita la feature de Notas (Del Código 2)
-    @Published var showNotas: Bool {
-        didSet {
-            UserDefaults.standard.set(showNotas, forKey: Keys.showNotas)
-            notifyPluginsChanged()
-        }
-    }
-    
     // MARK: - Keys
-    
     private enum Keys {
         static let showRecordatorios = "feature.recordatorios.enabled"
         static let showRachas = "feature.rachas.enabled"
         static let showCategorias = "feature.categorias.enabled"
-        static let showMetas = "feature.metas.enabled"     // Código 1
-        // 👇 NUEVO: Clave para Sugerencias
-        static let showSugerencias = "feature.sugerencias.enabled" // Código 1
-        static let showNotas = "feature.notas.enabled"       // Código 2
+        static let showMetas = "feature.metas.enabled"
+        static let showNotas = "feature.notas.enabled"
+        static let showSugerencias = "feature.sugerencias.enabled"
+        static let showLogros = "feature.logros.enabled"
     }
-    
+
+    // MARK: - Feature Flags (Propiedades Publicadas)
+
+    @Published var showRecordatorios: Bool {
+        didSet { save(key: Keys.showRecordatorios, value: showRecordatorios) }
+    }
+
+    @Published var showRachas: Bool {
+        didSet { save(key: Keys.showRachas, value: showRachas) }
+    }
+
+    @Published var showCategorias: Bool {
+        didSet { save(key: Keys.showCategorias, value: showCategorias) }
+    }
+
+    @Published var showMetas: Bool {
+        didSet { save(key: Keys.showMetas, value: showMetas) }
+    }
+
+    @Published var showNotas: Bool {
+        didSet { save(key: Keys.showNotas, value: showNotas) }
+    }
+
+    @Published var showSugerencias: Bool {
+        didSet { save(key: Keys.showSugerencias, value: showSugerencias) }
+    }
+
+    @Published var showLogros: Bool {
+        didSet { save(key: Keys.showLogros, value: showLogros) }
+    }
+
     // MARK: - Initialization
-    
     private init() {
-        // Cargar valores guardados o usar defaults
+        // Cargamos el estado guardado o usamos 'true' por defecto
         self.showRecordatorios = UserDefaults.standard.object(forKey: Keys.showRecordatorios) as? Bool ?? true
         self.showRachas = UserDefaults.standard.object(forKey: Keys.showRachas) as? Bool ?? true
         self.showCategorias = UserDefaults.standard.object(forKey: Keys.showCategorias) as? Bool ?? true
-        
-        // Cargas del Código 1
         self.showMetas = UserDefaults.standard.object(forKey: Keys.showMetas) as? Bool ?? true
-        // 👇 NUEVO: Carga inicial de Sugerencias
-        self.showSugerencias = UserDefaults.standard.object(forKey: Keys.showSugerencias) as? Bool ?? true
-        
-        // Cargas del Código 2
         self.showNotas = UserDefaults.standard.object(forKey: Keys.showNotas) as? Bool ?? true
-        
-        // Lógica de entorno (Importante mantenerla del Código 2 para gestión de versiones)
+        self.showSugerencias = UserDefaults.standard.object(forKey: Keys.showSugerencias) as? Bool ?? true
+        self.showLogros = UserDefaults.standard.object(forKey: Keys.showLogros) as? Bool ?? true
+
         #if DEVELOP || PREMIUM
         #else
         disableAllFeatures()
         #endif
-        
+
         print("⚙️ AppConfig inicializado:")
         print("   - Recordatorios: \(showRecordatorios)")
         print("   - Rachas: \(showRachas)")
         print("   - Categorías: \(showCategorias)")
         print("   - Metas: \(showMetas)")
-        // 👇 NUEVO: Log
-        print("   - Sugerencias: \(showSugerencias)")
         print("   - Notas: \(showNotas)")
+        print("   - Sugerencias: \(showSugerencias)")
+        print("   - Logros: \(showLogros)")
     }
-    
-    // MARK: - Methods
-    
-    /// Notifica que la configuración de plugins ha cambiado
-    private func notifyPluginsChanged() {
+
+    // MARK: - Helper Methods
+
+    /// Guarda el valor en UserDefaults y notifica al sistema
+    private func save(key: String, value: Bool) {
+        UserDefaults.standard.set(value, forKey: key)
         NotificationCenter.default.post(name: .pluginConfigurationChanged, object: nil)
     }
-    
-    /// Resetea todas las features a sus valores por defecto
+
+    /// Restaura toda la configuración a los valores por defecto (todo activado)
     func resetToDefaults() {
         showRecordatorios = true
         showRachas = true
         showCategorias = true
-        showMetas = true       // Código 1
-        showSugerencias = true // Código 1
-        showNotas = true       // Código 2
+        showMetas = true
+        showNotas = true
+        showSugerencias = true
+        showLogros = true
     }
-    
-    /// Deshabilita todas las features
+
+    /// Desactiva todas las features (Modo "Core" puro)
     func disableAllFeatures() {
         showRecordatorios = false
         showRachas = false
         showCategorias = false
-        showMetas = false       // Código 1
-        showSugerencias = false // Código 1
-        showNotas = false       // Código 2
+        showMetas = false
+        showNotas = false
+        showSugerencias = false
+        showLogros = false
     }
-    
-    /// Habilita todas las features
+
+    /// Activa todas las features (Modo "Premium")
     func enableAllFeatures() {
         showRecordatorios = true
         showRachas = true
         showCategorias = true
-        showMetas = true       // Código 1
-        showSugerencias = true // Código 1
-        showNotas = true       // Código 2
+        showMetas = true
+        showNotas = true
+        showSugerencias = true
+        showLogros = true
     }
 }
 
-// MARK: - Notification Names
-
+// MARK: - Notification Extension
 extension Notification.Name {
+    /// Notificación que se envía cuando cambia cualquier configuración de features
     static let pluginConfigurationChanged = Notification.Name("pluginConfigurationChanged")
 }
