@@ -57,7 +57,7 @@ HabitApp es una aplicación iOS/macOS diseñada para ayudarte a **crear, seguir 
 | 🏆 **Logros** | Sistema de medallas y recompensas | Sergio Gómez Vico |
 | 🎯 **Metas** | Define objetivos específicos para tus hábitos | Raúl Martínez Gutiérrez |
 | 💡 **Sugerencias** | Recomendaciones personalizadas de nuevos hábitos | Andrés Ruiz Andújar |
-| 📲 **Widget** | Widget para tu pantalla de inicio |  |
+| 📲 **Widget** | Widget para tu pantalla de inicio | Adrián Martínez Granados |
 
 ---
 
