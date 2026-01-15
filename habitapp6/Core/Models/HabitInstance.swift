@@ -3,7 +3,7 @@ import Foundation
 public struct HabitInstance: Identifiable, Codable, Equatable, Hashable {
     public let id: UUID
     public let habitID: UUID
-    public var fecha: Date
+    public let fecha: Date
     public var completado: Bool
     
     public init(habitID: UUID, fecha: Date, completado: Bool = false) {
