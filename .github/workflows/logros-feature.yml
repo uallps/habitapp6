@@ -1,0 +1,26 @@
+name: Feature Logros 
+
+on:
+  push:
+    branches: [ "feature-logros-sergio" ]
+  pull_request:
+    branches: [ "feature-logros-sergio" ]
+
+jobs:
+  build-verify:
+    name: Build & Verify Logros
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+
+      - name: Build HabitApp
+        run: |
+          xcodebuild build \
+            -scheme HabitApp \
+            -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+            -quiet
