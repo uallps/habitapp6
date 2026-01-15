@@ -44,7 +44,7 @@ HabitApp es una aplicación iOS/macOS diseñada para ayudarte a **crear, seguir 
 ### 🌟 Features Variables
 
 | Feature | Descripción |
-|---------|-------------|-------|
+|---------|-------------|
 | 🔔 **Recordatorios** | Notificaciones para no olvidar ningún hábito |
 | 🔥 **Rachas** | Mantén tu racha de días consecutivos |
 | 📝 **Notas** | Añade notas a tus completados |
