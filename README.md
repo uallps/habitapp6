@@ -1,4 +1,4 @@
-# 🎯 HabitApp
+# 🎯 HabitApp 6 
 
 <div align="center">
 
@@ -43,21 +43,21 @@ HabitApp es una aplicación iOS/macOS diseñada para ayudarte a **crear, seguir 
 
 ### 🌟 Features Variables
 
-| Feature | Descripción | Autor |
+| Feature | Descripción |
 |---------|-------------|-------|
-| 🔔 **Recordatorios** | Notificaciones para no olvidar ningún hábito | `[NOMBRE]` |
-| 🔥 **Rachas** | Mantén tu racha de días consecutivos | `[NOMBRE]` |
-| 📝 **Notas** | Añade notas a tus completados | `[NOMBRE]` |
-| 🏷️ **Categorías** | Organiza tus hábitos por categorías | `[NOMBRE]` |
+| 🔔 **Recordatorios** | Notificaciones para no olvidar ningún hábito |
+| 🔥 **Rachas** | Mantén tu racha de días consecutivos |
+| 📝 **Notas** | Añade notas a tus completados |
+| 🏷️ **Categorías** | Organiza tus hábitos por categorías |
 
 ### 💎 Features Premium (Las nuestras)
 
 | Feature | Descripción | Autor |
 |---------|-------------|-------|
-| 🏆 **Logros** | Sistema de medallas y recompensas | `[NOMBRE]` |
-| 🎯 **Metas** | Define objetivos específicos para tus hábitos | `[NOMBRE]` |
-| 💡 **Sugerencias** | Recomendaciones personalizadas de nuevos hábitos | `[NOMBRE]` |
-| 📲 **Widget** | Widget para tu pantalla de inicio | `[NOMBRE]` |
+| 🏆 **Logros** | Sistema de medallas y recompensas | Sergio Gómez Vico |
+| 🎯 **Metas** | Define objetivos específicos para tus hábitos | Raúl Martínez Gutiérrez |
+| 💡 **Sugerencias** | Recomendaciones personalizadas de nuevos hábitos | Andrés Ruiz Andújar |
+| 📲 **Widget** | Widget para tu pantalla de inicio |  |
 
 ---
 
@@ -137,21 +137,6 @@ open habitapp6.xcodeproj
 
 ---
 
-## 🧪 CI/CD
-
-Usamos **GitHub Actions** para asegurar que todo funciona:
-
-| Workflow | Descripción |
-|----------|-------------|
-| `build.yml` | Compila todas las versiones |
-| `build-metas.yml` | Compila feature Metas |
-| `build-logros.yml` | Compila feature Logros |
-| `build-sugerencias.yml` | Compila feature Sugerencias |
-| `build-widget.yml` | Compila feature Widget |
-
-[![Build Status](https://github.com/[TU-USUARIO]/habitapp6/actions/workflows/build.yml/badge.svg)](https://github.com/[TU-USUARIO]/habitapp6/actions)
-
----
 
 ## 👥 Equipo
 
@@ -162,7 +147,7 @@ Usamos **GitHub Actions** para asegurar que todo funciona:
 | 📲 | `Adrián Martínez Granados` | Widget | [@ualamg538](https://github.com/ualamg538) |
 | 🎯 | `Raúl Martínez Gutiérrez` | Metas | [@ualrmg429](https://github.com/ualrmg429) |
 | 🏆 | `Sergio Gómez Vico` | Logros | [@ualsgv396](https://github.com/ualsgv396) |
-| 💡 | `Andrés Ruiz Andujár` | Sugerencias | [@UALara584](https://github.com/UALara584) |
+| 💡 | `Andrés Ruiz Andújar` | Sugerencias | [@UALara584](https://github.com/UALara584) |
 
 
 </div>
