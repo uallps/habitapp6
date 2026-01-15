@@ -1,0 +1,46 @@
+name: iOS Build & Test
+
+# Se ejecuta en cada push a main y en cada Pull Request
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    name: Build and Test Module
+    runs-on: macos-latest # Utiliza la última versión disponible de macOS en GitHub Actions
+
+    steps:
+      # 1. Descargar el código del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configurar versión de Xcode (Opcional, pero recomendado para consistencia)
+      # GitHub actualiza 'macos-latest' frecuentemente, esto asegura una versión específica.
+      - name: Set Xcode Version
+        run: sudo xcode-select -s /Applications/Xcode_15.2.app
+
+      # 3. Mostrar versiones para depuración en logs
+      - name: Show Xcode Version
+        run: xcodebuild -version
+
+      # 4. Compilar y Ejecutar Tests del Módulo Principal
+      # NOTA: Reemplaza 'HabitTracker' con el nombre exacto de tu Scheme en Xcode
+      - name: Test Main App & Plugins
+        run: |
+          set -o pipefail && xcodebuild test \
+            -scheme "HabitTracker" \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+            -enableCodeCoverage YES \
+            clean build test | xcpretty
+
+      # 5. (Opcional) Si tienes el Plugin en un Target separado (Framework aislado)
+      # Descomenta esto si 'SugerenciasPlugin' es un framework independiente
+      # - name: Test Sugerencias Plugin Module
+      #   run: |
+      #     set -o pipefail && xcodebuild test \
+      #       -scheme "SugerenciasPlugin" \
+      #       -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+      #       clean build test | xcpretty
