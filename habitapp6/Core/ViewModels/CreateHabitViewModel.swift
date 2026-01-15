@@ -1,3 +1,4 @@
+
 import Foundation
 
 @MainActor
@@ -12,14 +13,16 @@ class CreateHabitViewModel: ObservableObject {
     
     func createHabit() {
         let newHabit = Habit(nombre: nombre, frecuencia: frecuencia)
-        dataStore.habits.append(newHabit)
+        dataStore.habits.append(newHabit) // 1. Añadir
+        
         Task {
             await dataStore.generateTodayInstances()
             await dataStore.saveData()
+        
+            let total = dataStore.habits.count
+            LogrosManager.shared.chequearCreacion(cantidadHabitos: total)
         }
     }
     
-    var isValid: Bool {
-        !nombre.trimmingCharacters(in: .whitespaces).isEmpty
-    }
+    var isValid: Bool { !nombre.trimmingCharacters(in: .whitespaces).isEmpty }
 }

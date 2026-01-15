@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "2600"
-   version = "1.7">
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
@@ -15,9 +15,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F510C10C2F08953300C5074E"
-               BuildableName = "Habit App.app"
-               BlueprintName = "HabitApp"
+               BlueprintIdentifier = "35C3AB592F16DDBD000EAC4F"
+               BuildableName = "HabitWidgetExtension.appex"
+               BlueprintName = "HabitWidgetExtension"
+               ReferencedContainer = "container:habitapp6.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "35C3A9D22F169232000EAC4F"
+               BuildableName = "HabitApp Pro.app"
+               BlueprintName = "HabitApp-Premium"
                ReferencedContainer = "container:habitapp6.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,38 +46,58 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
+      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F510C10C2F08953300C5074E"
-            BuildableName = "Habit App.app"
-            BlueprintName = "HabitApp"
+            BlueprintIdentifier = "35C3A9D22F169232000EAC4F"
+            BuildableName = "HabitApp Pro.app"
+            BlueprintName = "HabitApp-Premium"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "_XCWidgetKind"
+            value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "_XCWidgetDefaultView"
+            value = "timeline"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "_XCWidgetFamily"
+            value = "systemMedium"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F510C10C2F08953300C5074E"
-            BuildableName = "Habit App.app"
-            BlueprintName = "HabitApp"
+            BlueprintIdentifier = "35C3A9D22F169232000EAC4F"
+            BuildableName = "HabitApp Pro.app"
+            BlueprintName = "HabitApp-Premium"
             ReferencedContainer = "container:habitapp6.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

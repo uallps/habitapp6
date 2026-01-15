@@ -15,6 +15,7 @@ class HabitDetailViewModel: ObservableObject {
             dataStore.habits[index] = habit
             Task {
                 await dataStore.saveData()
+
             }
         }
     }

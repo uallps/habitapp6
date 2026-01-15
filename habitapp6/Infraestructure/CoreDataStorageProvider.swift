@@ -1,6 +1,6 @@
+
 import Foundation
 import CoreData
-
 
 @objc(HabitEntity)
 class HabitEntity: NSManagedObject {
@@ -25,10 +25,8 @@ class CoreDataStorageProvider: StorageProvider {
     private let container: NSPersistentContainer
     
     init() {
-        // Crear modelo programáticamente
         let model = NSManagedObjectModel()
         
-        // Entity: Habit
         let habitEntity = NSEntityDescription()
         habitEntity.name = "HabitEntity"
         habitEntity.managedObjectClassName = NSStringFromClass(HabitEntity.self)
@@ -55,7 +53,6 @@ class CoreDataStorageProvider: StorageProvider {
         
         habitEntity.properties = [habitIdAttr, habitNombreAttr, habitFrecuenciaAttr, habitFechaAttr, habitActivoAttr]
         
-        // Entity: HabitInstance
         let instanceEntity = NSEntityDescription()
         instanceEntity.name = "HabitInstanceEntity"
         instanceEntity.managedObjectClassName = NSStringFromClass(HabitInstanceEntity.self)
@@ -80,7 +77,6 @@ class CoreDataStorageProvider: StorageProvider {
         
         model.entities = [habitEntity, instanceEntity]
         
-        // Inicializar container con el modelo
         container = NSPersistentContainer(name: "HabitTracker", managedObjectModel: model)
         
         container.loadPersistentStores { description, error in
@@ -92,67 +88,92 @@ class CoreDataStorageProvider: StorageProvider {
     
     func loadHabits() async throws -> [Habit] {
         let context = container.viewContext
-        let request = NSFetchRequest<HabitEntity>(entityName: "HabitEntity")
-        
-        let entities = try context.fetch(request)
-        return entities.map { entity in
-            Habit(
-                nombre: entity.nombre,
-                frecuencia: Frecuencia(rawValue: entity.frecuencia) ?? .diario,
-                fechaCreacion: entity.fechaCreacion,
-                activo: entity.activo
-            )
+        return await context.perform {
+            let request = NSFetchRequest<HabitEntity>(entityName: "HabitEntity")
+            do {
+                let entities = try context.fetch(request)
+                return entities.map { entity in
+                    Habit(
+                        nombre: entity.nombre,
+                        frecuencia: Frecuencia(rawValue: entity.frecuencia) ?? .diario,
+                        fechaCreacion: entity.fechaCreacion,
+                        activo: entity.activo
+                    )
+                }
+            } catch {
+                return []
+            }
         }
     }
     
     func saveHabits(_ habits: [Habit]) async throws {
         let context = container.viewContext
-        
-        // Eliminar existentes
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HabitEntity")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        try context.execute(deleteRequest)
-        
-        // Guardar nuevos
-        for habit in habits {
-            let entity = HabitEntity(context: context)
-            entity.id = habit.id
-            entity.nombre = habit.nombre
-            entity.frecuencia = habit.frecuencia.rawValue
-            entity.fechaCreacion = habit.fechaCreacion
-            entity.activo = habit.activo
+        try await context.perform {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "HabitEntity")
+            let existing = try context.fetch(fetchRequest)
+            for obj in existing {
+                context.delete(obj)
+            }
+            
+            for habit in habits {
+                let entity = HabitEntity(context: context)
+                entity.id = habit.id
+                entity.nombre = habit.nombre
+                entity.frecuencia = habit.frecuencia.rawValue
+                entity.fechaCreacion = habit.fechaCreacion
+                entity.activo = habit.activo
+            }
+            
+            if context.hasChanges {
+                try context.save()
+            }
         }
-        
-        try context.save()
     }
     
     func loadInstances() async throws -> [HabitInstance] {
         let context = container.viewContext
-        let request = NSFetchRequest<HabitInstanceEntity>(entityName: "HabitInstanceEntity")
-        
-        let entities = try context.fetch(request)
-        return entities.map { entity in
-            HabitInstance(habitID: entity.habitID, fecha: entity.fecha, completado: entity.completado)
+        return await context.perform {
+            let request = NSFetchRequest<HabitInstanceEntity>(entityName: "HabitInstanceEntity")
+            do {
+                let entities = try context.fetch(request)
+                return entities.map { entity in
+                    HabitInstance(habitID: entity.habitID, fecha: entity.fecha, completado: entity.completado)
+                }
+            } catch {
+                return []
+            }
         }
     }
     
     func saveInstances(_ instances: [HabitInstance]) async throws {
         let context = container.viewContext
-        
-        // Eliminar existentes
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HabitInstanceEntity")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        try context.execute(deleteRequest)
-        
-        // Guardar nuevos
-        for instance in instances {
-            let entity = HabitInstanceEntity(context: context)
-            entity.id = instance.id
-            entity.habitID = instance.habitID
-            entity.fecha = instance.fecha
-            entity.completado = instance.completado
+        try await context.perform {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "HabitInstanceEntity")
+            let existing = try context.fetch(fetchRequest)
+            for obj in existing {
+                context.delete(obj)
+            }
+            
+            for instance in instances {
+                let entity = HabitInstanceEntity(context: context)
+                entity.id = instance.id
+                entity.habitID = instance.habitID
+                entity.fecha = instance.fecha
+                entity.completado = instance.completado
+            }
+            
+            if context.hasChanges {
+                try context.save()
+            }
         }
+
         
-        try context.save()
+    }
+    
+    func persistChanges() throws{
+        let context = container.viewContext
+        if context.hasChanges {
+            try context.save()
+        }
     }
 }

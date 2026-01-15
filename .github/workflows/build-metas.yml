@@ -1,0 +1,70 @@
+name: Build Feature Metas
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature-metas-raul
+    paths:
+      - 'habitapp6/Features/Metas/**'
+      - '.github/workflows/build-metas.yml'
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build-metas:
+    name: Build HabitApp-Metas for ${{ matrix.platform }}
+    runs-on: macos-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [iOS, macOS]
+        include:
+          - platform: iOS
+            sdk: iphonesimulator
+            destination: "generic/platform=iOS Simulator"
+          - platform: macOS
+            sdk: macosx
+            destination: "platform=macOS"
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Show Xcode version
+        run: xcodebuild -version
+      
+      - name: Build HabitApp-Metas for ${{ matrix.platform }}
+        run: |
+          xcodebuild clean build \
+            -project habitapp6.xcodeproj \
+            -scheme "HabitApp6-Metas" \
+            -sdk ${{ matrix.sdk }} \
+            -destination '${{ matrix.destination }}' \
+            -derivedDataPath ./DerivedData \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+      
+      - name: Verify build products
+        if: success()
+        run: |
+          echo "=== Build Metas - ${{ matrix.platform }} ==="
+          find ./DerivedData -name "*.app" -type d 2>/dev/null || echo "No .app found"
+      
+      - name: Upload artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HabitApp-Metas-${{ matrix.platform }}
+          path: ./DerivedData/Build/Products/**/*.app
+          if-no-files-found: warn

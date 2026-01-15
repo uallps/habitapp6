@@ -1,241 +1,283 @@
-//
-//  HabitsListView.swift
-//  HabitTracker
-//
-//  Vista de lista de hábitos - Integrada con sistema de plugins SPL
-//
 
 import SwiftUI
 
 struct HabitsListView: View {
-    
     @ObservedObject var dataStore: HabitDataStore
-    @StateObject private var viewModel: HabitsViewModel
     @ObservedObject private var pluginManager = PluginManager.shared
+    @ObservedObject private var logrosManager = LogrosManager.shared
+    @StateObject private var viewModel: HabitsViewModel
+
     @State private var showingCreateView = false
+    @State private var showingSuggestions = false
     @State private var selectedHabitForReminder: Habit?
+    
+    // Estados de filtrado
     @State private var selectedCategoriaFilter: Categoria? = nil
     @State private var showByCategoria: Bool = false
-    
+    @State private var showingSettings = false
+    @State private var showingFelicitacion = false
+    @State private var logroDesbloqueado: Logro?
+
     init(dataStore: HabitDataStore) {
         self.dataStore = dataStore
         _viewModel = StateObject(wrappedValue: HabitsViewModel(dataStore: dataStore))
     }
-    
+
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // Filtro de categorías (solo si plugin habilitado)
-                if pluginManager.isCategoriasEnabled && !dataStore.habits.isEmpty {
-                    VStack(spacing: 8) {
-                        CategoriaFilterView(selectedFilter: $selectedCategoriaFilter)
-                        
-                        // Toggle para ver por categoría
-                        HStack {
-                            Spacer()
-                            Button {
-                                showByCategoria.toggle()
-                            } label: {
-                                HStack(spacing: 4) {
-                                    Image(systemName: showByCategoria ? "list.bullet" : "folder")
-                                    Text(showByCategoria ? "Ver lista" : "Ver por categoría")
-                                        .font(.caption)
+        ZStack {
+            NavigationView {
+                VStack(spacing: 0) {
+                    if pluginManager.isCategoriasEnabled && !dataStore.habits.isEmpty {
+                        VStack(spacing: 8) {
+                            CategoriaFilterView(selectedFilter: $selectedCategoriaFilter)
+                            HStack {
+                                Spacer()
+                                Button {
+                                    showByCategoria.toggle()
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: showByCategoria ? "list.bullet" : "folder")
+                                        Text(showByCategoria ? "Ver lista" : "Ver por categoría")
+                                            .font(.caption)
+                                    }
+                                    .foregroundColor(.accentColor)
                                 }
-                                .foregroundColor(.accentColor)
+                                .padding(.trailing)
                             }
-                            .padding(.trailing)
                         }
+                        .padding(.top, 8)
                     }
-                    .padding(.top, 8)
-                }
-                
-                // Lista de hábitos
-                if showByCategoria && pluginManager.isCategoriasEnabled {
-                    HabitsByCategoriaView(dataStore: dataStore, pluginManager: pluginManager)
-                } else {
-                    List {
-                        if filteredHabits.isEmpty {
-                            if dataStore.habits.isEmpty {
-                                emptyStateView
+
+                    if showByCategoria && pluginManager.isCategoriasEnabled {
+                        HabitsByCategoriaView(dataStore: dataStore, pluginManager: pluginManager)
+                    } else {
+                        List {
+                            if filteredHabits.isEmpty {
+                                if dataStore.habits.isEmpty {
+                                    emptyStateView
+                                } else {
+                                    noResultsView
+                                }
                             } else {
-                                noResultsView
-                            }
-                        } else {
-                            ForEach(filteredHabits) { habit in
-                                NavigationLink(destination: HabitDetailView(dataStore: dataStore, habit: habit)) {
-                                    HabitRowView(
-                                        dataStore: dataStore,
-                                        habit: habit,
-                                        pluginManager: pluginManager,
-                                        onToggleActive: {
-                                            viewModel.toggleHabitActive(habit)
-                                        },
-                                        onReminderTap: {
-                                            selectedHabitForReminder = habit
-                                        }
-                                    )
+                                ForEach(filteredHabits) { habit in
+                                    NavigationLink(destination: HabitDetailView(dataStore: dataStore, habit: habit)) {
+                                        HabitRowView(
+                                            dataStore: dataStore,
+                                            habit: habit,
+                                            pluginManager: pluginManager,
+                                            onToggleActive: {
+                                                viewModel.toggleHabitActive(habit)
+                                            },
+                                            onReminderTap: {
+                                                selectedHabitForReminder = habit
+                                            }
+                                        )
+                                    }
                                 }
+                                .onDelete(perform: deleteHabits)
                             }
-                            .onDelete(perform: deleteHabits)
                         }
                     }
                 }
-            }
-            .navigationTitle("Mis Hábitos")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        showingCreateView = true
-                    } label: {
-                        Image(systemName: "plus")
+                .navigationTitle("Mis Hábitos")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        HStack(spacing: 16) {
+                            #if DEVELOP || PREMIUM
+                            Button { showingSuggestions = true } label: { Image(systemName: "lightbulb").symbolVariant(.fill).foregroundColor(.yellow) }
+                            #endif
+                            Button { showingCreateView = true } label: { Image(systemName: "plus") }
+                        }
                     }
                 }
+                .sheet(isPresented: $showingCreateView) {
+                    CreateHabitView(dataStore: dataStore)
+                }
+                .sheet(item: $selectedHabitForReminder) { habit in
+                    if pluginManager.isRecordatoriosEnabled {
+                        RecordatorioConfigView(dataStore: dataStore, habit: habit)
+                    }
+                }
+                .sheet(isPresented: $showingSuggestions) {
+                    SuggestionListView(habitHandler: dataStore)
+                }
             }
-            .sheet(isPresented: $showingCreateView) {
-                CreateHabitView(dataStore: dataStore)
+            .zIndex(0)
+
+            if showingFelicitacion, let logro = logroDesbloqueado {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                    .onTapGesture { cerrarFelicitacion() }
+                    .zIndex(1)
+
+                FelicitacionCardPopUp(logro: logro) {
+                    cerrarFelicitacion()
+                }
+                .transition(.scale.combined(with: .opacity))
+                .zIndex(2)
             }
-            .sheet(item: $selectedHabitForReminder) { habit in
-                if pluginManager.isRecordatoriosEnabled {
-                    RecordatorioConfigView(dataStore: dataStore, habit: habit)
+        }
+        .onReceive(logrosManager.$logrosRecienDesbloqueados) { nuevos in
+            if let primero = nuevos.first {
+                self.logroDesbloqueado = primero
+                withAnimation(.spring()) {
+                    self.showingFelicitacion = true
                 }
             }
         }
     }
-    
-    // MARK: - Computed Properties
-    
+
+    private func cerrarFelicitacion() {
+        withAnimation {
+            showingFelicitacion = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            logrosManager.limpiarRecienDesbloqueados()
+            logroDesbloqueado = nil
+        }
+    }
+
     private var filteredHabits: [Habit] {
         guard pluginManager.isCategoriasEnabled, let filter = selectedCategoriaFilter else {
             return dataStore.habits
         }
         return dataStore.habits.filter { $0.categoriaEnum == filter }
     }
-    
-    // MARK: - Views
-    
+
+    // MARK: - Views Auxiliares
+
     private var emptyStateView: some View {
         VStack(spacing: 16) {
             Image(systemName: "list.bullet.clipboard")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
-            
-            Text("No hay hábitos")
-                .font(.headline)
-            
+            Text("No hay hábitos").font(.headline)
             Text("Toca el botón + para crear tu primer hábito")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
+                .font(.subheadline).foregroundColor(.secondary).multilineTextAlignment(.center)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 40)
-        .listRowBackground(Color.clear)
+        .frame(maxWidth: .infinity).padding(.vertical, 40).listRowBackground(Color.clear)
     }
-    
+
     private var noResultsView: some View {
         VStack(spacing: 16) {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
-            
             Text("Sin resultados")
                 .font(.headline)
-            
             Text("No hay hábitos en esta categoría")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-            
             Button("Mostrar todos") {
                 selectedCategoriaFilter = nil
             }
             .buttonStyle(.bordered)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 40)
-        .listRowBackground(Color.clear)
+        .frame(maxWidth: .infinity).padding(.vertical, 40).listRowBackground(Color.clear)
     }
-    
-    // MARK: - Actions
-    
+
     func deleteHabits(at offsets: IndexSet) {
         let habitsToDelete = offsets.map { filteredHabits[$0] }
-        
         for habit in habitsToDelete {
-            // Notificar a los plugins antes de eliminar
             Task {
                 await pluginManager.willDeleteHabit(habit)
-                viewModel.deleteHabit(habit)
+                
+                // Lógica de borrado directa en dataStore
+                if let index = dataStore.habits.firstIndex(where: { $0.id == habit.id }) {
+                    dataStore.habits.remove(at: index)
+                }
+                dataStore.instances.removeAll { $0.habitID == habit.id }
+                await dataStore.saveData()
+                
                 await pluginManager.didDeleteHabit(habitId: habit.id)
             }
         }
     }
 }
 
-// MARK: - Habit Row View
+struct FelicitacionCardPopUp: View {
+    let logro: Logro
+    let action: () -> Void
 
-/// Vista de fila para cada hábito en la lista
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "star.circle.fill")
+                .font(.system(size: 80)).foregroundColor(.yellow)
+                .padding(.top, 10)
+                .shadow(color: .orange.opacity(0.5), radius: 20)
+
+            VStack(spacing: 8) {
+                Text("¡Enhorabuena!").font(.title2).fontWeight(.black)
+                Text("Has desbloqueado un nuevo logro").font(.subheadline).foregroundColor(.secondary)
+            }
+            Divider()
+            VStack(spacing: 8) {
+                Text(logro.tipo.titulo).font(.title3).fontWeight(.bold).foregroundColor(logro.tipo.color)
+                Text(logro.tipo.descripcion).font(.body).multilineTextAlignment(.center).foregroundColor(.secondary)
+            }
+            Button(action: action) {
+                Text("¡Genial!").fontWeight(.bold).frame(maxWidth: .infinity).padding()
+                    .background(logro.tipo.color).foregroundColor(.white).cornerRadius(12)
+            }
+        }
+        .padding(24)
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(24)
+        .shadow(radius: 20)
+        .padding(40)
+    }
+}
+
+
 struct HabitRowView: View {
-    
     @ObservedObject var dataStore: HabitDataStore
     let habit: Habit
     @ObservedObject var pluginManager: PluginManager
     let onToggleActive: () -> Void
     let onReminderTap: () -> Void
-    
     @State private var rachaActual: Int = 0
-    
+
     var body: some View {
         HStack(spacing: 12) {
-            // Información del hábito
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 8) {
                     Text(habit.nombre)
                         .font(.headline)
                         .foregroundColor(habit.activo ? .primary : .secondary)
-                    
-                    // Badge de categoría (solo si plugin habilitado)
+
                     if pluginManager.isCategoriasEnabled && habit.tieneCategoria {
                         CategoriaBadgeView(categoria: habit.categoriaEnum)
                     }
-                    
-                    // Badge de racha (solo si plugin habilitado)
+
                     if pluginManager.isRachasEnabled {
                         RachaBadgeView(rachaActual: rachaActual, frecuencia: habit.frecuencia)
                     }
-                    
-                    // Badge de recordatorio (solo si plugin habilitado)
+
                     if pluginManager.isRecordatoriosEnabled {
                         RecordatorioBadgeView(habit: habit)
                     }
                 }
-                
+
                 HStack(spacing: 8) {
-                    // Frecuencia
                     Label(
                         habit.frecuencia.rawValue.capitalized,
                         systemImage: habit.frecuencia == .diario ? "sun.max" : "calendar.badge.clock"
                     )
                     .font(.caption)
                     .foregroundColor(.secondary)
-                    
-                    // Estado
                     if !habit.activo {
-                        Text("• Pausado")
-                            .font(.caption)
-                            .foregroundColor(.orange)
+                        Text("• Pausado").font(.caption).foregroundColor(.orange)
                     }
                 }
             }
-            
+
             Spacer()
-            
-            // Botón rápido de recordatorio (solo si plugin habilitado)
+
             if pluginManager.isRecordatoriosEnabled {
                 RecordatorioQuickButton(habit: habit, action: onReminderTap)
             }
-            
-            // Toggle de activo
+
             Toggle("", isOn: Binding(
                 get: { habit.activo },
                 set: { _ in onToggleActive() }
@@ -246,52 +288,24 @@ struct HabitRowView: View {
         .padding(.vertical, 4)
         .onAppear {
             if pluginManager.isRachasEnabled {
-                calcularRacha()
+                rachaActual = RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances)
             }
         }
         .onChange(of: dataStore.instances.count) { _ in
             if pluginManager.isRachasEnabled {
-                calcularRacha()
+                rachaActual = RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances)
             }
         }
     }
-    
-    private func calcularRacha() {
-        rachaActual = RachaCalculator.shared.calcularRachaActual(para: habit, instancias: dataStore.instances)
-    }
 }
 
-// MARK: - Habit Identifiable Extension
 
 extension Habit: Hashable {
     public static func == (lhs: Habit, rhs: Habit) -> Bool {
         lhs.id == rhs.id
     }
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 }
-
-// MARK: - Preview
-
-#if DEBUG
-struct HabitsListView_Previews: PreviewProvider {
-    static var previews: some View {
-        let dataStore = HabitDataStore()
-        
-        // Añadir hábitos de ejemplo
-        let habit1 = Habit(nombre: "Ejercicio", frecuencia: .diario)
-        habit1.activarRecordatorio(horasAnticipacion: 5)
-        
-        let habit2 = Habit(nombre: "Leer", frecuencia: .diario)
-        
-        let habit3 = Habit(nombre: "Revisión semanal", frecuencia: .semanal)
-        habit3.activarRecordatorio(horasAnticipacion: 12)
-        
-        dataStore.habits = [habit1, habit2, habit3]
-        
-        return HabitsListView(dataStore: dataStore)
-    }
-}
-#endif
