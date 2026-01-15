@@ -47,7 +47,7 @@ jobs:
         run: |
           xcodebuild clean build \
             -project habitapp6.xcodeproj \
-            -scheme "HabitApp-Metas" \
+            -scheme "HabitApp6-Metas" \
             -sdk ${{ matrix.sdk }} \
             -destination '${{ matrix.destination }}' \
             -derivedDataPath ./DerivedData \
