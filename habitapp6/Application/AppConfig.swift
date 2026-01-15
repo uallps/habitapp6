@@ -67,11 +67,15 @@ class AppConfig: ObservableObject {
         self.showSugerencias = UserDefaults.standard.object(forKey: Keys.showSugerencias) as? Bool ?? true
         self.showLogros = UserDefaults.standard.object(forKey: Keys.showLogros) as? Bool ?? true
 
-        #if DEVELOP || PREMIUM
+        #if METAS_ONLY
+        disableAllFeatures()
+        showMetas = true
+        #elseif DEVELOP || PREMIUM
+        // Features activas por defecto, no hacer nada
         #else
         disableAllFeatures()
         #endif
-
+        
         print("⚙️ AppConfig inicializado:")
         print("   - Recordatorios: \(showRecordatorios)")
         print("   - Rachas: \(showRachas)")
